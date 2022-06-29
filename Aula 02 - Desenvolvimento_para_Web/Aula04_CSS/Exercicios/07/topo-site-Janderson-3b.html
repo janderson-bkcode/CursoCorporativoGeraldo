@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Criação de sites com HTML e CSS | Janderson</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="normalize.css">
+    <!--[if LT ie9]-->
+    <script src="html5shiv-master/src/html5shiv.js"></script>
+    <!--[endif]-->
+    <style rel="stylesheet">
+        *,
+        *:before,
+        *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-size: 18px/ 1.4, Arial, sans-serif;
+            background: #ddd;
+            color: #333;
+
+        }
+
+        .tudo {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: #fff;
+        }
+
+        .topo {
+            width: 100%;
+            line-height: 1;
+            padding: 1px 20px 10px 20px;
+        }
+
+        .topo h1 {
+            font-size: 36px;
+            margin: 4px 0 2px 0;
+            text-align: right;
+        }
+
+        .topo h2 {
+            font-size: 27px;
+            margin: 2px 0 4px 0;
+            text-align: right;
+        }
+        .topo a {
+            color: #900;
+            text-decoration: none;
+        }
+        /* hgroup>h1 {
+            font-size: 36px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+
+        hgroup a {
+            color: #900;
+            text-decoration: none;
+        }
+
+        h1~h2 {
+            font-size: 27px;
+            margin-top: 14px;
+            margin-bottom: 14px;
+            color: #090;
+        }
+
+        nav>ul {
+            margin-left: 50px;
+        }
+
+        nav>ul li:first-child>a {
+
+            color: #c60;
+            text-decoration: none;
+        }
+
+        nav>ul>li:first-child>a:hover {
+            color: #555;
+            text-decoration: underline;
+        }
+
+        nav ul>li:last-child {
+            font-size: 26px;
+            list-style-type: square;
+        }
+
+        nav>ul>li:nth-child(3) {
+            background: #ccc;
+        } */
+    </style>
+</head>
+
+<body class="home">
+    <div class="tudo">
+        <header class="topo">
+            <h1><a href="/">Site do Janderson</a></h1>
+            <h2>Site destinado a divulgar o trabalho de Janderson</h2>
+            <nav>
+                <ul>
+                    <li><a class="corrente" href="home.html">home</a></li>
+                    <li><a href="portfolio.html">portfólio</a></li>
+                    <li><a href="artigos-html.html">artigos HTML</a></li>
+                    <li><a href="artigos-css.html">artigos CSS</a></li>
+                    <li><a href="contato.html">contato</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <!-- mais conteúdo -->
+    <footer class="rodape">
+        <!-- conteúdo do rodapé do site -->
+    </footer>
+</body>
+
+</html>
