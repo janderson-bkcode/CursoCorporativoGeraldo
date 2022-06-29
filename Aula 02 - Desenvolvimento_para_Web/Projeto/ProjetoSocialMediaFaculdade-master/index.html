@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="App">
+        <header>
+            <nav class="header-nav">
+                <div class="header-nav-left">
+                    <img src="img/logo.png" alt="Logo da Fatec" />
+                    <div class="input-sec">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        <input type="text" placeholder="Procurar" />
+                    </div>
+                </div>
+                <div class="header-nav-center">
+                    <div class="option active-option">
+                        <i style="font-size: larger" class="fa fa-home" aria-hidden="true"></i>
+                    </div>
+                    <div class="option">
+                        <i class="fa-solid fa-book" style="font-size:larger " aria-hidden="true"></i>
+                    </div>
+                    <div class="option">
+                        <i style="font-size: larger" class="fa fa-list" aria-hidden="true"></i>
+                    </div>
+                    <div class="option">
+                        <i style="font-size: larger" class="fa-solid fa-people-group" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="header-nav-right">
+                    <div class="info">
+                        <img src="img/goku.jpg" alt="avatar perfil" />
+                        <h4>Janderson Barbosa</h4>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="feed">
+            <div class="newpost">
+                <h1>Nova Publicação</h1>
+                <input type="text" placeholder="Qual o conhecimento para compartilhar hoje Janderson?">
+                <div class="newpostOp">
+                    <i class="fa-solid fa-file-image">imagem</i>
+                    <i class="fa-solid fa-file-video">Video</i>
+                    <i class="fa-solid fa-file-pdf">Arquivo</i>
+                </div>
+            </div>
+            <!-- post feed-->
+            <div class="post">
+                <div class="post-head">
+                    <div class="profile-pic">
+                        <img src="http://www.fatecrp.edu.br/wp-content/uploads/2017/11/Geraldo.jpg"
+                            alt="foto do perfil" />
+                    </div>
+                    <div class="username">
+                        <p>Geraldo Henrique Neto</p>
+                        <p>Ribeirão Preto, São Paulo</p>
+                    </div>
+                </div>
+                <div class="post-body"><img src="img/sql.jpg" alt="imagem post" /></div>
+                <div class="post-info">
+                    <i class="fa-solid fa-heart"> 90</i>
+                    <i class="fa-solid fa-comment"> 300</i>
+                    <i class="fa-solid fa-share">250</i>
+                    <p class="timestamp">2 Hours</p>
+                    <p class="add-comments">
+                        <i class="fa fa-smile-o" aria-hidden="true"></i>
+                        <input type="text" placeholder="Adicionar comentário" />
+                    </p>
+                </div>
+                <div class="post-comment">
+                    <div class="profile-pic">
+                        <img src="img/burgues.jpg" alt="foto do perfil" />
+                    </div>
+                    <div class="username">
+                        <b>
+                            <p>Antônio Bordon</p>
+                        </b>
+                        <p>Top esse postagem do mestre</p>
+                    </div>
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <div class="post-comment">
+                    <div class="profile-pic">
+                        <img src="img/goku.jpg" alt="foto do perfil" />
+                    </div>
+                    <div class="username">
+                        <b>
+                            <p>Janderson Barbosa</p>
+                        </b>
+                        <p>Conteúdo Importante</p>
+                    </div>
+                    <i style="margin-left:62%"class="fa-solid fa-heart"></i>
+                </div>
+            </div>
+            <!-- post feed-->
+            <div class="post">
+                <div class="post-head">
+                    <div class="profile-pic">
+                        <img src="img/burgues.jpg" alt="avatar perfil " />
+                    </div>
+                    <div class="username">
+                        <p>Antônio Bordon</p>
+                        <p>Ribeirão Preto, São Paulo</p>
+                    </div>
+                </div>
+                <div class="post-body"><img src="https://picsum.photos/200" alt="a" /></div>
+                <div class="post-info">
+                    <i class="fa-solid fa-heart"> 90</i>
+                    <i class="fa-solid fa-comment"> 300</i>
+                    <i class="fa-solid fa-share">250</i>
+                    <p class="timestamp">2 Hours</p>
+                    <p class="add-comments">
+                        <i class="fa fa-smile-o" aria-hidden="true"></i>
+                        <input type="text" placeholder="Adicionar comentário" />
+                    </p>
+                </div>
+            </div>
+            <!-- post feed-->
+            <div class="post">
+                <div class="post-head">
+                    <div class="profile-pic">
+                        <img src="img/jojo.png" alt="avatar perfil" />
+                    </div>
+                    <div class="username">
+                        <p>Gustavo Jotaro</p>
+                        <p>Jardinópolis, São Paulo</p>
+                    </div>
+                </div>
+                <div class="post-body"><img src="img/cursos.jpeg" alt="a" /></div>
+                <div class="post-info">
+                    <i class="fa-solid fa-heart"> 90</i>
+                    <i class="fa-solid fa-comment"> 300</i>
+                    <i class="fa-solid fa-share">250</i>
+                    <p class="timestamp">2 Hours</p>
+                    <p class="add-comments">
+                        <i class="fa fa-smile-o" aria-hidden="true"></i>
+                        <input type="text" placeholder="Adicionar comentário" />
+                    </p>
+                </div>
+            </div>
+            <!---Painel de informação do Usuario-->
+            <aside class="panel-user-info">
+                <div class="post-head">
+                    <div class="profile-pic">
+                        <img src="img/goku.jpg" alt="avatar perfil" />
+                    </div>
+                    <div class="username">
+                        <p>Janderson Barbosa</p>
+                        <p>95% dos cursos realizados</p>
+                        <p> 7 Amigos</p>
+                        <p> 8 Professores</p>
+                        <p> 8 Cursos</p>
+                    </div>
+                </div>
+            </aside>
+            <!---Painel de informação de opções-->
+            <aside class="panel">
+                <ul>
+                    <li>Cursos</li>
+                    <li>Materiais</li>
+                    <li>Professores</li>
+                    <li>Provas</li>
+                    <li>Colegas de Classe</li>
+                    <li>Cronograma</li>
+                    <li>Configurações</li>
+                </ul>
+            </aside>
+            <!---Chat-->
+            <aside class="chat">
+                <p>Contatos</p>
+                <ul>
+                    <li class="user">
+                        <img src="img/jojo.png" alt="avatar" />
+                        <div class="about">
+                            <div class="name">Gustavo Jotaro</div>
+                            <div class="status">
+                                <i class="fa fa-circle online"></i> online
+                            </div>
+                        </div>
+                    </li>
+                    <li class="user">
+                        <img src="img/burgues.jpg" alt="avatar" />
+                        <div class="about">
+                            <div class="name">Antônio Bordon</div>
+                            <div class="status">
+                                <i class="fa fa-circle online"></i> online
+                            </div>
+                        </div>
+                    </li>
+                    <li class="user">
+                        <img src="img/avatar.jpg" alt="avatar" />
+                        <div class="about">
+                            <div class="name"> Janderson Barbosa</div>
+                            <div class="status">
+                                <i class="fa fa-circle online"></i> online
+                            </div>
+                        </div>
+                    </li>
+                    <li class="user">
+                        <img src="http://www.fatecrp.edu.br/wp-content/uploads/2017/11/Geraldo.jpg" alt="avatar" />
+                        <div class="about">
+                            <div class="name">Geraldo Henrique N </div>
+                            <div class="status">
+                                <i class="fa fa-circle online"></i> online
+                            </div>
+                        </div>
+                    </li>
+                    <li class="user">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg"
+                            alt="avatar" />
+                        <div class="about">
+                            <div class="name">Cristiano Ronaldo </div>
+                            <div class="status">
+                                <i class="fa fa-circle online"></i> online
+                            </div>
+                        </div>
+                    </li>
+                    <li class="user">
+                        <img src="https://znews-stc.zdn.vn/static/topic/person/messi.jpg"
+                            alt="avatar" />
+                        <div class="about">
+                            <div class="name">Lionel Messi </div>
+                            <div class="status">
+                                <i class="fa fa-circle offline"></i> offline
+                            </div>
+                        </div>
+                    </li>
+                    <li class="user">
+                        <img src="https://www.lance.com.br/galerias/wp-content/uploads/2020/08/Corinthians.jpg"
+                            alt="avatar" />
+                        <div class="about">
+                            <div class="name">Menino Ney </div>
+                            <div class="status">
+                                <i class="fa fa-circle offline"></i> offline
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </aside>
+        </main>
+
+        <footer>
+            <img src="img/logo.png" alt="Logo da Fatec">
+            <p>@Copyright 2022 Todos os Direitos Reservados</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>

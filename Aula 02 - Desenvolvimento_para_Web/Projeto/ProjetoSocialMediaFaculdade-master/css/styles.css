@@ -1,0 +1,377 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.App .body {
+  display: flex;
+}
+
+
+/** Header **/
+.header-nav {
+  background-color: #4c4c977f;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  box-shadow: 0 5px 8px -9px rgba(0, 0, 0, 0.75);
+}
+
+.header-nav .header-nav-left {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-nav .header-nav-left img {
+  height: 40px;
+
+}
+
+.header-nav .header-nav-left .input-sec {
+  display: flex;
+  align-items: center;
+  background-color: #edf4fa;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 99px;
+}
+
+.header-nav .header-nav-left .input-sec input {
+  border: none;
+  background-color: transparent;
+  outline: 0;
+}
+
+.header-nav .header-nav-center {
+  display: flex;
+  justify-content: center
+}
+
+.header-nav .header-nav-center .option {
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  cursor: pointer;
+  border: #fff;
+}
+
+.header-nav .header-nav-center .option:hover {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 0 30px;
+  border-bottom: none;
+}
+
+.header-nav .header-nav-center .active-option {
+  border-bottom: 4px solid #fff;
+}
+
+.header-nav .header-nav-right img {
+  margin-right: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.header-nav .header-nav-right {
+  display: flex;
+}
+
+.header-nav .header-nav-right .info {
+  display: flex;
+  align-items: center;
+}
+
+.header-nav .header-nav-right .info h4 {
+  margin-left: 10px;
+}
+
+/* Main Post Feed*/
+
+.feed .newpost{
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #e4e5e9;
+  border: 1px solid rgb(166, 162, 162);
+  border-radius: 4px;
+  width: 50%;
+  height: 150px;
+  text-align:center;
+  justify-content:space-between;
+  align-items: center;
+  margin-top: 10px;
+
+}
+
+.feed .newpost h1{
+  margin-top: 5px;
+  font-size: 19px;
+}
+
+.feed .newpost input{
+  border-color: transparent;
+  border-radius: 5px;
+  margin-top: 10px;
+  width:95%;
+  height:30px;
+}
+
+.feed .newpost input:hover{
+  cursor: pointer;
+}
+
+.feed .newpost .newpostOp{
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 15px;
+}
+.feed .newpost .newpostOp i{
+  font-size: 16px;
+  padding: 0px 40px;
+  margin-bottom: 4px;
+}
+
+.feed .newpost .newpostOp img{
+  width:20px;
+  height:20px;
+}
+
+.feed .newpost .newpostOp i{
+  transition: transform .3s; /* Animação ao passar o mouse */
+  cursor: pointer;
+}
+
+.newpost i:hover{
+  transform: scale(1.5);
+}
+
+.feed {
+  background-color: #FAFAFA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.feed .post {
+  height: auto;
+  width: 50%;
+  border: 1px solid #dadada;
+  margin: 50px 0;
+  overflow: hidden;
+}
+
+.feed .post .post-head {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  font-size: small;
+  border-bottom: 1px solid #dadada;
+}
+
+.feed .post .post-head .profile-pic {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 5px;
+  border: 5px groove #4c4c977f;
+}
+
+.feed .post .post-head .profile-pic img {
+  height: 50px;
+  width: 50px;
+}
+
+.feed .post .post-head .username {
+  margin-left: 10px;
+}
+
+.feed .post .post-head .username p {
+  margin: auto 0;
+}
+
+.feed .post .post-body img {
+  width: 100%;
+}
+
+.feed .post .post-info {
+  padding: 10px;
+}
+
+.feed .post .post-info .timestamp {
+  margin-top: 15px;
+  font-size: small;
+  border-bottom: 1px solid #dadada;
+  margin-bottom: 5px;
+  color: #808080;
+}
+
+.feed .post .post-info .add-comments input {
+  width: 95%;
+  margin-left: 10px;
+  border: none;
+}
+
+.feed .post .post-comment {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  font-size: small;
+  border-bottom: 1px solid #dadada;
+}
+
+.feed .post .post-comment .profile-pic {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 5px;
+}
+
+.feed .post .post-comment .profile-pic img {
+  height: 50px;
+  width: 50px;
+}
+
+.feed .post .post-comment i {
+  margin-left: 55%;
+}
+
+/* Chat*/
+.chat {
+  display: flex;
+  background: #e4e5e9;
+  flex-direction: column;
+  border: 1px solid rgb(166, 162, 162);
+  border-radius: 10px;
+  position: fixed;
+  float: right;
+  margin-top: 10px;
+  margin-left: 75%;
+  width: 260px;
+  height: 530px;
+  box-shadow: 0 5px 8px -9px rgba(0, 0, 0, 0.75);
+}
+
+.chat p {
+  text-align: center;
+}
+
+.chat ul {
+  padding: 20px;
+  height: 770px;
+  list-style-type: none;
+}
+
+.chat ul li {
+  padding-bottom: 20px;
+  float: right;
+
+}
+
+.chat .about {
+  margin-left: 60px;
+  padding-top: 5px;
+  text-align: start;
+  text-align: left;
+}
+
+.chat ul li img {
+  position: fixed;
+  float: left;
+  margin-right: 20px;
+  border-radius: 30px;
+  width: 50px;
+  height: 50px;
+  margin-left: 3px;
+}
+
+.chat .user {
+  width: 100%;
+  margin-left: 90px;
+}
+
+.chat .user .about .name {
+  text-align: left;
+}
+
+.chat .online {
+  color: green;
+}
+
+.chat .offline {
+  color: gray;
+}
+
+/* Painel de informação de opções */
+.panel {
+  position: absolute;
+  background: #e4e5e9;
+  border: 1px solid rgb(166, 162, 162);
+  border-radius: 4px;
+  margin-right: 75%;
+  margin-top: 220px;
+  width: 260px;
+  height: 450px;
+  box-shadow: 0 5px 8px -9px rgba(0, 0, 0, 0.75);
+}
+
+.panel ul {
+  list-style-type: none;
+}
+
+.panel ul li {
+  font-size: small;
+  border-bottom: 5px solid #dadada;
+  padding: 21.5px;
+}
+
+.panel ul li:hover {
+  background-color: rgb(63, 167, 167);
+  cursor: pointer;
+}
+
+/* Painel de Informações do Usuário */
+.panel-user-info {
+  position: absolute;
+  background: #e4e5e9;
+  border: 1px solid rgb(166, 162, 162);
+  border-radius: 4px;
+  margin-right: 75%;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  padding-top: 5px;
+  width: 260px;
+  height: 200px;
+  text-align: center;
+
+}
+
+.panel-user-info img {
+  width: 90px;
+  height: 90px;
+
+}
+
+/*Rodapé*/
+footer {
+  height: 100%;
+  background-color: #e4e5e9;
+  box-shadow: 0 5px 8px -9px rgba(0, 0, 0, 0.75);
+  border: 1px solid rgb(166, 162, 162);
+}
+
+footer img {
+  height: 100px;
+  width: 300px;
+}
