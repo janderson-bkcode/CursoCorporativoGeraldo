@@ -11,7 +11,7 @@ using System.Threading.Tasks;
     {
         static void Main(string[] args)
         {
-            Exec.exec07();
+            Exec.exec13();
             Console.ReadLine();
         }
 
@@ -75,7 +75,70 @@ using System.Threading.Tasks;
             var num2 = Console.ReadLine();
             var num3 = Console.ReadLine();
             
+            Console.WriteLine($"{Math.Round(double.Parse(num1), 10)},{Math.Round(double.Parse(num2), 10)},{Math.Round(double.Parse(num3), 10)}".PadRight(15));
+        }
+
+        public static void exec08()
+        {
+            Console.WriteLine("Digite 3 numeros");
+            var num1 = Console.ReadLine();
+            var num2 = Console.ReadLine();
+            var num3 = Console.ReadLine();
+
             Console.WriteLine($"{Math.Round(double.Parse(num1), 10)},{Math.Round(double.Parse(num2), 10)},{Math.Round(double.Parse(num3), 10)}".PadLeft(15));
         }
+
+        public static void exec09()
+        {
+
+            Console.WriteLine("Digite seu nome");
+            var nome = Console.ReadLine();
+            Console.WriteLine($"Bom dia {nome}");
+        }
+
+        public static void exec10()
+        {
+            Console.WriteLine("Digite seu nome");
+            var nome = Console.ReadLine();
+            Console.WriteLine("Digite seu Apelido");
+            var apelido = Console.ReadLine();
+            Console.WriteLine($"Seu nome é {nome} , Teu Apelido é :{apelido}  ");
+        }
+        public static void exec11()
+        {
+            Console.WriteLine("Digite o primeiro numero");
+            double numero = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Digite o segundo numero");
+            double numero2 = Convert.ToDouble( Console.ReadLine());
+
+            Console.WriteLine($"A soma dos dois numeros é {numero + numero2}");
+
+        }
+
+        public static void exec12()
+        {
+            Console.WriteLine("Digite o valor do lado do Quadrado");
+            double lado = Convert.ToDouble(Console.ReadLine());
+            double area = lado * lado;
+            double perimetro = lado * 4;
+            Console.WriteLine($"A área do quardo é {area} e o Perimetro é {perimetro}");
+
+        }
+
+        public static void exec13()
+        {
+            Console.WriteLine("Digite os dois lados");
+            double lado1 = Convert.ToDouble(Console.ReadLine());
+            double lado2 = Convert.ToDouble(Console.ReadLine());
+            double hipotenusa = (Math.Sqrt(lado1 * lado1) + Math.Sqrt(lado2 * lado2));
+
+            Console.WriteLine($"Hipotenusa é {hipotenusa}");
+        }
+        public static void exec14()
+        {
+
+        }
+
     }
 }
