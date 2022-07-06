@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
- namespace Exercicios04_07_22
+namespace Exercicios04_07_22
 {
     internal class Program
     {
@@ -15,7 +15,7 @@ using System.Threading.Tasks;
             Console.ReadLine();
         }
 
-       
+
     }
 
     public class Exec
@@ -59,10 +59,10 @@ using System.Threading.Tasks;
 
         public static void exec06()
         {
-            double num01 = 4.68805 /100;
-            double num02 = 4.8 /100;
-            double num03 = 5.9964/100;
-            double num04 = 5.0/100;
+            double num01 = 4.68805 / 100;
+            double num02 = 4.8 / 100;
+            double num03 = 5.9964 / 100;
+            double num04 = 5.0 / 100;
 
 
             Console.WriteLine(num01.ToString(), num02.ToString(), num03.ToString(), num04.ToString());
@@ -71,10 +71,10 @@ using System.Threading.Tasks;
         public static void exec07()
         {
             Console.WriteLine("Digite 3 numeros");
-            var num1 =  Console.ReadLine();
+            var num1 = Console.ReadLine();
             var num2 = Console.ReadLine();
             var num3 = Console.ReadLine();
-            
+
             Console.WriteLine($"{Math.Round(double.Parse(num1), 10)},{Math.Round(double.Parse(num2), 10)},{Math.Round(double.Parse(num3), 10)}".PadRight(15));
         }
 
@@ -110,7 +110,7 @@ using System.Threading.Tasks;
             double numero = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine("Digite o segundo numero");
-            double numero2 = Convert.ToDouble( Console.ReadLine());
+            double numero2 = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine($"A soma dos dois numeros é {numero + numero2}");
 
@@ -137,8 +137,154 @@ using System.Threading.Tasks;
         }
         public static void exec14()
         {
+            Console.Write("Valor em Dollar? ");
+            float dolar = float.Parse(Console.ReadLine());
+
+            double euro = dolar / 0.97;
+
+            Console.WriteLine("$ = " + euro);
 
         }
 
+        public static void exec15()
+        {
+            double graus_celsius, graus_fahrenheit;
+            Console.Write("Digite o valor em Fahrenheit: ");
+            graus_fahrenheit = double.Parse(Console.ReadLine());
+            graus_celsius = 5 / 9 * (graus_fahrenheit - 32);
+            Console.WriteLine("O valor de fahrenheit para Celsius: " + graus_celsius);
+            Console.WriteLine();
+            Console.Write("Pressione qualquer chave para terminar . . . ");
+            Console.ReadKey();
+        }
+
+        public static void exec16()
+        {
+            double valor;
+            double taxa = 1.23;
+            Console.WriteLine("Digite o valor do Produto");
+            valor = double.Parse(Console.ReadLine());
+            Console.WriteLine($"O valor do produto com imposto é {valor * taxa}");
+
+        }
+
+        public static void exec17()
+        {
+            double valor;
+            double taxa;
+            Console.WriteLine("Digite o valor do Produto");
+            valor = double.Parse(Console.ReadLine());
+            Console.WriteLine("Digite o valor da taxa");
+            taxa = double.Parse(Console.ReadLine());
+            Console.WriteLine($"O valor do produto com imposto é {valor * taxa}");
+        }
+
+        public static void exec18()
+        {
+            int Tempo, Horas, Minutos, Segundos;
+
+            Console.WriteLine("Digite o valor em Segundos: ");
+
+            Tempo = int.Parse(Console.ReadLine());
+
+            Horas = Tempo / 3600;
+
+            Minutos = Tempo % 3600 / 60;
+
+            Segundos = Tempo % 60;
+
+            Console.WriteLine("O valor convertido é: " + Horas + ":" + Minutos + ":" + Segundos + " H:M:S");
+
+            Console.WriteLine("Aperta enter para sair");
+
+            Console.ReadKey();
+        }
+
+        public static void exec19()
+        {
+            int idade;
+            Console.WriteLine("Digite sua idade");
+            idade = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Daqui a 20 anos você terá {idade + 20}");
+        }
+
+        public static void exec20()
+        {
+            string linha;
+            double media_aproveitamento;
+            int nota1, nota2;
+
+            Console.Write("Introduza o nome do aluno = ");
+            linha = Console.ReadLine();
+
+            Console.Write("Introduza a nota1 = ");
+            linha = Console.ReadLine();
+            nota1 = Int32.Parse(linha);
+
+            Console.Write("Introduza a nota2 = ");
+            linha = Console.ReadLine();
+            nota2 = Int32.Parse(linha);
+
+            media_aproveitamento = (nota1 + nota2) / 2;
+            Console.WriteLine("Nota1= " + nota1 + " Nota2= " + nota2);
+            Console.WriteLine("Media de aproveitamento= " + media_aproveitamento);
+        }
+
+        public static void exec21()
+        {
+            int dias = 4;
+            System.Console.WriteLine("Digite o valor da despesa");
+            valor = double.Parse(Console.ReadLine());
+            for (var i = 0; i < dias; i++)
+            {
+                valor * 1.20;
+            }
+            valor = valor / dias;
+            System.Console.WriteLine($"{Math.Round(valor, 0)}");
+        }
+
+        public static void exec22()
+        {
+
+        }
+        public static void exec23()
+        {
+
+            int a, b;
+            a = 20;
+            b = 10;
+            a = a + b;
+            b = a - b;
+            a = a - b;
+
+            Console.WriteLine($"Valor a {a} valor b{b}");
+
+        }
+
+
+        public static void exec24()
+        {
+            int antecessor, sucessor, um_numero;
+            Console.Write("Digite o valor do um numero: ");
+            um_numero = int.Parse(Console.ReadLine());
+            antecessor = um_numero - 1;
+            sucessor = um_numero + 1;
+            Console.WriteLine("O valor do antecessor: " + antecessor);
+            Console.WriteLine("O valor do sucessor: " + sucessor);
+            Console.WriteLine();
+            Console.Write("Pressione qualquer chave para terminar . . . ");
+            Console.ReadKey();
+        }
+
+        public static void exec25()
+        {
+            double x1, x2, y1, y2;
+            x1 = 12d;
+            x2 = 13d;
+            y1 = 11d;
+            y2 = 10d;
+            var distance = Math.Sqrt((Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2)));
+            Console.WriteLine(distance);
+        }
     }
 }
