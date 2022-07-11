@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br'">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-07-2022 Layout Duas colunas Largura Fixa 04 </title>
+    <link rel="stylesheet" href="../Artefatos/normalize.css">
+    <style rel="stylesheet">
+        *,*:before,*:after{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .clear{
+            clear: both; /* Classe para "limpar elementos"*/
+        }
+        body{
+            font: 18px/1.4 arial,sans-serif;
+            color: #333;
+            background: #ccc;
+        }
+        #tudo{ /* Centraliza a pagina de 960px de largura"*/
+            width: 960px;
+            margin: auto;
+            background: #fff;
+        }
+        h1,h2,h3,h4,h5,h6{
+            color: #036;
+        }
+        .topo_header{
+            background: #036;
+            padding: 5px 20px;
+        }
+        .topo_header h1{
+            font-size: 36px;
+            margin: 4px 0 2px 0;
+            text-align: right;
+        }
+        .topo_header a {
+           /* color:#900;*/
+            color: #fff;
+            text-decoration: none;
+        }
+        .topo_header h2 {
+            font-size: 20px;
+            margin: 2px 0 4px 0;
+            text-align: right;
+            color: #fff;
+        }
+        .principal{  /* Flutua à direita"*/
+            width: 720px;
+            float: right;
+        }
+        .auxiliar{ /* Flutuar à esquerda"*/
+            width: 220px;
+            float: left;
+        }
+        .rodape{
+             /* Limpa as colunas flutuadas e define altura do rodapé"*/
+             clear: both;
+             /* height: 25px; */
+             background:#036;
+             color: #fff;
+             padding: 5px 0;
+             text-align: center;
+        }
+    </style>
+</head>
+<body class="home">
+    <div id="tudo">
+        <div class="topo">
+            <header class="topo_header">
+                <hgroup>
+                    <h1><a href="/">Site do Janderson</a></h1>
+                    <h2>Site destinado a divulgar o trabalho de Janderson </h2>
+                </hgroup>
+            </header>
+        </div>
+    
+    <div class="principal">
+        <main>
+            <h1>Titulo UM</h1>
+            <section class="principal_secaoum">
+                <h2>Sub-Título um</h2>
+                <p>Lorem ipsum Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas sit quos reiciendis, delectus quasi recusandae earum consequatur, fuga ab deserunt eligendi, nam quis nesciunt! Dolore accusantium voluptatibus natus quasi dolores!</p>
+                <h2>Sub-Titulo dois</h2>
+                <p>Curabitur hendredit erat ut augue Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse explicabo, repellat sit eveniet amet beatae laboriosam. Sapiente aspernatur, nihil mollitia corporis qui ullam, optio, eligendi assumenda adipisci aliquam illum a?</p>
+            </section>
+        </main>
+    </div> <!----/Principal-->
+    <div class="auxiliar">
+        <nav class="auxiliar_navegacao">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="../html/home.html" class="corrente"></a>Home</li>
+                <li><a href="../html/portfolio.html"></a>Portifólio</li>
+                <li><a href="../html/artigos-html.html" class="corrente"></a>artigos</li>
+                <li><a href="../html/artigos-css.html" class="corrente"></a>artigos CSS</li>
+                <li><a href="../html/contato.html" class="corrente"></a>Contato</li>
+            </ul>
+        </nav>
+        <aside class="auxiliar_parceiros">
+            <ul class="auxiliar_parceiros_textos">
+                <li><a href=""></a>Parceiro Um</li>
+                <li><a href=""></a>Parceiro Dois</li>
+                <li><a href=""></a>Parceiro Três</li>
+                <li><a href=""></a>Parceiro Quatro</li>
+            </ul>
+            <div class="auxiliar_parceiros_imagens">
+                <figure>
+                    <a href="">
+                        <img src="../Artefatos/parceiroA.png" alt="Imagem parceiro A">
+                    </a>
+                </figure>
+                <figure>
+                    <a href=""><img src="../Artefatos/parceiroB.png" alt="Imagem do parceiro B"></a>
+                </figure>
+                <figure>
+                    <a href=""><img src="../Artefatos/parceiroC.png" alt="Imagem do parceiro C"></a>
+                </figure>
+                <figure>
+                    <a href=""><img src="../Artefatos/parceiroD.png" alt="Imagem do parceiro D"></a>
+                </figure>
+                 <figure>
+                    <a href=""><img src="../Artefatos/parceiroE.png" alt="Imagem do parceiro E"></a>
+                </figure>
+            </div>
+        </aside> <!---Auxiliar-->    
+    </div> 
+    <div class="rodape">
+        <footer>
+            <small>Site do Geraldo -2022 &copy;Todos os direitos reservados </small>
+        </footer>
+    </div><!----rodapé-->
+</div> <!----/Tudo-->
+</body>
+</html>
