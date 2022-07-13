@@ -1,0 +1,15 @@
+/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/obj/Debug/net6.0/Lista02.csproj.AssemblyReference.cache
+/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/obj/Debug/net6.0/Lista02.GeneratedMSBuildEditorConfig.editorconfig
+/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/obj/Debug/net6.0/Lista02.AssemblyInfoInputs.cache
+/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/obj/Debug/net6.0/Lista02.AssemblyInfo.cs
+/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/obj/Debug/net6.0/Lista02.csproj.CoreCompileInputs.cache
+/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/bin/Debug/net6.0/Lista02
+/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/bin/Debug/net6.0/Lista02.deps.json
+/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/bin/Debug/net6.0/Lista02.runtimeconfig.json
+/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/bin/Debug/net6.0/Lista02.dll
+/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/bin/Debug/net6.0/Lista02.pdb
+/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/obj/Debug/net6.0/Lista02.dll
+/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/obj/Debug/net6.0/refint/Lista02.dll
+/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/obj/Debug/net6.0/Lista02.pdb
+/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/obj/Debug/net6.0/Lista02.genruntimeconfig.cache
+/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/obj/Debug/net6.0/ref/Lista02.dll
