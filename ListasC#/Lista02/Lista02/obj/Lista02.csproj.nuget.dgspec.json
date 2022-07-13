@@ -1,26 +1,34 @@
 {
   "format": 1,
   "restore": {
-    "/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/Lista02.csproj": {}
+    "C:\\Users\\janderson.goncalves\\Documents\\Github\\CursoCorporativoGeraldo\\ListasC#\\Lista02\\Lista02\\Lista02.csproj": {}
   },
   "projects": {
-    "/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/Lista02.csproj": {
+    "C:\\Users\\janderson.goncalves\\Documents\\Github\\CursoCorporativoGeraldo\\ListasC#\\Lista02\\Lista02\\Lista02.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/Lista02.csproj",
+        "projectUniqueName": "C:\\Users\\janderson.goncalves\\Documents\\Github\\CursoCorporativoGeraldo\\ListasC#\\Lista02\\Lista02\\Lista02.csproj",
         "projectName": "Lista02",
-        "projectPath": "/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/Lista02.csproj",
-        "packagesPath": "/home/janderson/.nuget/packages/",
-        "outputPath": "/home/janderson/Documentos/GitHub/CursoCorporativoGeraldo/ListasC#/Lista02/Lista02/obj/",
+        "projectPath": "C:\\Users\\janderson.goncalves\\Documents\\Github\\CursoCorporativoGeraldo\\ListasC#\\Lista02\\Lista02\\Lista02.csproj",
+        "packagesPath": "C:\\Users\\janderson.goncalves\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\janderson.goncalves\\Documents\\Github\\CursoCorporativoGeraldo\\ListasC#\\Lista02\\Lista02\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/home/janderson/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\janderson.goncalves\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/bk-bank/TI/_packaging/bkbank-oficial/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -52,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.301/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

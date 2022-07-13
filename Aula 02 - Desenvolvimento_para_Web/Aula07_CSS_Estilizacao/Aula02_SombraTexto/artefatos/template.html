@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<title>HTML5 e CSS3 | bkBank Academy</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href='normalize.css'></link>
+<style rel="stylesheet">
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+.clear { clear: both; }
+body {
+	font: 18px/1.4 arial, sans-serif;
+	color: #333;
+	background: #ccc;
+	}
+#tudo {
+	width: 100%;
+	max-width: 1200px;
+	min-width: 860px;
+	margin: 0 auto;
+	background: #fff;
+	}
+h1, h2, h3, h4, h5, h6 { color: #036; }
+.topo_header  {
+	background: #036;
+	padding: 5px 20px;
+}
+.topo_header h1  {
+	font-size: 36px;
+	margin: 4px 0 2px 0;
+	}
+.topo_header a  {
+	color: #fff;
+	text-decoration: none;
+	}
+.topo_header h2 {
+	font-size: 20px;
+	margin: 2px 0 4px 0;
+	color: #fff;
+	}
+.principal {
+	width: 100%;
+	padding: 0 15px;
+	}
+.rodape {
+	background: #036;
+	color: #fff;
+	padding: 5px 0;
+	text-align: center;	
+	}
+main section { overflow:hidden; }
+.box { 
+	overflow:hidden;
+	float: left;
+	width: 33.3%;
+	padding: 15px;
+}
+hr { clear: left; }
+.exemplo {
+	width: 90%;
+	margin: 0 auto;
+	height: 150px;
+	background: #ccc;
+	border: 3px solid red;
+}
+pre { font-size: 14px;}
+
+@media (max-width: 1040px) {
+	pre { font-size: 12px;}
+}
+.um{
+	text-shadow: red 5px 0;
+}
+.dois{
+	text-shadow: red 0 5px;
+}
+.tres{
+	text-shadow: red 5px 5px;
+}
+.quatro{
+
+	text-shadow: red 5px 5px 5px;
+
+}
+.cinco{
+	text-shadow: red -5px 5px;
+}
+.seis{
+	text-shadow: red 5px -5px;
+}
+.sete{
+	background-color: #999;
+	text-shadow: red 3px 3px 5px,
+	blue -6px -6px,
+	green -25px 15px 5px;
+}
+
+.oito{
+	background-color: #999;
+	color: #c8c8c8;
+	text-shadow: 1px 1px white,1px -1px white,-1px -1px #444;
+}
+/* ......... */
+
+</style>
+</head>
+<body class="home">
+<div id="tudo">
+    <div class="topo">
+        <header class="topo_header">
+            <hgroup>
+                <h1><a href="/">Estilização</a></h1>
+                <h2>Template</h2>
+            </hgroup> 
+        </header>
+	</div> <!-- /.topo -->
+    <div class="principal">
+        <main>
+        	<section>
+            	<h1>Exemplos</h1>
+				<div class="box">
+					<h1 class="exemplo um">HTML bkBank</h1>
+				</div>
+				<div class="box">
+					<h1 class="exemplo dois">HTML bkBank</h1>
+				</div>
+				<div class="box">
+					<h1 class="exemplo tres">HTML bkBank</h1>
+				</div>
+				<div class="box">
+					<h1 class="exemplo quatro">HTML bkBank</h1>
+				</div>
+				<div class="box">
+					<h1 class="exemplo cinco">HTML bkBank</h1>
+				</div>
+				<div class="box">
+					<h1 class="exemplo seis">HTML bkBank</h1>
+				</div>
+				<div class="box">
+					<h1 class="exemplo sete">HTML bkBank</h1>
+				</div>
+				<div class="box">
+					<h1 class="exemplo oito">HTML5 bkBank</h1>
+				</div>
+            </section>
+        </main>
+	</div> <!-- /.principal -->   
+
+    <div class="rodape">
+        <footer>
+            <small>HTML5 e CSS3</small>
+        </footer>
+	</div> <!--  /.rodape -->
+
+</div> <!--  /.tudo -->
+</body>
+</html>

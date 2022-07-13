@@ -11,7 +11,7 @@ namespace Lista02.Lista02
     {
         public static void Main(string[] args)
         {
-            List02.exec11();
+            List02.exec12();
 
         }
     }
