@@ -11,9 +11,7 @@ namespace Lista02.Lista02
     {
         public static void Main(string[] args)
         {
-            // See https://aka.ms/new-console-template for more information
-            Console.WriteLine("Hello, World!");
-            List02.exec10();
+            List02.exec11();
 
         }
     }
@@ -215,6 +213,45 @@ namespace Lista02.Lista02
 
         public static void exec11()
         {
+
+            int a, b, c;
+
+            System.Console.WriteLine("Digite o Primeiro valor");
+            a = int.Parse(Console.ReadLine());
+            System.Console.WriteLine("Digite o Segundo valor");
+            b = int.Parse(Console.ReadLine());
+            System.Console.WriteLine("Digite o Terceiro valor");
+            c = int.Parse(Console.ReadLine());
+
+            if (a + b > c && a + c > b && b + c > a)
+            {
+                Console.WriteLine("Os 3 lados formam um triangulo!\n");
+                if (a == b && a == c)
+                    Console.WriteLine("Equilatero\n");
+                else
+                    if (a == b || a == c || b == c)
+                    Console.WriteLine("Isosceles\n");
+                else
+                    Console.WriteLine("Escaleno\n");
+            }
+            else
+                Console.WriteLine("Os 3 lados Não formam um triângulo!\n");
+
+        }
+
+        public static String exec12()
+        {
+            int numero = 2;
+            string[] strUnidades = { "", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze", "treze", "quatorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove" };
+
+            if ((numero >= 0) && (numero <= 19))
+            {
+                return $"O numero{numero} por extenso é {strUnidades[numero]}";
+            }
+            else
+            {
+                return "Valor inválido";
+            }
 
         }
     }
