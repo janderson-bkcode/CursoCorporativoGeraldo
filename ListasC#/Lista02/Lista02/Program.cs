@@ -13,7 +13,7 @@ namespace Lista02.Lista02
         {
             // See https://aka.ms/new-console-template for more information
             Console.WriteLine("Hello, World!");
-            List02.exec05();
+            List02.exec10();
 
         }
     }
@@ -103,6 +103,118 @@ namespace Lista02.Lista02
                 maior = c;
 
             System.Console.WriteLine($" Maior {maior} , Menor :{menor}");
+
+        }
+        public static void exec06()
+        {
+
+            double nota1, nota2, media;
+            string nomeAluno;
+            System.Console.WriteLine("Digite o nome do Aluno");
+            nomeAluno = Console.ReadLine();
+            System.Console.WriteLine($"Digite a primeira nota do aluno {nomeAluno}");
+            nota1 = double.Parse(Console.ReadLine());
+            System.Console.WriteLine($"Digite a Segunda nota do aluno {nomeAluno}");
+            nota2 = double.Parse(Console.ReadLine());
+            media = (nota1 + nota2) / 2;
+
+            if ((nota1 < 0 || nota1 > 10) || (nota2 < 0 || nota2 > 10))
+            {
+                System.Console.WriteLine("Valor de uma das notas Invalida digite um valor maior que zero e menor que 10");
+            }
+            else if (media > 8.0)
+            {
+                System.Console.WriteLine($"O aluno {nomeAluno} está aprovado com a nota final {media}");
+            }
+            else
+            {
+                System.Console.WriteLine($"O aluno {nomeAluno} está Reprovado com a nota final {media}");
+            }
+        }
+
+        public static void exec07()
+        {
+            int nota;
+            string mensagem;
+            System.Console.WriteLine("Digite a nota do Aluno");
+            nota = int.Parse(Console.ReadLine());
+
+            mensagem = nota > 10 ? "Parabéns" : "Faça um novo Exame";
+            System.Console.WriteLine(mensagem);
+        }
+
+        public static void exec08()
+        {
+            int ano;
+            Console.WriteLine("Digite o ano");
+            ano = int.Parse(Console.ReadLine());
+
+            if (DateTime.IsLeapYear(ano))
+            {
+                System.Console.WriteLine($" o ano {ano} é bissexto");
+            }
+            else
+            {
+                System.Console.WriteLine($" o ano {ano} não é bissexto");
+            }
+        }
+
+        // public static void exec09()
+        // {
+        //     int a, b, c;
+        //     Console.WriteLine("Digite o primeiro Numero");
+        //     a = int.Parse(Console.ReadLine());
+        //     Console.WriteLine("Digite o Segundo Numero");
+        //     b = int.Parse(Console.ReadLine());
+        //     Console.WriteLine("Digite o Terceiro Numero");
+        //     c = int.Parse(Console.ReadLine());
+
+        //     if (a > b)
+        //     {
+        //         if (b > c) Console.WriteLine(a, b, c);
+        //         else
+        //         {
+        //             if (a > c) Console.WriteLine(a, c, b);
+        //             else Console.WriteLine(c, a, b);
+        //         }
+
+
+        //     }
+        //     if (b > c)
+        //     {
+        //         if (a > c) Console.WriteLine(b, a, c);
+        //         else Console.WriteLine(b, c, a);
+        //     }
+        //     else Console.WriteLine(c, b, a);
+        // }
+
+        public static void exec10()
+        {
+            string produto, TipoProduto;
+            double valorProduto;
+            System.Console.WriteLine("Digite o nome do Produto");
+            produto = Console.ReadLine();
+            System.Console.WriteLine($"Digite o tipo a Categoria do Produto: {produto}");
+            TipoProduto = Console.ReadLine();
+            System.Console.WriteLine($"Digite o valor do Produto: {produto}");
+            valorProduto = double.Parse(Console.ReadLine());
+
+            switch (TipoProduto)
+            {
+                case "Essencial":
+                    System.Console.WriteLine($"Produto do Tipo Essencial, valor com ICMS ${Math.Round(valorProduto * 1.05, 3)}Reais");
+                    break;
+                case "Luxo":
+                    System.Console.WriteLine($"Produto do Tipo Luxo, valor com ICMS ${Math.Round(valorProduto * 1.30, 3)}Reais");
+                    break;
+                default:
+                    System.Console.WriteLine($"Produto do Tipo Geral, valor com ICMS ${Math.Round(valorProduto * 1.20, 3)}Reais");
+                    break;
+            }
+        }
+
+        public static void exec11()
+        {
 
         }
     }
