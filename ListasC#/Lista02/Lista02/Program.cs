@@ -11,7 +11,7 @@ namespace Lista02.Lista02
     {
         public static void Main(string[] args)
         {
-            List02.exec12();
+            List02.exec13();
 
         }
     }
@@ -241,19 +241,269 @@ namespace Lista02.Lista02
 
         public static String exec12()
         {
-            int numero = 2;
-            string[] strUnidades = { "", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze", "treze", "quatorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove" };
+            string[] strUnidades = { "", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez" };
 
-            if ((numero >= 0) && (numero <= 19))
+            for (int i = 0; i < strUnidades.Length; i++)
             {
-                return $"O numero{numero} por extenso é {strUnidades[numero]}";
-            }
-            else
-            {
-                return "Valor inválido";
+                System.Console.WriteLine(strUnidades[i]);
             }
 
         }
+
+        public static void exec13()
+        {
+            {
+                double a, b, c;
+                double delta, baskara;
+
+                Console.WriteLine("Entre com o valor de A:");
+                a = double.Parse(Console.ReadLine());
+                Console.WriteLine("Entre com o valor de B:");
+                b = double.Parse(Console.ReadLine());
+                Console.WriteLine("Entre com o valor de C:");
+                c = double.Parse(Console.ReadLine());
+
+                if (a == 0 && b == 0 && c == 0)
+                {
+                    Console.WriteLine("A, B e C devem ser diferentes de 0!");
+                }
+                else
+                {
+                    delta = Math.Pow(b, 2) * (-4 * a * c);
+                    if (delta < 0)
+                    {
+                        Console.WriteLine("Delta não pode ser menor que 0!");
+                    }
+                    else if (delta == 0)
+                    {
+                        baskara = -b / (2 * a);
+                    }
+                    else
+                    {
+                        baskara = -b + Math.Sqrt(delta) / (2 * a);
+                        Console.WriteLine(String.Format("1º Valor da Equação do segundo grau:{0}", baskara));
+                        baskara = -b - Math.Sqrt(delta) / (2 * a);
+                        Console.WriteLine(String.Format("2º Valor da Equação do segundo grau:{0}", baskara));
+                    }
+                }
+
+
+
+            }
+        }
+
+        public static void exec14()
+        {
+            var letra;
+
+            Console.WriteLine("Digite um caracter: ");
+            letra = Console.ReadLine();
+            // a, e, i, o, u, A, E, I, O, U
+            if (letra == 'a' || letra == 'A' || letra == 'e' || letra == 'E' || letra == 'i'
+               || letra == 'I' || letra == '0' || letra == 'O' || letra == 'u' || letra == 'U')
+            {
+                Console.WriteLine("\tVogal...\n");
+            }
+
+            else
+                Console.WriteLine("\tConsoante\n");
+        }
+
+        public static void exec15()
+        {
+            // Elabore um programa que leia o dia e o mes de nascimento de uma pessoa e
+            // determine o seu signo conforme a tabela a seguir:
+            //
+            // Intervalo           Signo
+            // de 22/12 ate 20/1   Capricornio
+            // de 21/1 ate 19/2    Aquario
+            // de 20/2 ate 20/3    Peixes
+            // de 21/3 ate 20/4    Aries
+            // de 21/4 ate 20/5    Touro
+            // de 21/5 ate 20/6    Gemeos
+            // de 21/6 ate 21/7    Cancer
+            // de 22/7 ate 22/8    Leao
+            // de 23/8 ate 22/9    Virgem
+            // de 23/9 ate 22/10   Libra
+            // de 23/10 ate 21/11  Escorpiao
+            // de 22/11 ate 21/12  Sagitario
+            int dia, mes;
+
+            Console.WriteLine("Informe o dia de nascimento:\n");
+            dia = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("\nInforme o mes de nascimento:\n");
+            mes = int.Parse(Console.ReadLine());
+
+            if (((mes == 12) && ((dia >= 22) && (dia <= 31))) ||
+                ((mes == 1) && ((dia >= 1) && (dia <= 20))))
+                Console.WriteLine("\nCapricornio.");
+            else if (((mes == 1) && ((dia >= 21) && (dia <= 31))) ||
+                     ((mes == 2) && ((dia >= 1) && (dia <= 19))))
+                Console.WriteLine("\nAquario.");
+            else if (((mes == 2) && ((dia >= 20) && (dia <= 29))) ||
+                     ((mes == 3) && ((dia >= 1) && (dia <= 20))))
+                Console.WriteLine("\nPeixes.");
+            else if (((mes == 3) && ((dia >= 21) && (dia <= 31))) ||
+                     ((mes == 4) && ((dia >= 1) && (dia <= 20))))
+                Console.WriteLine("\nAries.");
+            else if (((mes == 4) && ((dia >= 21) && (dia <= 30))) ||
+                     ((mes == 5) && ((dia >= 1) && (dia <= 20))))
+                Console.WriteLine("\nTouro.");
+            else if (((mes == 5) && ((dia >= 21) && (dia <= 31))) ||
+                     ((mes == 6) && ((dia >= 1) && (dia <= 20))))
+                Console.WriteLine("\nGemeos.");
+            else if (((mes == 6) && ((dia >= 21) && (dia <= 30))) ||
+                     ((mes == 7) && ((dia >= 1) && (dia <= 21))))
+                Console.WriteLine("\nCancer.");
+            else if (((mes == 7) && ((dia >= 22) && (dia <= 31))) ||
+                     ((mes == 8) && ((dia >= 1) && (dia <= 22))))
+                Console.WriteLine("\nLeao.");
+            else if (((mes == 8) && ((dia >= 23) && (dia <= 31))) ||
+                     ((mes == 9) && ((dia >= 1) && (dia <= 22))))
+                Console.WriteLine("\nVirgem.");
+            else if (((mes == 9) && ((dia >= 23) && (dia <= 30))) ||
+                     ((mes == 10) && ((dia >= 1) && (dia <= 22))))
+                Console.WriteLine("\nLibra.");
+            else if (((mes == 10) && ((dia >= 23) && (dia <= 31))) ||
+                     ((mes == 11) && ((dia >= 1) && (dia <= 21))))
+                Console.WriteLine("\nEscorpiao.");
+            else if (((mes == 11) && ((dia >= 22) && (dia <= 30))) ||
+                     ((mes == 12) && ((dia >= 1) && (dia <= 21))))
+                Console.WriteLine("\nSagitario.");
+            else
+                Console.WriteLine("\nErro: dia ou mes de nascimento invalidos !!!");
+        }
+
+        public static void exec16()
+        {
+            float A, P, imc;
+
+            Console.Write("Digite o seu peso:");
+            P = float.Parse(Console.ReadLine());
+
+
+            Console.Write("Digite o seu altura:");
+            A = float.Parse(Console.ReadLine());
+
+            imc = (P / (A * A));
+
+            if (imc < 18.5)
+            {
+                Console.WriteLine("Peso abaixo do normal");
+            }
+            else if ((imc == 18.5) || (imc == 25))
+            {
+                Console.WriteLine("Peso normal");
+            }
+            if ((imc > 25) || (imc == 30))
+
+            {
+                Console.WriteLine("Sobre o Peso");
+            }
+            else if ((imc > 30) || (imc == 35))
+            {
+                Console.WriteLine("Grau de Obesidade I");
+            }
+            if ((imc > 35) || (imc == 40))
+            {
+                Console.WriteLine("Grau de Obesidade II");
+            }
+            else if (imc > 40)
+            {
+                Console.WriteLine("Obesidade Grau III");
+            }
+
+            Console.ReadKey();
+        }
+
+        public static void exec17()
+        {
+            double numero;
+            string mensagem;
+            System.Console.WriteLine("Digite um numero");
+            numero = double.Parse(Console.ReadLine());
+            mensagem = numero % 2 == 1 ? "Numero Impar" : "Numero Par";
+            System.Console.WriteLine(mensagem);
+
+        }
+
+        public static void exec18()
+        {
+            string[] strDias = { "Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sabado" };
+
+            for (int i = 0; i < strDias.Length; i++)
+            {
+                System.Console.WriteLine(strDias[i]);
+            }
+        }
+
+        public static void exec19()
+        {
+            //simples calculadora
+
+            double num1, num2;//variáveis que irão conter os números digitados
+            string tmp;
+
+            Console.WriteLine("Digite um número: ");
+            tmp = Console.ReadLine();
+            num1 = int.Parse(tmp);
+
+            Console.WriteLine("Digite mais um número: ");
+            Console.ReadLine();
+            num2 = int.Parse(tmp);
+
+            double resultado;
+
+            //realiza a soma e imprime no console
+            resultado = num1 + num2;
+            Console.WriteLine("Soma: " + resultado);
+
+            //realiza a subtração e imprime no console
+            resultado = num1 - num2;
+            Console.WriteLine("Subtração: " + resultado);
+
+            //realiza a multiplicação e imprime no console
+            resultado = num1 * num2;
+            Console.WriteLine("Multiplicação: " + resultado);
+
+            //realiza a divisão e imprime no console
+            resultado = num1 / num2;
+            Console.WriteLine("Divisão: " + resultado);
+        }
+        public static void exec20()
+        {
+            string mes;
+
+            Console.WriteLine("Digite um numero: ");
+            mes = Console.ReadLine();
+
+            switch (mes)
+            {
+                case "Janeiro":
+                case "Março":
+                case "Maio":
+                case "Julho":
+                case "Agosto":
+                case "Outubro":
+                case "Dezembro":
+                    Console.WriteLine("\nO mes possui 31 dias\n");
+                    break;
+                case "Fevereiro":
+                    Console.WriteLine("\nO mes possui 28 dias\n");
+                    break;
+                case "Abril":
+                case "Junho":
+                case "Setembro":
+                case "Novembro":
+                    Console.WriteLine("\nO mes possui 30 dias\n");
+                    break;
+                default:
+                    Console.WriteLine("\nValor nao corresponde a nenhum mes!\n");
+            }
+        }
     }
+
 }
+
 
