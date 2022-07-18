@@ -71,6 +71,17 @@ pre { font-size: 14px;}
 @media (max-width: 1040px) {
 	pre { font-size: 12px;}
 }
+fieldset{
+    display: flex;
+    flex-direction: column;
+    width:min-content;
+    
+}
+button{
+   
+    
+}
+
 /* ......... */
 
 </style>
@@ -97,31 +108,39 @@ pre { font-size: 14px;}
                         <legend>Dados Pessoais</legend>
             
                         <!---Label for implicito-->
-                        <label >Nome:<input type="text" name="Nome" id="Nome"></label>
-                       
-            
-                        <label>Sobrenome:<input type="text" name="Sobrenome" id="Sobrenome"></label>
-                        
-            
-                        <label>Email:<input type="email" name="email" id="email"></label>
+                        <label for="Nome">Nome</label>
+                        <input type="text" name="Nome" id="Nome">
+                        <label></label>
+                        <input type="hidden" name="">
+                        <label for="Busca">Busca</label>
+                        <input type="search" name="Busca" id="Busca">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" name="telefone" id="telefone">
+                        <label for="url">URL</label>
+                        <input type="url" name="url" id="url">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email">
+                        <label for="senha">Senha</label>
+                        <input type="password" name="senha" id="senha">
+                        <label for="data">Data</label>
+                        <input type="datetime-local" name="data" id="data">
+                        <label for="hora">Hora</label>
+                        <input type="time" name="hora" id="hora">
+                        <label for="numero">Numero</label>
+                        <input type="number" name="numero" id="numero">
+                        <label for="intervalo">Intervalo</label>
+                        <input type="range" name="intervalo" id="intervalo">
+                        <label for="cor">Cor:<input type="color" name="cor" id="cor"></label>
+                        <label for="checkbox">Vermelho:<input type="checkbox" name="checkbox" id="checkbox"></label>
+                        <label for="radio">Sim:<input type="radio" name="radio" id="radio"></label><br>                  
+                        <label for="arquivo">Arquivo:<input type="file" name="arquivo" id="arquivo"></label>
+                        <button type="submit">Enviar</button>
+                        <button type="reset">Limpar</button>
+                        <button>Ok</button>
+                      
+
                                    
-                    </fieldset>
-                    <fieldset>
-                        <legend>Suas preferências</legend>
-                        <!---Campos para coleta de preferência-->
-                        <label for="livro">Livro</label>
-                        <input type="text" name="livro" id="livro">
-            
-                        <label for="filme">Filme</label>
-                        <input type="text" name="filme" id="filme">
-            
-                        <label for="esporte">Esporte</label>
-                        <input type="text" name="esporte" id="esporte">
-                    </fieldset>
-                    <fieldset>
-                        <legend>Outros</legend>
-                        <!----------Mais Marcação do formulário-->
-                    </fieldset>
+                
                 </form>
             		
             </section>
