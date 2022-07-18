@@ -102,35 +102,54 @@ fieldset{
                         <!---Campos para coleta de dados pessoais-->
                         <legend>Dados Pessoais</legend>
                         <!---Label for implicito-->
-                        <label for="Nome">Nome</label>
-                        <input type="text" name="Nome" id="Nome">
-                        <label></label>
+                        <form action="">
+                            <label for="Nome">Nome</label>
+                            <input type="text" name="Nome" id="Nome" maxlength="6">
+                        </form>
+                       <form action="">
                         <input type="hidden" name="">
                         <label for="Busca">Busca</label>
-                        <input type="search" name="Busca" id="Busca">
+                        <input type="search" name="Busca" id="Busca" minlength="3">
+                       </form>
+
+                       <form action="">
                         <label for="telefone">Telefone</label>
-                        <input type="tel" name="telefone" id="telefone">
+                        <input type="tel" name="telefone" id="telefone" size="4">
+                       </form>
+                       <form action="">
                         <label for="url">URL</label>
-                        <input type="url" name="url" id="url">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email">
-                        <label for="senha">Senha</label>
-                        <input type="password" name="senha" id="senha">
-                        <label for="data">Data</label>
-                        <input type="datetime-local" name="data" id="data">
-                        <label for="hora">Hora</label>
-                        <input type="time" name="hora" id="hora">
-                        <label for="numero">Numero</label>
-                        <input type="number" name="numero" id="numero">
-                        <label for="intervalo">Intervalo</label>
-                        <input type="range" name="intervalo" id="intervalo">
-                        <label for="cor">Cor:<input type="color" name="cor" id="cor"></label>
-                        <label for="checkbox">Vermelho:<input type="checkbox" name="checkbox" id="checkbox"></label>
-                        <label for="radio">Sim:<input type="radio" name="radio" id="radio"></label><br>                  
-                        <label for="arquivo">Arquivo:<input type="file" name="arquivo" id="arquivo"></label>
-                        <button type="submit">Enviar</button>
-                        <button type="reset">Limpar</button>
-                        <button>Ok</button>
+                        <input type="url" name="url" id="url" value="HTML5 CSS3">
+                       </form>
+                        <form action="">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" readonly>
+                        </form>
+                       
+                        <form action="">
+                            <label for="senha">Senha</label>
+                        <input type="password" name="senha" id="senha" disabled>
+                        </form>
+                        <form action="">
+                            <label for="numero">Numero</label >
+                                <input type="number" name="numero" id="numero" autofocus>
+                        </form>
+                        <form action="">
+                            <label for="intervalo">Intervalo</label>
+                        <input type="number" name="intervalo" id="intervalo" multiple>
+                        </form>
+                        <form action="">
+                            <label for="cor">Cor:<input type="color" name="cor" id="cor"></label>
+                        <input type="text" name="" id="" pattern="(A-Z)(5)">
+                        </form>
+                        <form action="">
+                            <input type="number" name="" id="" min="27" max="168">
+                        </form>
+                        <form action="">
+                            <input type="number" name="" id="" step="10">
+                        </form>
+                        <form action="">
+                            <input type="text" name="" id="" placeholder="Entre com seu nome">
+                        </form>
                 </form>          		
             </section>
         </main>
