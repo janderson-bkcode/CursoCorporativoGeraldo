@@ -102,15 +102,24 @@ pre { font-size: 14px;}
 	background-size: contain;
 	background-position: center bottom;
 	background-repeat: no-repeat;
+	background-image: -moz-radial-gradient(40px 60px,circle closest-corner,white ,black,white);
+    background-image: -webkit-radial-gradient(40px 60px,circle closest-corner,white ,black,white);
+    background-image: radial-gradient(40px 60px,circle closest-corner,white ,black,white);
 }
 .quatro{
 	
 	box-shadow: #f90 0 5px 4px -2px,
 	#f90 0 -5px 4px -2px;
+    background-image: -moz-radial-gradient(40px 60px,circle farthest-corner,white ,black,white);
+    background-image: -webkit-radial-gradient(40px 60px,circle farthest-corner,white ,black,white);
+    background-image: radial-gradient(40px 60px,circle farthest-corner,white ,black,white);
 }
 
 .cinco{
 	box-shadow: #f90 0 0 10px 5px;	
+	background-image: -moz-radial-gradient(40px 60px,circle contain,white ,black,white);
+    background-image: -webkit-radial-gradient(40px 60px,circle contain,white ,black,white);
+    background-image: radial-gradient(40px 60px,circle contain,white ,black,white);
 }
 
 /* ......... */
@@ -142,6 +151,13 @@ pre { font-size: 14px;}
 					<div class="exemplo tres">Conteudo Textual na cor vermelha dentro do container com fundo preto</div>
 				</div>
 
+				<div class="box">
+					<div class="exemplo quatro" >Conteudo Textual na cor vermelha dentro do container com fundo preto</div>
+				</div>
+
+				<div class="box">
+					<div class="exemplo cinco" >Conteudo Textual na cor vermelha dentro do container com fundo preto</div>
+				</div>
             </section>
         </main>
 	</div> <!-- /.principal -->   
