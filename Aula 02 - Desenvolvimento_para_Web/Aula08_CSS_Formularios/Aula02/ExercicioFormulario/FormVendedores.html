@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Vendedores</title>
+</head>
+<style>
+    body {
+        margin: auto;
+    }
+
+    fieldset {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+
+       
+    }
+
+    fieldset input {
+        width: 50%;
+    }
+
+    fieldset select {
+        width: 50%;
+    }
+
+    fieldset button {
+        margin-top: 20px;
+
+    }
+
+    *,
+    *:before,
+    *:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    body {
+        font: 18px/1.4 arial, sans-serif;
+        color: #333;
+        background: #ccc;
+    }
+
+    #tudo {
+        width: 100%;
+        max-width: 1200px;
+        min-width: 860px;
+        margin: 0 auto;
+        background: #fff;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #036;
+    }
+
+    .topo_header {
+        background: #036;
+        padding: 5px 20px;
+    }
+
+    .topo_header h1 {
+        font-size: 36px;
+        margin: 4px 0 2px 0;
+    }
+
+    .topo_header a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .topo_header h2 {
+        font-size: 20px;
+        margin: 2px 0 4px 0;
+        color: #fff;
+    }
+
+    .principal {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .rodape {
+        background: #036;
+        color: #fff;
+        padding: 5px 0;
+        text-align: center;
+    }
+
+    main section {
+        overflow: hidden;
+    }
+
+    .box {
+        overflow: hidden;
+        float: left;
+        width: 33.3%;
+        padding: 15px;
+    }
+
+    hr {
+        clear: left;
+    }
+
+    .exemplo {
+        width: 90%;
+        margin: 0 auto;
+        height: 150px;
+        background: #ccc;
+        border: 3px solid red;
+    }
+
+    pre {
+        font-size: 14px;
+    }
+
+    @media (max-width: 1040px) {
+        pre {
+            font-size: 12px;
+        }
+    }
+
+    /* ......... */
+</style>
+
+<body class="home">
+
+    <div id="tudo">
+        <div class="topo">
+            <header class="topo_header">
+                <hgroup>
+                    <h1><a href="/">Formulario Empresa BK Bank</a></h1>
+                </hgroup>
+            </header>
+        </div> <!-- /.topo -->
+
+        <div class="principal">
+            <main>
+                <section>
+                    <form action="">
+
+                        <fieldset>
+                            <legend>Formulário Vendedores </legend>
+                            <label for="IdVendedor"></label>
+                            <input type="hidden" name="idVendedor">
+                            <label for="cpf">CPF</label>
+                            <input type="text" name="cpf" id="cpf">
+                            <label for="nome">Nome</label>
+                            <input type="text" name="nome" id="nome">
+                            <label for="carteiraTrabalho">Carteira de Trabalho</label>
+                            <input type="text" name="carteiraTrabalho" id="carteiraTrabalho">
+                            <label for="dataAdmissao">Data de Admissão</label>
+                            <input type="datetime-local" name="dataAdmissao" id="dataAdmissao">
+                            <input type="hidden" name="fg_ativo">
+                            <div class="button">
+                                <button type="submit" value="Enviar">Enviar</button>
+                                <button type="reset">Limpar</button>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                </section>
+            </main>
+        </div> <!-- /.principal -->
+
+        <div class="rodape">
+            <footer>
+                <small>@<i class="fa fa-copyright" aria-hidden="true">2022Todos os direitos reservados </i></small>
+            </footer>
+        </div> <!--  /.rodape -->
+
+    </div> <!--  /.tudo -->
+
+</body>
+
+</html>

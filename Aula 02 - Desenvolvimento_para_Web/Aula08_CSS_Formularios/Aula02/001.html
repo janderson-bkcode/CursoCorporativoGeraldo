@@ -1,12 +1,192 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>20/07/2022 Exemplo 001</title>
-</head>
-<body>
+<title>20-07-2022 Aula 01 Buttons e TextArea</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href='normalize.css'></link>
+<style rel="stylesheet">
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+.clear { clear: both; }
+body {
+	font: 18px/1.4 arial, sans-serif;
+	color: #333;
+	background: #ccc;
+	}
+#tudo {
+	width: 100%;
+	max-width: 1200px;
+	min-width: 860px;
+	margin: 0 auto;
+	background: #fff;
+	}
+h1, h2, h3, h4, h5, h6 { color: #036; }
+.topo_header  {
+	background: #036;
+	padding: 5px 20px;
+}
+.topo_header h1  {
+	font-size: 36px;
+	margin: 4px 0 2px 0;
+	}
+.topo_header a  {
+	color: #fff;
+	text-decoration: none;
+	}
+.topo_header h2 {
+	font-size: 20px;
+	margin: 2px 0 4px 0;
+	color: #fff;
+	}
+.principal {
+	width: 100%;
+	padding: 0 15px;
+	}
+.rodape {
+	background: #036;
+	color: #fff;
+	padding: 5px 0;
+	text-align: center;	
+	}
+main section { overflow:hidden; }
+.box { 
+	overflow:hidden;
+	float: left;
+	width: 33.3%;
+	padding: 15px;
+}
+hr { clear: left; }
+.exemplo {
+	width: 90%;
+	margin: 0 auto;
+	height: 150px;
+	background: #ccc;
+	border: 3px solid red;
+}
+pre { font-size: 14px;}
+
+@media (max-width: 1040px) {
+	pre { font-size: 12px;}
+}
+fieldset{
+    display: flex;
+    flex-direction: column;
+    width:min-content;
     
+}
+/* ......... */
+
+</style>
+</head>
+<body class="home">
+<div id="tudo">
+    <div class="topo">
+        <header class="topo_header">
+            <hgroup>
+                <h1><a href="/">Formulários</a></h1>
+                <h2>Elementos e Atributos</h2>
+            </hgroup> 
+        </header>
+	</div> <!-- /.topo -->
+    
+    <div class="principal">
+        <main>
+        	<section>
+            	<h1>Elementos fieldset , legend,label</h1>
+                <form action="" method="post">
+        
+                    <fieldset>
+                        <!---Campos para coleta de dados pessoais-->
+                        <legend>Dados Pessoais</legend>
+                        <!---Label for implicito-->
+                        <form action="">
+                            <label for="Nome">Nome</label>
+                            <input type="text" name="Nome" id="Nome" maxlength="6">
+                        </form>
+                       <form action="">
+                        <input type="hidden" name="">
+                        <label for="Busca">Busca</label>
+                        <input type="search" name="Busca" id="Busca" minlength="3">
+                       </form>
+
+                       <form action="">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" name="telefone" id="telefone" size="4">
+                       </form>
+                       <form action="">
+                        <label for="url">URL</label>
+                        <input type="url" name="url" id="url" value="HTML5 CSS3">
+                       </form>
+                        <form action="">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" readonly>
+                        </form>
+                       
+                        <form action="">
+                            <label for="senha">Senha</label>
+                        <input type="password" name="senha" id="senha" disabled>
+                        </form>
+                        <form action="">
+                            <label for="numero">Numero</label >
+                                <input type="number" name="numero" id="numero" autofocus>
+                        </form>
+                        <form action="">
+                            <label for="intervalo">Intervalo</label>
+                        <input type="number" name="intervalo" id="intervalo" multiple>
+                        </form>
+                        <form action="">
+                            <label for="cor">Cor:<input type="color" name="cor" id="cor"></label>
+                        <input type="text" name="" id="" pattern="(A-Z)(5)" aria-label=".">
+                        </form>
+                        <form action="">
+                            <input type="number" name="" id="" min="27" max="168" aria-label=".">
+                        </form>
+                        <form action="">
+                            <input type="number" name="" id="" step="10" aria-label=".">
+                        </form>
+                        <form action="">
+                            <input type="text" name="" id="" placeholder="Entre com seu nome">
+                        </form>
+                        <button class="botao">botao</button>
+                        <select aria-label="lll" name="select" id="">Select
+                            <optgroup label="frutas">
+                                <option value="sp">Sp</option>
+                                <option value="sp">Rj</option>
+                                <option value="sp">MG</option>
+                                <option value="sp">Sp</option>
+                            </optgroup>
+                            <optgroup label="Animal">
+                                <option value="Macaco">Sp</option>
+                                <option value="Cachorro">Rj</option>
+                                <option value="Gato">MG</option>
+                                <option value="Leão">Sp</option>
+                            </optgroup>
+                             <label for="sexo">Sexo
+                              <input type="name" list="sexo" aria-label="l">
+                              <datalist id="sexo">
+                                 <option value="Feminino"></option>
+                                 <option value="Masculino"></option>
+                              </datalist>
+                            </label>
+                            <label for="msg">Sua mensagem</label>
+                            <textarea name="msg" id="msg" cols="30" rows="6">Entrada de texto</textarea>
+                        </select>
+                </form>          		
+            </section>
+        </main>
+	</div> <!-- /.principal -->   
+   
+    <div class="rodape">
+        <footer>
+            <small>HTML5 e CSS3</small>
+        </footer>
+	</div> <!--  /.rodape -->
+
+</div> <!--  /.tudo -->
 </body>
 </html>
