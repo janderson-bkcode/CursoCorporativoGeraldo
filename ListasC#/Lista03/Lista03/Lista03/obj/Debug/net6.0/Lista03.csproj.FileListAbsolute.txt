@@ -1,0 +1,15 @@
+C:\Users\Aluno\OneDrive\Documentos\Curso Geraldo\Lista03\Lista03\obj\Debug\net6.0\Lista03.csproj.AssemblyReference.cache
+C:\Users\Aluno\OneDrive\Documentos\Curso Geraldo\Lista03\Lista03\obj\Debug\net6.0\Lista03.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aluno\OneDrive\Documentos\Curso Geraldo\Lista03\Lista03\obj\Debug\net6.0\Lista03.AssemblyInfoInputs.cache
+C:\Users\Aluno\OneDrive\Documentos\Curso Geraldo\Lista03\Lista03\obj\Debug\net6.0\Lista03.AssemblyInfo.cs
+C:\Users\Aluno\OneDrive\Documentos\Curso Geraldo\Lista03\Lista03\obj\Debug\net6.0\Lista03.csproj.CoreCompileInputs.cache
+C:\Users\Aluno\OneDrive\Documentos\Curso Geraldo\Lista03\Lista03\bin\Debug\net6.0\Lista03.exe
+C:\Users\Aluno\OneDrive\Documentos\Curso Geraldo\Lista03\Lista03\bin\Debug\net6.0\Lista03.deps.json
+C:\Users\Aluno\OneDrive\Documentos\Curso Geraldo\Lista03\Lista03\bin\Debug\net6.0\Lista03.runtimeconfig.json
+C:\Users\Aluno\OneDrive\Documentos\Curso Geraldo\Lista03\Lista03\bin\Debug\net6.0\Lista03.dll
+C:\Users\Aluno\OneDrive\Documentos\Curso Geraldo\Lista03\Lista03\bin\Debug\net6.0\ref\Lista03.dll
+C:\Users\Aluno\OneDrive\Documentos\Curso Geraldo\Lista03\Lista03\bin\Debug\net6.0\Lista03.pdb
+C:\Users\Aluno\OneDrive\Documentos\Curso Geraldo\Lista03\Lista03\obj\Debug\net6.0\Lista03.dll
+C:\Users\Aluno\OneDrive\Documentos\Curso Geraldo\Lista03\Lista03\obj\Debug\net6.0\ref\Lista03.dll
+C:\Users\Aluno\OneDrive\Documentos\Curso Geraldo\Lista03\Lista03\obj\Debug\net6.0\Lista03.pdb
+C:\Users\Aluno\OneDrive\Documentos\Curso Geraldo\Lista03\Lista03\obj\Debug\net6.0\Lista03.genruntimeconfig.cache
