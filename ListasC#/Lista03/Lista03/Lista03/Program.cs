@@ -1,13 +1,13 @@
-﻿
+﻿using System;
 namespace Program
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-
+            ex001();
         }
-        public void ex001()
+        public static void ex001()
         {
             int l, c;
             Console.Write("Informe  a largura: ");
@@ -21,12 +21,12 @@ namespace Program
                 Console.WriteLine();
             }
         }
-        public void ex002()
+        public static void ex002()
         {
             for (int i = 1; i <= 50; i += 2)
                 Console.WriteLine(i);
         }
-        public void ex003()
+        public static void ex003()
         {
             int i, soma;
             soma = 0;
@@ -49,7 +49,7 @@ namespace Program
             } while (i < 100);
             Console.WriteLine($"Soma:{soma}");
         }
-        public void ex004()
+        public static void ex004()
         {
             int inf, sup, i;
             Console.Write("Introduza o limite inferior do intervalo: ");
@@ -60,7 +60,7 @@ namespace Program
                 Console.Write($"{i} ");
             Console.WriteLine();
         }
-        public void ex005()
+        public static void ex005()
         {
             int inf, sup, i, soma = 0;
             Console.Write("Introduza o limite inferior do intervalo: ");
@@ -77,7 +77,7 @@ namespace Program
             Console.Write($"={soma}\n");
         }
 
-        public void ex006()
+        public static void ex006()
         {
 
             int b, e, i, pot = 1; // o elemento neutro da multiplicação é 1
@@ -90,7 +90,7 @@ namespace Program
             Console.Write("{0}^{1}={2}\n", b, e, pot);
 
         }
-        public void ex007()
+        public static void ex007()
         {
             int n, max, min;
             Console.Write("Introduza um nº inteiro (zero para sair): ");
@@ -112,7 +112,7 @@ namespace Program
                 Console.WriteLine("Máximo: {0}\nMínimo: {1}", max, min);
         }
 
-        public void exec008()
+        public static void exec008()
         {
 
             int n, soma = 0;
@@ -125,7 +125,7 @@ namespace Program
             } while (n != 0);
             Console.WriteLine("Soma dos inteiros positivos: {0}", soma);
         }
-        public void exec009()
+        public static void exec009()
         {
             int n, a, i, max, min, soma = 0;
             Console.Write("Quantos alunos tem a turma: ");
@@ -153,7 +153,7 @@ namespace Program
                 Console.WriteLine("A turma não tem alunos");
         }
 
-        public void exec010()
+        public static void exec010()
         {
             int n, soma = 0;
             Console.Write("Introduza um número inteiro: ");
@@ -165,7 +165,7 @@ namespace Program
             }
             Console.WriteLine("Soma dos dígitos:{0}", soma);
         }
-        public void exec011()
+        public static void exec011()
         {
             int i, j, num, r = 0;
             Console.Write("Digite um nº:");
@@ -178,7 +178,7 @@ namespace Program
             }
         }
 
-        public void exec012()
+        public static void exec012()
         {
             int n, i;
             Console.Write("Digite um nº inteiro:");
@@ -191,7 +191,7 @@ namespace Program
                     else
                         Console.WriteLine("{0,5} {1,5}", i, n / i); // 2 divisores: i e n/i
         }
-        public void exec013()
+        public static void exec013()
         {
             int N, n = 1, m = 1;
             float soma = 0;
@@ -208,7 +208,7 @@ namespace Program
             Console.WriteLine("{0}/{1}\nsoma={2}", n, m, soma += (float)n / m);
         }
 
-        public void exec014()
+        public static void exec014()
         {
             int N, n = 1, i;
             float soma = 0;
@@ -236,7 +236,7 @@ namespace Program
             }
         }
 
-        public void exec015()
+        public static void exec015()
         {
             int N, n;
             double soma = 0;
@@ -251,7 +251,7 @@ namespace Program
             Console.WriteLine("{0}/{1}\nSoma={2}", 50, n, soma += 50F / n);
         }
 
-        public void exec016()
+        public static void exec016()
         {
             int N, n, i, cont = 0;
             Console.Write("Introduza o valor de N:");
@@ -270,7 +270,7 @@ namespace Program
             Console.WriteLine("\nForam efectuadas {0} divisões", cont);
         }
 
-        public void exec017()
+        public static void exec017()
         {
             int N, n, i;
             Console.Write("Altura da árvore:");
@@ -295,7 +295,7 @@ namespace Program
                 Console.WriteLine();
             }
         }
-        public void ex018()
+        public static void ex018()
         {
             int valor1 = 147;
             int valor2 = 205;
@@ -309,7 +309,7 @@ namespace Program
             int Mdc = Math.Max(valor1, valor2);
             Console.WriteLine($"O MDC de {valor1} e {valor2} é {Mdc}");
         }
-        public void ex019()
+        public static void ex019()
         {
             int a, b, c, d, r;
             Console.Write("Introduza o primeiro número:");
@@ -324,7 +324,7 @@ namespace Program
             }
             Console.WriteLine("O mínimo múltiplo comum de {0} e {1} é {2}", c, d, c * d / b);
         }
-        public void ex020()
+        public static void ex020()
         {
             int n, idade, i, soma = 0;
             Console.Write("Quantos alunos tem a turma: ");
@@ -348,7 +348,7 @@ namespace Program
             else
                 Console.WriteLine("A turma não tem alunos");
         }
-        public void ex021()
+        public static void ex021()
         {
             double A = 80000, tcA = 0.03, B = 200000, tcB = 0.015, a = 0;
             while (A < B)
@@ -359,7 +359,7 @@ namespace Program
             }
             Console.WriteLine("A população do país A igualará ou ultrapassará a população do país B em {0} anos", a);
         }
-        public void ex022()
+        public static void ex022()
         {
             double A, B, a, tcA, tcB;
             char c;
@@ -396,7 +396,7 @@ namespace Program
                 c = Convert.ToChar(Console.ReadLine());
             } while (c == 's');
         }
-        public void ex023()
+        public static void ex023()
         {
             int n, num, soma = 0;
             Console.Write("Quantas turmas? ");
@@ -413,7 +413,7 @@ namespace Program
             Console.WriteLine("Média de alunos por turma: {0}", soma / (float)n); // O type cast (float)n garante que a divisão é real
 
         }
-        public void ex024()
+        public static void ex024()
         {
             int j, n, soma = 1; // A soma é inicializada em 1 porque o teste dos divisores começa em 2 já que 1 é divisor de todos os nºs
             Console.Write("Qual o número? ");
@@ -429,7 +429,7 @@ namespace Program
             else
                 Console.WriteLine("{0} não é um número perfeito", n);
         }
-        public void ex025()
+        public static void ex025()
         {
             int n, soma = 0, i = 0;
             Console.Write("Introduza um número decimal? ");
@@ -441,7 +441,7 @@ namespace Program
             } while (n > 0);
             Console.WriteLine("Binário: {0}", soma);
         }
-        public void ex026()
+        public static void ex026()
         {
             int n, soma = 0, i = 0;
             Console.Write("Introduza um número binário? "); // Não é feita validação, ou seja, o utilizador pode introduzir caracteres inválidos e gerar excepções (ERROS)
@@ -453,7 +453,7 @@ namespace Program
             } while (n > 0);
             Console.WriteLine("Decimal: {0}", soma);
         }
-        public void ex027()
+        public static void ex027()
         {
             int n, soma = 0;
             Console.Write("Quantas entradas para menores de 4 anos? ");
@@ -470,7 +470,7 @@ namespace Program
             Console.WriteLine("Total: {0}", soma);
         }
 
-        public void ex28()
+        public static void ex28()
         {
             int num = 0, r, d, n;
             do
@@ -487,7 +487,7 @@ namespace Program
             } while (5 * num != d + r);
             Console.WriteLine("{0}", num);
         }
-        public void ex29()
+        public static void ex29()
         {
             int num = 0, i = 0, soma = 0, ant = 0;
             string romano;
@@ -517,7 +517,7 @@ namespace Program
             }
             Console.WriteLine("Árabe: {0}", soma);
         }
-        public void ex30()
+        public static void ex30()
         {
             int peso, linha, coluna, num;
             string[,] romano = new string[,] {{"I","II","III","IV","V","VI","VII","VIII","IX"},
@@ -538,7 +538,7 @@ namespace Program
             }
             Console.WriteLine("Romano: {0}", result);
         }
-        public void ex31()
+        public static void ex31()
         {
             int j, n, soma;
             for (n = 2; n < 10000; n++)
@@ -555,7 +555,7 @@ namespace Program
             }
 
         }
-        public void ex032()
+        public static void ex032()
         {
             ulong j, m = 2, n, k = 0;
             bool primo = true;
@@ -573,7 +573,7 @@ namespace Program
                 m++;
             }
         }
-        public void ex33()
+        public static void ex33()
         {
             long i = 1, num = 182, n, r;
             do
@@ -588,7 +588,7 @@ namespace Program
             while (n != 0 || r != 4);
             Console.WriteLine(num * i);
         }
-        public void ex034()
+        public static void ex034()
         {
             long i = 1, num = 416, n, r;
             do
