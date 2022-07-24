@@ -3,6 +3,10 @@ namespace Program
 {
     public class Program
     {
+        public static void Main(string[] args)
+        {
+
+        }
         public void ex001()
         {
             int l, c;
