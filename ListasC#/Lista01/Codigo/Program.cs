@@ -230,18 +230,18 @@ namespace Exercicios04_07_22
             Console.WriteLine("Media de aproveitamento= " + media_aproveitamento);
         }
 
-        public static void exec21()
-        {
-            int dias = 4;
-            System.Console.WriteLine("Digite o valor da despesa");
-            valor = double.Parse(Console.ReadLine());
-            for (var i = 0; i < dias; i++)
-            {
-                valor * 1.20;
-            }
-            valor = valor / dias;
-            System.Console.WriteLine($"{Math.Round(valor, 0)}");
-        }
+        // public static void exec21()
+        // {
+        //     int dias = 4;
+        //     System.Console.WriteLine("Digite o valor da despesa");
+        //     valor = double.Parse(Console.ReadLine());
+        //     for (var i = 0; i < dias; i++)
+        //     {
+        //         valor * 1.20;
+        //     }
+        //     valor = valor / dias;
+        //     System.Console.WriteLine($"{Math.Round(valor, 0)}");
+        // }
 
         public static void exec22()
         {
