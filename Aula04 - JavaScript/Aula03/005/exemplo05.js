@@ -5,8 +5,8 @@ const resp2 = document.querySelector("h4")
 frm.addEventListener("submit",(e)=>{
     e.preventDefault()
     const nome = frm.inNome.value
-    const nota1 = Number(frm.InNota1.value)
-    const nota2 = Number(frm.InNota2.value)
+    const nota1 = Number(frm.inNota1.value)
+    const nota2 = Number(frm.inNota2.value)
 
     const media = (nota1 + nota2) /2
 
