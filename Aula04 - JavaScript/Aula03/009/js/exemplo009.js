@@ -12,5 +12,22 @@ frm.addEventListener("submit",(e)=>{
         frm.inSaque.focus()
         return;
     }
+    const notasCem = Math.floor(saque / 100)
+    let resto = saque %100
+
+    const notasCinquenta = Math.floor(resto / 10)
+
+    const notasDez = Math.floor(resto / 10)
+
+
+    if (notasCem >0) {
+        resp.innerText = `Notas de R$100 : ${notasCem}`
+    }
+    if(notasCinquenta > 0 ){
+        resp2.innerText = `Notas de R$ 50: ${notasCinquenta}`
+    }
+    if(notasDez > 0){
+        resp3.innerText = `Notas de R$ 50: ${notasDez}`
+    }
 })
 
