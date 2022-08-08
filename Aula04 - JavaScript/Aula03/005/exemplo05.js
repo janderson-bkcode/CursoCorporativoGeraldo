@@ -21,4 +21,4 @@ frm.addEventListener("submit",(e)=>{
         resp2.style.color = "red"
     }
 
-})
+});

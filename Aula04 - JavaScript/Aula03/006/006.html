@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Document</title>
+</head>
+<body>
+    <form >
+        <img src="img/001.jpg" alt="Balança de Peso">
+        <h1>Programa de Calculo de peso ideal</h1>
+        <p>Nome:
+            <input type="text" name="InNome" id="InNome" aria-label=".">
+        </p>
+        <p>Sexo:
+            <input type="radio" name="sexo" id="inMasculino" required aria-label=".">Masculino
+            <input type="radio" name="sexo" id="inFeminino" required arial-label = ".">Feminino
+        </p>
+        <p>Altura:
+            <input type="number" step="0.01" min="0" id="inAltura" required>
+        </p>
+        <input type="submit" value="Calcular Peso Ideal">
+        <input type="reset" value="Limpar Campos" onclick="limparCampos()">
+
+
+    </form>
+    <h3></h3>
+    <script src="js/exemplo006.js"></script>
+</body>
+</html>
