@@ -1,22 +1,21 @@
 const frm = document.querySelector("form")
-const resp  = document.querySelector("h3")
-const velocidadeP =  Number(frm.inVelocidadeP.value)
-const velocidadeC = Number(frm.inVelocidadeC.value)
+const resp = document.querySelector("h3")
+const velocidadePermitida = Number(frm.inVelocidadeP.value)
+const velocidadeCondutor = Number(frm.inVelocidadeC.value)
+const velocidadeDaMulta = velocidadePermitida * 1.2
+frm.addEventListener("submit", (e) => {
 
-frm.addEventListener("submit",(e)=>{
+    e.preventDefault()
 
-         e.preventDefault()
-        if(velocidadeC <= velocidadeP){
-            resp.innerText = `Sem multa`
-        
-        }
-        if(velocidadeC == (velocidadeP * 1.20)){
+    if (velocidadeCondutor <= velocidadePermitida) {
+        resp.innerText = `Sem multa`
 
-            resp.innerText = `Multa Leve`
-        }
-        else {
-                
-            resp.innerText = `Multa Grave`
-        }
-       
+
+    } else if (velocidadeCondutor <= velocidadeDaMulta) {
+        resp.innerText = `Multa Leve`
+    } else {
+
+        resp.innerText = `Multa Grave`
+    }
+
 })
