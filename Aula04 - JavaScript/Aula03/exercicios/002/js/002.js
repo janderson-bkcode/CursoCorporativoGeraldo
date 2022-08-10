@@ -1,10 +1,11 @@
 const frm = document.querySelector("form")
 const resp = document.querySelector("h3")
-const velocidadePermitida = Number(frm.inVelocidadeP.value)
-const velocidadeCondutor = Number(frm.inVelocidadeC.value)
-const velocidadeDaMulta = velocidadePermitida * 1.2
+
 frm.addEventListener("submit", (e) => {
 
+    const velocidadePermitida = Number(frm.inVelocidadeP.value)
+    const velocidadeCondutor = Number(frm.inVelocidadeC.value)
+    const velocidadeDaMulta = velocidadePermitida * 1.2
     e.preventDefault()
 
     if (velocidadeCondutor <= velocidadePermitida) {

@@ -1,10 +1,11 @@
 const frm = document.querySelector("form")
 const resp = document.querySelector("h3")
 const resp2 = document.querySelector("h4")
-const moeda = Number(frm.inMoeda.value)
-var troco;
+
 
 frm.addEventListener("submit", (e) => {
+    const moeda = Number(frm.inMoeda.value)
+    var troco;
 
     e.preventDefault()
 
