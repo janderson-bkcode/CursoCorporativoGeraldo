@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let num
+
+    do {
+        num = Number(prompt("Numero:"))
+
+        if (num == 0 || isNaN(num)) {
+            alert("Digite um numero válido....")
+        }
+    } while (num ==0 || isNaN(num))
+
+    let pares = `Pares entre 1 e ${num}`
+
+    for (let i = 2; i<=num; i = i+2) {
+        pares = pares + i +","
+        
+    }
+    alert(pares)
+</script>
+<body>
+    
+</body>
+
+</html>
