@@ -5,7 +5,7 @@ frm.addEventListener("submit",(e)=>{
     e.preventDefault()
 
    const num = Number(frm.inNumero.value)
-   let estrelas = ""
+   let estrela = ""
 
    for (let i = 1; i<= num ;i++) {
      if (i %2 == 1) {
