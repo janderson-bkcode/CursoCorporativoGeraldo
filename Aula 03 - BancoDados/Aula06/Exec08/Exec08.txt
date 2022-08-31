@@ -1,0 +1,16 @@
+1)
+(A,B) -> C
+A -> D
+
+2) 2FN
+ItemVenda (NumeroNF,CodigoTipoProd,NumeroProd,QtdItem,PrecoItem)
+Produto (NumeroProd, CodigoTipoProd, DescricaoProd)
+TipoProd (CodigoTipoProd , DescricaoTipoProd )
+Venda (NumeroNF, DataVenda,CodReg,CodEmp,NomeEmp)
+
+3FN
+ItemVenda (NumeroNF,CodigoTipoProd,NumeroProd,QtdItem,PrecoItem)
+Produto (NumeroProd, CodigoTipoProd, DescricaoProd)
+TipoProd (CodigoTipoProd , DescricaoTipoProd )
+Venda (NumeroNF, DataVenda,CodReg,)
+Empregado (CodEmp,NomeEmp)
