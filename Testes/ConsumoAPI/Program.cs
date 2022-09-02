@@ -11,25 +11,23 @@ namespace ConsumoAPI
     {
         static void Main(string[] args)
         {
-            string endPoint = "https://kitsu.io/api/edge/anime?canonicalTitle=Naruto";
+            //string endPoint = "https://kitsu.io/api/edge/anime?canonicalTitle=Naruto";
+           // HttpClient httpClient = new HttpClient();
+
+            //HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, endPoint);
+            //request.Headers.Add("User-Agent", "HOST");
+
+            //HttpResponseMessage response = httpClient.SendAsync(request).Result;
+
+            //string json = response.Content.ReadAsStringAsync().Result;
+
+            //   Console.WriteLine(json);
+
             HttpClient httpClient = new HttpClient();
-
-
-
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, endPoint);
-            request.Headers.Add("User-Agent", "HOST");
-
-
-
-            HttpResponseMessage test = httpClient.SendAsync(request).Result;
-
-
-
-            string json = test.Content.ReadAsStringAsync().Result;
-
-
-
-            Console.WriteLine(json);
+            var url = httpClient.BaseAddress = new Uri("https://kitsu.io/api/edge/anime?canonicalTitle=Naruto/");       
+            HttpResponseMessage response2 = httpClient.GetAsync(url).Result;
+            string json2 = response2.Content.ReadAsStringAsync().Result;
+            Console.WriteLine(json2);
         }
     }
 }
