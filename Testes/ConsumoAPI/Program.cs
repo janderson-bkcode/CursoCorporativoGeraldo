@@ -24,7 +24,7 @@ namespace ConsumoAPI
             //   Console.WriteLine(json);
 
             HttpClient httpClient = new HttpClient();
-            var url = httpClient.BaseAddress = new Uri("https://kitsu.io/api/edge/anime?canonicalTitle=Naruto/");       
+            var url = httpClient.BaseAddress = new Uri("https://kitsu.io/api/edge/anime?filter[text]=naruto");       
             HttpResponseMessage response2 = httpClient.GetAsync(url).Result;
             string json2 = response2.Content.ReadAsStringAsync().Result;
             Console.WriteLine(json2);
