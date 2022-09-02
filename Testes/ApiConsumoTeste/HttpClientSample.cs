@@ -19,7 +19,7 @@ namespace ApiConsumoTeste
 
     }
 
-    class Program
+    public static class Program
     {
         static HttpClient client = new HttpClient();
 
@@ -41,6 +41,7 @@ namespace ApiConsumoTeste
         static async Task<Produto> GetProdutoAsync(string path)
         {
             Produto produto = null;
+            
             HttpResponseMessage response = await client.GetAsync(path);
 
             if (response.IsSuccessStatusCode)
@@ -69,7 +70,7 @@ namespace ApiConsumoTeste
         }
 
 
-        static async Task RunAsync()
+       public static async Task RunAsync()
         {
             // Update port # in the following line.
 
@@ -126,6 +127,11 @@ namespace ApiConsumoTeste
 
             Console.ReadLine();
 
+        }
+
+        public static void Main()
+        {
+            RunAsync().GetAwaiter().GetResult();
         }
     }
 }

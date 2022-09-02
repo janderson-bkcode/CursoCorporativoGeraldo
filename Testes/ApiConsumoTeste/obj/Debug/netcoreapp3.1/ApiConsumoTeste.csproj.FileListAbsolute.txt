@@ -1,0 +1,10 @@
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Testes\ApiConsumoTeste\bin\Debug\netcoreapp3.1\ApiConsumoTeste.deps.json
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Testes\ApiConsumoTeste\bin\Debug\netcoreapp3.1\ApiConsumoTeste.dll
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Testes\ApiConsumoTeste\bin\Debug\netcoreapp3.1\ApiConsumoTeste.pdb
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Testes\ApiConsumoTeste\obj\Debug\netcoreapp3.1\ApiConsumoTeste.csproj.AssemblyReference.cache
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Testes\ApiConsumoTeste\obj\Debug\netcoreapp3.1\ApiConsumoTeste.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Testes\ApiConsumoTeste\obj\Debug\netcoreapp3.1\ApiConsumoTeste.AssemblyInfoInputs.cache
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Testes\ApiConsumoTeste\obj\Debug\netcoreapp3.1\ApiConsumoTeste.AssemblyInfo.cs
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Testes\ApiConsumoTeste\obj\Debug\netcoreapp3.1\ApiConsumoTeste.csproj.CoreCompileInputs.cache
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Testes\ApiConsumoTeste\obj\Debug\netcoreapp3.1\ApiConsumoTeste.dll
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Testes\ApiConsumoTeste\obj\Debug\netcoreapp3.1\ApiConsumoTeste.pdb

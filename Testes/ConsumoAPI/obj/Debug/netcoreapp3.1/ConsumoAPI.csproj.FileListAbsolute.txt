@@ -1,0 +1,5 @@
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Testes\ConsumoAPI\obj\Debug\netcoreapp3.1\ConsumoAPI.csproj.AssemblyReference.cache
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Testes\ConsumoAPI\obj\Debug\netcoreapp3.1\ConsumoAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Testes\ConsumoAPI\obj\Debug\netcoreapp3.1\ConsumoAPI.AssemblyInfoInputs.cache
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Testes\ConsumoAPI\obj\Debug\netcoreapp3.1\ConsumoAPI.AssemblyInfo.cs
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Testes\ConsumoAPI\obj\Debug\netcoreapp3.1\ConsumoAPI.csproj.CoreCompileInputs.cache
