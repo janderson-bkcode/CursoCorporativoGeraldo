@@ -11,7 +11,7 @@ namespace ConsumoAPI
     {
         static void Main(string[] args)
         {
-            string endPoint = "http://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados/ultimos/2?formato=json";
+            string endPoint = "https://kitsu.io/api/edge/anime?canonicalTitle=Naruto";
             HttpClient httpClient = new HttpClient();
 
 
