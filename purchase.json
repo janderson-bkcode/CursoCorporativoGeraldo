@@ -1,0 +1,75 @@
+{
+  "purchase_id": "aut_8cbb9920-d2f7-42a8-9efd-b6bf744fccc4",
+  "account_id": "cta-e119ffec-1649-420a-bf1f-3b91fe28583d",
+  "psProductCode": "000010",
+  "psProductName": "SELFPAY PREPAGO NACIONAL",
+  "productType": "pre",
+  "countryCode": "076",
+  "source": "brand",
+  "callingSystemName": "Autorizador ISO8583",
+  "preAuthorization": false,
+  "incrementalAuthorization": false,
+  "authorization": {
+    "code": "00",
+    "description": "Sucesso/Transacao Aprovada"
+  },
+  "brand": "elo",
+  "card": {
+    "paysmart_id": "crt-00ccf6eb-e544-4bb4-9c75-7c69b61aa848",
+    "issuer_id": "3001",
+    "pan": "************6744",
+    "panseq": "00"
+  },
+  "total_amount": {
+    "amount": 6700,
+    "currency_code": 986
+  },
+  "original_amount": {
+    "amount": 6700,
+    "currency_code": 986
+  },
+  "entry_mode": "ecommerce",
+  "processing_code": {
+    "tipo_transacao": "purchase",
+    "source_account_type": "credit_card_account",
+    "destination_account_type": "not_applicable"
+  },
+  "holder_validation_mode": "other",
+  "fees": [],
+  "establishment": {
+    "mcc": "5712",
+    "name": "ELO",
+    "city": "BARUERI",
+    "address": "",
+    "zipcode": "35432300",
+    "country": "076",
+    "cnpj": "87332342000197"
+  },
+  "internacional": false,
+  "original_iso8583": {
+    "mti": "0100",
+    "de002": "************6744",
+    "de003": "003000",
+    "de004": "000000006700",
+    "de007": "0831140933",
+    "de011": "269524",
+    "de012": "110933",
+    "de013": "0831",
+    "de014": "2812",
+    "de018": "5712",
+    "de019": "076",
+    "de022": "071",
+    "de024": "100",
+    "de032": "0025",
+    "de037": "202289011564",
+    "de041": "20172289",
+    "de042": "020001605270002",
+    "de043": "ELO                    BARUERI       076",
+    "de048": "*CNP01487332342000197*CDT002T0*PRD003070",
+    "de049": "986",
+    "de058": "                       3543230007612345ELO                  ",
+    "de060": "000110000P500",
+    "de126": "*****",
+    "de127": "12182"
+  }
+}
