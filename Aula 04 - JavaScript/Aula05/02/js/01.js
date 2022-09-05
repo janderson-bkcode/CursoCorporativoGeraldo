@@ -40,6 +40,7 @@ frm.btUrgencia.addEventListener("click",()=>{
 
     const nome = frm.inPaciente.value
     pacientes.unshift(nome)
+    
     let lista = ""
 
     pacientes.forEach((paciente,i)=>(lista+=`${i+1}º ${paciente}\n`))
