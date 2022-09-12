@@ -57,7 +57,7 @@ function mostrarTabela() {
     }
 
     for (let index = 0; index < (todosClubes.length - 1) / 2; index++) {
-        jogos += `${todosClubes[index]} x ${todosClubes[todosClubes.length - index]}\n`;
+        jogos += `${todosClubes[index]} x ${todosClubes[(todosClubes.length-1) - index]}\n`;
     }
 
     outLista.textContent = jogos;
