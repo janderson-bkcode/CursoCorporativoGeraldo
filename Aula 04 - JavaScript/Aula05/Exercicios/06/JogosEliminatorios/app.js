@@ -45,7 +45,7 @@ function listarClube() {
 
 btnListar.addEventListener('click', listarClube);
 
-function mostarTabela() {
+function mostrarTabela() {
     
     let jogos = ''
     let ultimoClube = todosClubes[todosClubes.length - 1];
@@ -57,10 +57,10 @@ function mostarTabela() {
     }
 
     for (let index = 0; index < (todosClubes.length - 1) / 2; index++) {
-        jogos += `${todosClubes[index]} x ${ultimoClube - index}\n`;
+        jogos += `${todosClubes[index]} x ${todosClubes[todosClubes.length - index]}\n`;
     }
 
     outLista.textContent = jogos;
 }
 
-btnTabela.addEventListener('click', mostarTabela);
+btnTabela.addEventListener('click', mostrarTabela);
