@@ -1,0 +1,15 @@
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula01\aula01\bin\Debug\net6.0\aul01.exe
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula01\aula01\bin\Debug\net6.0\aul01.deps.json
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula01\aula01\bin\Debug\net6.0\aul01.runtimeconfig.json
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula01\aula01\bin\Debug\net6.0\aul01.dll
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula01\aula01\bin\Debug\net6.0\aul01.pdb
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula01\aula01\obj\Debug\net6.0\aul01.csproj.AssemblyReference.cache
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula01\aula01\obj\Debug\net6.0\aul01.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula01\aula01\obj\Debug\net6.0\aul01.AssemblyInfoInputs.cache
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula01\aula01\obj\Debug\net6.0\aul01.AssemblyInfo.cs
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula01\aula01\obj\Debug\net6.0\aul01.csproj.CoreCompileInputs.cache
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula01\aula01\obj\Debug\net6.0\aul01.dll
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula01\aula01\obj\Debug\net6.0\refint\aul01.dll
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula01\aula01\obj\Debug\net6.0\aul01.pdb
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula01\aula01\obj\Debug\net6.0\aul01.genruntimeconfig.cache
+C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula01\aula01\obj\Debug\net6.0\ref\aul01.dll
