@@ -1,2 +1,13 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+
+namespace aul01
+{
+    class Program
+	{
+		static void Main(string[] args)
+        {
+            Console.WriteLine("Running");
+            Console.ReadLine();
+        }
+	}
+}
