@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/livrojs.png">
+  <link rel="stylesheet" href="css/estilos.css">
+  <title>Exemplol 08 </title>
+</head>
+
+<body>
+  <!-- doctype, html, head e body (conf. exemplo 4.2) -->
+  <img src="img/005.jpg" alt="email">
+  <h1>Programa Caixa de loja</h1>
+  <form>
+    <p>Data de vencimento:
+      <input type="date" name="inDataVenc" id="inDataVenc" required autofocus>
+    </p> 
+    <p>Valor da Conta R$
+      <input type="number" name="inValor" id="inValor" min="0" step="0.01" class="alinha-direita" required>
+      <input type="submit" value="Calcular Multa e Juros">
+    </p>
+    <p>Valor da Multa R$:
+      <input type="number" id="outMulta" class="alinha-direita" readonly>
+    </p>
+    <p>Valor do Juros R$:
+      <input type="number" name="outJuros" id="outJuros" class="alinha-direita" readonly>
+    </p>
+    <p>Total a pagar R$:
+      <input type="number" name="outTotal" id="outTotal" class="alinha-direita" readonly>
+      <input type="reset" value="Nova Conta">
+    </p>
+  </form>
+  <h3></h3>
+  <script src="js/08.js"></script>
+  <!-- /body e /html -->
+</body>
+
+</html>
