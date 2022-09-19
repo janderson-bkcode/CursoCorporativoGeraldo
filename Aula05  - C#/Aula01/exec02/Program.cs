@@ -6,27 +6,6 @@ namespace exec02
 	{
 		static void Main(string[] args)
         {
-            double nota;
-            double[] notas = new double[4];
-            double soma ;
-
-            for (int i = 0; i < notas.length; i++)
-			{
-                 Console.WriteLine($"Digite a Nota{i}º");
-                 nota = double.Parse(Console.ReadLine());
-                 notas[i] = nota;
-			}
-
-            for (int i = 0; i < notas.Length; i++)
-            {
-                soma = soma + notas[i];
-            }
-            
-            double media = soma / 4;
-
-            Console.WriteLine($"A média das notas é {media} ");
-            Console.ReadLine();
-
 
 
         }
