@@ -11,8 +11,6 @@ frm.addEventListener("submit", (e) => {
   for (let i = 1; i < tam; i = i + 2) {
     resposta += mensagem.charAt(i)
   }
-
-
   for (let i = 0; i < tam; i = i + 2) {
     resposta += mensagem.charAt(i)
   }
@@ -22,7 +20,7 @@ frm.addEventListener("submit", (e) => {
 
 frm.btDecript.addEventListener("click", () => {
   if (!frm.checkValidity()) {
-    alert("Informe a mensagem criptografada")
+    alert("Informe uma mensagem criptografada")
     frm.inMensagem.focus() 
     return 
   }
@@ -33,19 +31,16 @@ frm.btDecript.addEventListener("click", () => {
   let resposta = ""
 
   if (tam % 2 == 0) {
-    for (let i = metade; i < tam; i++) {
+    for (let i = metade; i < tam; i++) { 
       resposta += mensagem.charAt(i)
       resposta += mensagem.charAt(i - metade)
     }
-  } 
-  
+  }  
   else {
-    for (let i = metade; i < tam - 1; i++) {
+    for (let i = metade ; i <= (tam - 1) ; i++) {
       resposta += mensagem.charAt(i)
-      resposta += mensagem.charAt(i - metade)
+      resposta += mensagem.charAt(i - metade )
     }
-    resposta += mensagem.charAt(i)
   }
-
   resp.innerText = resposta
 })
