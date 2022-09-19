@@ -26,7 +26,7 @@ namespace exec02
 
             for (int i = 0; i < notas.Length; i++)
             {
-                soma = soma + notas[i];
+                soma += notas[i];
             }
             
             double media = soma / 4;
@@ -48,7 +48,7 @@ namespace exec02
         }
         public static void exec03(){
 
-              double valorHora;
+            double valorHora;
             double horasTrabalhadas;
             Console.WriteLine("Digite o valor ganho por hora");
             valorHora = Convert.ToDouble(Console.ReadLine());
