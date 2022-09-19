@@ -1,26 +1,26 @@
-const frm = document.querySelector("form") // obtém elementos da página
+const frm = document.querySelector("form") 
 const resp1 = document.querySelector("#outDataLimite")
 const resp2 = document.querySelector("#outComDesconto")
 
-frm.addEventListener("submit", (e) => {          // "escuta" evento submit do form
-  e.preventDefault()                             // evita envio do form
+frm.addEventListener("submit", (e) => {         
+  e.preventDefault()                             
 
   const data = frm.inData.value
   const valor = Number(frm.inValor.value)
 
-  // declara variável do tipo date
+
   const dataLimite = new Date()
 
-  // obtém as partes da data da multa
+
   const partes = data.split("-")
-  // "seta" as partes da data
+
   dataLimite.setDate(Number(partes[2]))
   dataLimite.setMonth(Number(partes[1]) - 1)
   dataLimite.setFullYear(Number(partes[0]))
 
-  const dia = dataLimite.getDate()    // obtém o dia da multa
+  const dia = dataLimite.getDate()   
 
-  dataLimite.setDate(dia + 90)      // aumenta 90 dias na data da multa
+  dataLimite.setDate(dia + 90)      
   const mes = dataLimite.getMonth() + 1
   const ano = dataLimite.getFullYear()
 

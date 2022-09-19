@@ -41,6 +41,7 @@ frm.btDecript.addEventListener("click", () => {
       resposta += mensagem.charAt(i)
       resposta += mensagem.charAt(i - metade )
     }
+    resposta += mensagem.charAt(tam -1 )
   }
   resp.innerText = resposta
 })
