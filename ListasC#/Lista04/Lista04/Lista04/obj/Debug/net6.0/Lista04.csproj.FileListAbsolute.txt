@@ -1,0 +1,15 @@
+C:\Users\bk_dese_99\Desktop\Curso Geraldo\c#\Lista04\Lista04\bin\Debug\net6.0\Lista04.exe
+C:\Users\bk_dese_99\Desktop\Curso Geraldo\c#\Lista04\Lista04\bin\Debug\net6.0\Lista04.deps.json
+C:\Users\bk_dese_99\Desktop\Curso Geraldo\c#\Lista04\Lista04\bin\Debug\net6.0\Lista04.runtimeconfig.json
+C:\Users\bk_dese_99\Desktop\Curso Geraldo\c#\Lista04\Lista04\bin\Debug\net6.0\Lista04.dll
+C:\Users\bk_dese_99\Desktop\Curso Geraldo\c#\Lista04\Lista04\bin\Debug\net6.0\Lista04.pdb
+C:\Users\bk_dese_99\Desktop\Curso Geraldo\c#\Lista04\Lista04\obj\Debug\net6.0\Lista04.csproj.AssemblyReference.cache
+C:\Users\bk_dese_99\Desktop\Curso Geraldo\c#\Lista04\Lista04\obj\Debug\net6.0\Lista04.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bk_dese_99\Desktop\Curso Geraldo\c#\Lista04\Lista04\obj\Debug\net6.0\Lista04.AssemblyInfoInputs.cache
+C:\Users\bk_dese_99\Desktop\Curso Geraldo\c#\Lista04\Lista04\obj\Debug\net6.0\Lista04.AssemblyInfo.cs
+C:\Users\bk_dese_99\Desktop\Curso Geraldo\c#\Lista04\Lista04\obj\Debug\net6.0\Lista04.csproj.CoreCompileInputs.cache
+C:\Users\bk_dese_99\Desktop\Curso Geraldo\c#\Lista04\Lista04\obj\Debug\net6.0\Lista04.dll
+C:\Users\bk_dese_99\Desktop\Curso Geraldo\c#\Lista04\Lista04\obj\Debug\net6.0\refint\Lista04.dll
+C:\Users\bk_dese_99\Desktop\Curso Geraldo\c#\Lista04\Lista04\obj\Debug\net6.0\Lista04.pdb
+C:\Users\bk_dese_99\Desktop\Curso Geraldo\c#\Lista04\Lista04\obj\Debug\net6.0\Lista04.genruntimeconfig.cache
+C:\Users\bk_dese_99\Desktop\Curso Geraldo\c#\Lista04\Lista04\obj\Debug\net6.0\ref\Lista04.dll
