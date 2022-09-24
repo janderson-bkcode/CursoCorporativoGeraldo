@@ -52,7 +52,7 @@ namespace execircio01
         {
              Console.WriteLine("Digite um numero ");
              double numero = double.Parse(Console.ReadLine());
-             string dia  numero switch
+             string dia  = numero switch
              {
                  1 => "Segunda",
                  2 => "Terça",
@@ -62,7 +62,7 @@ namespace execircio01
                  6 => "Sábado",
                  7 => "Domingo",
                  _=> "Dia Inválido!"
-             } 
+             }; 
              
             Console.WriteLine($"Dia da semana :{dia}");
         }
@@ -72,12 +72,10 @@ namespace execircio01
            
             double desconto;
             double ir = 0.95;
-            double sindicato = 0.97
-            double fgts = 0.89
+            double sindicato = 0.97;
+            double fgts = 0.89;
             double totalDescontos = ir * sindicato * fgts * desconto;
-            double salarioLiquido *=totalDescontos;
-            double horasTrabalhadas;
-            double valorHora;
+            double salarioLiquido = salarioLiquido*  totalDescontos;
             double salarioBruto;
 
             Console.WriteLine("Digite Horas trabalhadas: ");
@@ -89,11 +87,11 @@ namespace execircio01
             switch (salarioBruto)
             {
                 case <= 980:
-                    return salarioBruto;
+                    desconto = 1;
                     break;
                 case > 980 and <= 1500:
-                    desconto = 0.95
-                case >1500 <=2500:
+                    desconto = 0.95;
+                case >1500 and <=2500:
                     desconto = 0.90;
                 case > 2500:
                     desconto = 0.80;
