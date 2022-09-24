@@ -69,52 +69,57 @@ namespace exercicio02
 
         public static void exec03()
         {
-            
+            int total;
+            List<string> listaItens = new List<string>();
+
             do
 	        {                 
-                Console.WriteLine("Digite o código do Pedido");
+                Console.WriteLine("Digite o código do Pedido ou digite 0 para sair");
                 int codigo = int.Parse(Console.WriteLine())
                 Console.WriteLine("Digite a quantidade");
                 int qtd = int.Parse(Console.WriteLine())
-                int total;
-                
+
                 switch (codigo)
                 {
                     case 100:
                     total += (1.2 * qtd);
-                    Console.WriteLine($"Cachorro Quente (R$1,20 * {qtd}) = R${(qtd * 1.2).ToString("F2", CultureInfo.InvariantCulture)}\n"));
+                    listaItens.Add($"Cachorro Quente (R$1,20 * {qtd}) = R${(qtd * 1.2).ToString("F2", CultureInfo.InvariantCulture)}\n"));
                     break;
 
                     case 101:
                     total += (1.3 * qtd);
-                    Console.WriteLine($"Bauru Simples (R$1,20 * {qtd}) = R${(qtd * 1.2).ToString("F2", CultureInfo.InvariantCulture)}\n"));
+                    listaItens.Add($"Bauru Simples (R$1,30 * {qtd}) = R${(qtd * 1.3).ToString("F2", CultureInfo.InvariantCulture)}\n"));
                     break;
                     
                     case 102:
                     total += (1.5 * qtd);
-                    Console.WriteLine($"Bauro com OVO (R$1,20 * {qtd}) = R${(qtd * 1.2).ToString("F2", CultureInfo.InvariantCulture)}\n"));
+                    listaItens.Add($"Bauro com OVO (R$1,50 * {qtd}) = R${(qtd * 1.5).ToString("F2", CultureInfo.InvariantCulture)}\n"));
                     break;
 
                     case 103:
                     total += (1.2 * qtd);
-                    Console.WriteLine($"Hamburguer (R$1,20 * {qtd}) = R${(qtd * 1.2).ToString("F2", CultureInfo.InvariantCulture)}\n"));
+                    listas.Add($"Hamburguer (R$1,20 * {qtd}) = R${(qtd * 1.2).ToString("F2", CultureInfo.InvariantCulture)}\n"));
                     break;
 
                     case 104:
                     total += (1.3* qtd);
-                    Console.WriteLine($"ChesseBurguer  (R$1,20 * {qtd}) = R${(qtd * 1.2).ToString("F2", CultureInfo.InvariantCulture)}\n"));
+                    listaItens.Add(($"ChesseBurguer  (R$1,30 * {qtd}) = R${(qtd * 1.3).ToString("F2", CultureInfo.InvariantCulture)}\n"));
                     break;
 
                     case 105:
                     total += (1* qtd);
-                    Console.WriteLine($"Refrigerante (R$1,20 * {qtd}) = R${(qtd * 1.2).ToString("F2", CultureInfo.InvariantCulture)}\n"));
+                    listaItens.Add($"Refrigerante (R$1,00 * {qtd}) = R${(qtd * 1).ToString("F2", CultureInfo.InvariantCulture)}\n"));
                     break;
 
                 }
+             
 
 	        } while (codigo != 0);      
-
-        }
+            foreach (var item in listaItens)
+	        {
+                Console.WriteLine($"Itens{item}");
+	        }
+    }
 
     }
 }
