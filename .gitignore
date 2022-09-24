@@ -31,3 +31,5 @@ Version.cpp
 *.lock
 .vs/CursoCorporativoGeraldo/FileContentIndex/ab8d5429-0351-4b61-8e25-33ca85f6e143.vsidx
 .vs/CursoCorporativoGeraldo/FileContentIndex/f855a095-490a-4306-a6f7-bf8509fa460b.vsidx
+*.vsidx
+*.sqlite
