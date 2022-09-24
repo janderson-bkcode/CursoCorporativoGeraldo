@@ -70,7 +70,7 @@ namespace exercicio02
         public static void exec03()
         {
             int total;
-            List<string> listaItens = new List<string>();
+            var listaItens = new List<string>();
 
             do
 	        {                 
@@ -93,7 +93,7 @@ namespace exercicio02
                     
                     case 102:
                     total += (1.5 * qtd);
-                    listaItens.Add($"Bauro com OVO (R$1,50 * {qtd}) = R${(qtd * 1.5).ToString("F2", CultureInfo.InvariantCulture)}\n"));
+                    listaItens.Add($"Bauru com OVO (R$1,50 * {qtd}) = R${(qtd * 1.5).ToString("F2", CultureInfo.InvariantCulture)}\n"));
                     break;
 
                     case 103:
