@@ -9,3 +9,25 @@ Aula05  - C\#/Aula01/WebApplicationAula01/.vs/WebApplicationAula01/v17/.suo
 Aula05  - C\#/Aula01/WebApplicationAula01/.vs/WebApplicationAula01/v17/.suo
 .suo
 .cache
+/build/
+*.suo
+*.user
+_ReSharper.*/
+*.sdf
+bin/
+obj/
+Debug/
+Release/
+*.opensdf
+*.tlog
+*.log
+TestResult.xml
+*.VisualState.xml
+Version.cs
+Version.h
+Version.cpp
+.vs/CursoCorporativoGeraldo/FileContentIndex/aafc11cd-c952-4d75-b773-04e5d8d6a623.vsidx
+.vs/CursoCorporativoGeraldo/FileContentIndex/ab8d5429-0351-4b61-8e25-33ca85f6e143.vsidx
+*.lock
+.vs/CursoCorporativoGeraldo/FileContentIndex/ab8d5429-0351-4b61-8e25-33ca85f6e143.vsidx
+.vs/CursoCorporativoGeraldo/FileContentIndex/f855a095-490a-4306-a6f7-bf8509fa460b.vsidx
