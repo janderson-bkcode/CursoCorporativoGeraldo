@@ -36,3 +36,4 @@ const classificarVeiculo = (ano) =>{
 
 const calcularEntrada = (valor,status) => 
   status == "novo"?valor *0.5:valor*0.3
+

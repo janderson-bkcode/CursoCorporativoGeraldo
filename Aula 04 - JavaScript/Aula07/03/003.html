@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Média</title>
+</head>
+<body>
+    <script>
+        const calcularMedia = (...notas) =>{
+            const num = notas.length
+            if(num == 0){
+                console.log("Informe, no mínimo, uma nota")
+                return;
+            }
+            let soma = 0
+            for(nota of notas){
+                soma += nota
+            }
+            const media = soma / num
+            console.log(`Média: ${media.toFixed(2)}`)
+        }
+
+        calcularMedia(6, 7, 8)
+        calcularMedia(2, 10)
+        calcularMedia(7.5, 10, 8, 9.5)
+        calcularMedia()
+    </script>
+    
+</body>
+</html>
