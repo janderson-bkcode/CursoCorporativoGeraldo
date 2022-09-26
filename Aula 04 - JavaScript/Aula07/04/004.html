@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
     <title>BkBank 04</title>
 </head>
 <body>
@@ -14,10 +15,11 @@
             <input type="radio" name="produto" id="rbPizza" checked autofocus>Pizza
             <input type="radio" name="produto" id="rbBebida">Bebida
             <span>Item:</span>
+
             <select name="inPizza" id="inPizza">
                 <option value="media">Pizza Média</option>
-                <option value="media">Pizza Grande</option>
-                <option value="media">Pizza Família</option>
+                <option value="grande">Pizza Grande</option>
+                <option value="familia">Pizza Família</option>
             </select>
             <select name="inBebida" id="oculta">
                 <option value="refri">Refrigerante Litro</option>
@@ -26,10 +28,10 @@
             </select>
         </p>
         <p>Detalhes do Item:
-            <input type="text" name="inDetalhes" id="inDetalhes" class="detalhes">
+            <input type="text"  id="inDetalhes" class="detalhes">
             <input type="submit" value="Adicionar">
         </p>
-
-    </form>
+        <script src="js/04.js"></script>
+     </form>
 </body>
 </html>
