@@ -17,7 +17,7 @@ frm.addEventListener("submit",(e)=>{
     let totalMoedas = 0
     const soma = Number(frm.inSomaMoeda.value) 
     
-    for (const moeda of moedas) {
+    for (const moeda of moedas) {     
       switch(moeda.className){
         case "moeda10":
             totalMoedas += 0.10 
