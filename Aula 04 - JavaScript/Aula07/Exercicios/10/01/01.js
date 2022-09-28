@@ -15,8 +15,7 @@ frm.addEventListener("submit",(e)=>{
     e.preventDefault()
     const moedas = containerMoedas.querySelectorAll("img") 
     let totalMoedas = 0
-    const soma = Number(frm.inSomaMoeda.value) 
-    
+    const soma = Number(frm.inSomaMoeda.value)    
     for (const moeda of moedas) {     
       switch(moeda.className){
         case "moeda10":
