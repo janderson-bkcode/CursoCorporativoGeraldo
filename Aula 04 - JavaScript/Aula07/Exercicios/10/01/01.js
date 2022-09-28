@@ -11,12 +11,12 @@ window.addEventListener("DOMContentLoaded", (e) => {
     gerarMoedas(1,RamdomMoedas(1,6),"moeda1");
 });
 
-
 frm.addEventListener("submit",(e)=>{
     e.preventDefault()
     const moedas = containerMoedas.querySelectorAll("img") 
     let totalMoedas = 0
     const soma = Number(frm.inSomaMoeda.value) 
+    
     for (const moeda of moedas) {
       if (moeda.className == "moeda10") {
         totalMoedas += 0.10 
@@ -46,15 +46,17 @@ const gerarMoedas = (valorMoeda,numeroMoedas,classDaMoeda) =>{
       for (let index = 0; index < numeroMoedas; index++) {
           const moedas = document.createElement("img");
           moedas.src = `../img/0_${valorMoeda}.jpg`
-          moedas.classList.add = classDaMoeda
+          moedas.className = classDaMoeda
           containerMoedas.appendChild(moedas)
           containerMoedas.appendChild(tagBr)               
         }        
-    }else{
+    }
+    else{
+       
         throw "Moeda Inválida"
     }   
 }
-const RamdomMoedas = (moeda,qutmoedas) => {
-    return moeda = Math.ceil(Math.random() * qutmoedas)  
+const RamdomMoedas = (moeda,qutMoedas) => {
+    return moeda = Math.ceil(Math.random() * qutMoedas)  
 }
 
