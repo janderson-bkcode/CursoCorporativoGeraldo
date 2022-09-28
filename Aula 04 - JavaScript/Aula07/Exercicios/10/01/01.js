@@ -3,24 +3,20 @@ const InputMoeda = document.querySelector("inSomaMoeda")
 const containerMoedas = document.getElementById("moedas")
 const tagBr = document.createElement("br")
 
-window.addEventListener("load", (e) => {
+window.addEventListener("DOMContentLoaded", (e) => {
     e.preventDefault()
-    let moeda10 = Math.ceil(Math.random() * 6)
-    let moeda25 = Math.ceil(Math.random() * 6)
-    let moeda50 = Math.ceil(Math.random() * 6)
-    let moeda1real = Math.ceil(Math.random() * 6)
-
-    gerarMoedas(10,moeda10,"moeda10");
-    gerarMoedas(25,moeda25,"moeda25");
-    gerarMoedas(50,moeda50,"moeda50");
-    gerarMoedas(1,moeda1real,"moeda1");
+    gerarMoedas(10,RamdomMoedas(10,6),"moeda10");
+    gerarMoedas(25,RamdomMoedas(25,6),"moeda25");
+    gerarMoedas(50,RamdomMoedas(50,6),"moeda50");
+    gerarMoedas(1,RamdomMoedas(1,6),"moeda1");
 });
+
 
 frm.addEventListener("submit",(e)=>{
     e.preventDefault()
     const moedas = containerMoedas.querySelectorAll("img") 
     let totalMoedas = 0
-    let soma = Number(frm.inSomaMoeda.value) 
+    const soma = Number(frm.inSomaMoeda.value) 
     for (const moeda of moedas) {
       if (moeda.className == "moeda10") {
         totalMoedas += 0.10 
@@ -29,10 +25,10 @@ frm.addEventListener("submit",(e)=>{
       } else if (moeda.className == "moeda25") {
         totalMoedas += 0.25 
       } else {
-        totalMoedas += 0.1
+        totalMoedas += 1
       }
     }
-    if (soma = totalMoedas.toFixed(2) ) {
+    if (soma == totalMoedas.toFixed(2) ) {
         alert(`Parabéns você acertou a resposta do valor ${totalMoedas}`)
     }
     else{
@@ -53,8 +49,12 @@ const gerarMoedas = (valorMoeda,numeroMoedas,classDaMoeda) =>{
           moedas.classList.add = classDaMoeda
           containerMoedas.appendChild(moedas)
           containerMoedas.appendChild(tagBr)               
-        }
-        
-    }
-      
+        }        
+    }else{
+        throw "Moeda Inválida"
+    }   
 }
+const RamdomMoedas = (moeda,qutmoedas) => {
+    return moeda = Math.ceil(Math.random() * qutmoedas)  
+}
+
