@@ -28,7 +28,8 @@ const calculaDesconto = (valor, taxa) => valor * (taxa/100)
 
 frm.rbSim.addEventListener("change", () => {
   convenio.className = "exibe-linha"             
+});
 
 frm.rbNao.addEventListener("change", () => {
   convenio.className = "oculta"
-});
+})
