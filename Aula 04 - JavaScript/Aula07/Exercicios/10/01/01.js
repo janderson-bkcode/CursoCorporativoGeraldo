@@ -22,10 +22,10 @@ frm.addEventListener("submit",(e)=>{
         case "moeda10":
             totalMoedas += 0.10 
             break;
-        case "moeda10":
+        case "moeda50":
             totalMoedas += 0.50
             break;
-        case "moeda10":
+        case "moeda25":
             totalMoedas += 0.25
             break;
         default:
@@ -56,8 +56,7 @@ const gerarMoedas = (valorMoeda,numeroMoedas,classDaMoeda) =>{
           containerMoedas.appendChild(tagBr)               
         }        
     }
-    else{
-       
+    else{      
         throw "Moeda Inválida"
     }   
 }
