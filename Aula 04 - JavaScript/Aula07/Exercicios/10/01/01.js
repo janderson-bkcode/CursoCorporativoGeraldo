@@ -18,14 +18,19 @@ frm.addEventListener("submit",(e)=>{
     const soma = Number(frm.inSomaMoeda.value) 
     
     for (const moeda of moedas) {
-      if (moeda.className == "moeda10") {
-        totalMoedas += 0.10 
-      } else if (moeda.className == "moeda50") {
-        totalMoedas += 0.50
-      } else if (moeda.className == "moeda25") {
-        totalMoedas += 0.25 
-      } else {
-        totalMoedas += 1
+      switch(moeda.className){
+        case "moeda10":
+            totalMoedas += 0.10 
+            break;
+        case "moeda10":
+            totalMoedas += 0.50
+            break;
+        case "moeda10":
+            totalMoedas += 0.25
+            break;
+        default:
+            totalMoedas += 1
+        break;
       }
     }
     if (soma == totalMoedas.toFixed(2) ) {
