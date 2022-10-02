@@ -4,14 +4,19 @@
     {
         static void Main(string[] args)
         {
-            const double ano = 2022;
-            Console.WriteLine($"Estamos no ano de {ano}");
-
-            var textoDigitado = Console.ReadLine();
-
-            Console.WriteLine($"Texto digitado = {textoDigitado}");
-
-            Console.WriteLine($"A soma de 1 + 2 eh igual a {1 + 1}");
+            var teste = new MyClass();
+            var test2 = 2;
+            funcaoTeste(ref test2);
         }
+
+        static void funcaoTeste(ref int teste2)
+        {
+            var nome = "Willian";
+        }
+    }
+
+    class MyClass
+    {
+        
     }
 }

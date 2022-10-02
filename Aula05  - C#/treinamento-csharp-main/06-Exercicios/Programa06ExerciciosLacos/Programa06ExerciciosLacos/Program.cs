@@ -48,7 +48,7 @@ for (var i = inicio; i <= fim; i++)
 Console.WriteLine("-------------------------------------------------");
 
 int codigo, quantidade;
-StringBuilder itens = new StringBuilder();
+StringBuilder itens = new();
 double total = 0;
 
 do
