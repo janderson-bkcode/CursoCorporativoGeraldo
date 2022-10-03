@@ -93,6 +93,6 @@ Use bkBankAula10
 	 ADD CONSTRAINT pkHumanResourceEmployeeID
 		PRIMARY KEY(EmployeeID);
 	
-		ALTER TABLE HumanResources.Address
-			 ADD CONSTRAINT pkHumanResourceAddressID
-			PRIMARY KEY(AddressID);
+	ALTER TABLE HumanResources.Address
+	  ADD CONSTRAINT pkHumanResourceAddressID
+		PRIMARY KEY(AddressID);
