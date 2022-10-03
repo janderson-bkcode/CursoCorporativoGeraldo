@@ -16,4 +16,22 @@ FILENAME ='C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\B
 Size = 10MB,MAXSIZE = 200,FILEGROWTH = 20%
 );
 
-drop database bkBankAula10
+--
+
+ALTER Database bkBankAula10
+	ADD FILEGROUP bkBankAula10Group1;
+
+------------------
+
+	ALTER Database bkBankAula10
+	ADD FILE (
+		NAME = 'bkBankAula10a',
+		FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\BkBankAula10a.ndf',
+		SIZE = 10MB,
+		MAXSIZE = 20,
+		FILEGROWTH = 10%
+	)TO FILEGROUP bkBankAula10Group1;
+
+---------
+
+
