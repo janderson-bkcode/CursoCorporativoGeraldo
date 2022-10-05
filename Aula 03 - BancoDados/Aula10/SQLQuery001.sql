@@ -107,6 +107,182 @@ Use bkBankAula10
 
      ALTER TABLE HumanResources.Address
 		ADD CONSTRAINT fkAddressEmployeeID
-		FOREIGN KEY(EmployeeID)
-			REFERENCES HumanResources.Employee(EmployeeID)
+			FOREIGN KEY(EmployeeID)
+				REFERENCES HumanResources.Employee(EmployeeID)
+
+---- -------------------05 /10 / 22 Aula 10.2--------------------------------------------------------
+
+Use master
+
+Create database Academico;
+
+DROP TABLE IF EXISTS tb_historicos;
+DROP TABLE IF EXISTS tb_matriculas;
+DROP TABLE IF EXISTS tb_departamentos;
+DROP TABLE IF EXISTS tb_cursos_oferecidos;
+DROP TABLE IF EXISTS tb_cursos;
+DROP TABLE IF EXISTS tb_empregados;
+DROP TABLE IF EXISTS tb_grades_salarios;
+----------------------
+
+
+---------------------------
+--Tabela tb_grades_salarios
+---------------------------
+
+CREATE TABLE tb_grades_salarios(
+id_grade			INTEGER,
+limite_inferior		NUMERIC(7,2) CONSTRAINT  nn_table_grades_limite_inferior NOT NULL,
+								 CONSTRAINT  ck_table_grades_limite_inferior CHECK (limite_inferior >=0),
+limite_superior		NUMERIC(7,2) CONSTRAINT  nn_table_grades_limite_superior NOT NULL,
+bonus				FLOAT		 CONSTRAINT  nn_table_grades_bonus NOT NULL,
+								 CONSTRAINT  ck_table_grades_bonus CHECK(limite_inferior <= limite_superior),
+
+fg_ativo			BIT,
+CONSTRAINT pk_tb_grades_id_grade	PRIMARY KEY(id_grade));
+
+---------------------------
+--Tabela tb_cursos
+---------------------------
+
+CREATE TABLE tb_cursos(
+id_curso		VARCHAR(6),
+ds_curso		VARCHAR(60) CONSTRAINT nn_tb_cursos_ds_curso  NOT NULL,
+categoria		CHAR(3)		CONSTRAINT nn_tb_cursos_categoria NOT NULL,
+							-- GEN (general), para cursos introdutorios
+							-- DSG (design), para analise e projeto
+							-- BLD (build),para desenvolvimento de aplicativos
+							CONSTRAINT ck_tb_cursos_categoria CHECK(categoria IN('GEN','BLD','DSG')),
+duracao		INTEGER			CONSTRAINT nn_tb_cursos_duracao NOT NULL,
+fg_ativo	BIT,
+CONSTRAINT ck_tb_cursos_id_curso CHECK(id_curso = UPPER(id_curso)),
+CONSTRAINT pk_tb_cursos_id_curso PRIMARY KEY(id_curso));
+
+
+SELECT *
+	FROM tb_cursos;
+
+---------------------------
+--Tabela tb_EMPREGADOS
+---------------------------
+
+CREATE TABLE tb_empregados(
+id_empregado		INTEGER		CONSTRAINT ck_tb_emp_id_emp CHECK (id_empregado >7000),
+nm_empregado		VARCHAR(60)	CONSTRAINT nn_tb_emp_nn_emp NOT NULL,
+iniciais_empregado  VARCHAR(5)	CONSTRAINT nn_tb_emp_iniciais NOT NULL,
+ds_cargo			VARCHAR(40),
+id_gerente			INTEGER     CONSTRAINT fk_tb_emp_id_gerente REFERENCES tb_empregados,
+dt_nascimento		DATE		CONSTRAINT nn_tb_emp_dt_nascimento NOT NULL,
+salario				NUMERIC(7,2) CONSTRAINT nn_tb_emp_salario NOT NULL,
+comissao		    FLOAT,
+id_departamento     BIT,
+fb_ativo		    BIT,
+CONSTRAINT pk_tb_emp_id_emp PRIMARY KEY(id_empregado));
+
+
+SELECT * FROM tb_empregados;
+
+
+---------------------------
+----Tabela tb_departamentos
+---------------------------
+
+CREATE TABLE tb_departamentos(
+
+id_departamento		INTEGER		CONSTRAINT ck_tb_departamentos_id_depto CHECK ((id_departamento%10) =0),
+nm_departamento		VARCHAR(40) CONSTRAINT nn_tb_departamentos_nm_depto NOT NULL,
+								CONSTRAINT ck_tb_departamentos_nm_depto
+											CHECK(nm_departamento = UPPER(nm_departamento)),
+localizacao			VARCHAR(60) CONSTRAINT nn_tb_departamentos_localizacao NOT NULL,
+								CONSTRAINT ck_tb_departamentos_localizacao
+											CHECK (localizacao = UPPER(localizacao)),
+id_gerente			INTEGER,
+fg_ativo			BIT,
+CONSTRAINT pk_tb_departamentos_id_depto PRIMARY KEY(id_departamento),
+CONSTRAINT un_tb_departamentos_nm_depto UNIQUE(nm_departamento),
+CONSTRAINT fk_tb_departamentos_id_gerente FOREIGN KEY (id_gerente) REFERENCES tb_empregados
+);
+
+SELECT * FROM tb_departamentos;
+
+---------------------------
+----Tabela cursos_oferecidos
+---------------------------
+CREATE TABLE tb_cursos_oferecidos(
+id_curso			VARCHAR(6)		CONSTRAINT nn_tb_cursos_oferecidos_id_curso NOT NULL,
+dt_inicio			DATE			CONSTRAINT nn_tb_cursos_oferecidos_dt_inicio NOT NULL,
+id_instrutor		INTEGER,
+localizacao			VARCHAR(60),
+fg_ativo			BIT,
+CONSTRAINT pk_tb_cursos_oferecidos PRIMARY KEY (id_curso,dt_inicio),
+CONSTRAINT fk_tb_cursos_oferecidos_id_curso FOREIGN KEY(id_curso) REFERENCES tb_cursos,
+CONSTRAINT fk_tb_cursos_oferecidos_id_instrutor FOREIGN KEY (id_instrutor) REFERENCES tb_empregados
+);
+
+SELECT * FROM tb_cursos_oferecidos
+---------------------------
+----Tabela tb_matriculas
+---------------------------
+
+CREATE TABLE tb_matriculas(
+ id_participante		INTEGER		CONSTRAINT nn_tb_matriculas_id_participante NOT NULL,
+ id_curso				VARCHAR(6)	CONSTRAINT nn_tb_matriculas_id_curso NOT NULL,
+ dt_inicio				DATE		CONSTRAINT nn_tb_matriculas_dt_inicio NOT NULL,
+ avaliacao				INTEGER		CONSTRAINT ck_tb_matriculas_avaliacao CHECK(avaliacao in(1,2,3,4,5)),
+ fg_ativo				BIT,
+ CONSTRAINT pk_tb_matriculas PRIMARY KEY (id_participante,id_curso,dt_inicio),
+ CONSTRAINT fk_tb_matriculas FOREIGN KEY(id_curso,dt_inicio) REFERENCES tb_cursos_oferecidos,
+ CONSTRAINT fk_tb_matriculas_id_participante FOREIGN KEY (id_participante) REFERENCES tb_empregados);
+
+SELECT * FROM tb_matriculas
+
+CREATE TABLE tb_historicos(
+id_empregado		INTEGER		CONSTRAINT nn_tb_historicos_id_emp NOT NULL,
+dt_inicio			DATE		CONSTRAINT nn_tb_historicos_dt_inicio NOT NULL,
+ano_inicio			INTEGER		CONSTRAINT nn_tb_historicos_ano_inicio NOT NULL,
+dt_final			DATE,
+id_departamento		INTEGER		CONSTRAINT nn_tb_historicos_id_depto NOT NULL,
+salario				NUMERIC(7,2)CONSTRAINT nn_tb_historicos_salario NOT NULL,
+comentario			VARCHAR(60),
+fg_ativo			BIT,
+CONSTRAINT pk_tb_historicos PRIMARY KEY(id_empregado,dt_inicio),
+CONSTRAINT ck_tb_historicos_dt_inicio CHECK(dt_inicio < dt_final),
+CONSTRAINT fk_tb_historicos_id_emp FOREIGN KEY(id_empregado) REFERENCES tb_empregados ON DELETE CASCADE,
+CONSTRAINT fk_tb_historicos_id_depto FOREIGN KEY(id_departamento) REFERENCES tb_departamentos
+);
+
+---------------------------
+-----Carga de dados--------
+---------------------------
+
+ --Disable PK (constraints to make inserting easier)
+
+ GO 
+ ALTER TABLE tb_empregados
+ NOCHECK CONSTRAINT fk_tb_emp_id_gerente;
+ GO
+
+ INSERT INTO tb_empregados(id_empregado,nm_empregado,
+						  iniciais_empregado,
+						  ds_cargo,id_gerente,
+						  dt_nascimento,salario,
+						  comissao,id_departamento,fb_ativo)
+VALUES
+(7369,'SMITH','N','TRAINER',7902,'1965-12-17',8000.00,NULL,20,1),
+(7499,'ALLEN','JAM','SALESREP',7698,'1961-02-20',16000.00,300,30,1),
+(7521,'WARD','TF','SALESREP',7698,'1962-02-22',12500.00,500,30,1),
+(7566,'JONES','JM','MANAGER',7839,'1967-04-02',29750.00,NULL,20,1),
+(7654,'MARTIN','P','SALESREP',7698,'1956-09-28',12500.00,1400,30,1),
+(7698,'BLAKE','R','MANAGER',7839,'1963-11-01',28500.00,NULL,30,1),
+(7782,'CLARK','AB','MANAGER',7839,'1965-06-09',24500.00,NULL,10,1),
+(7788,'SCOTT','SCJ','TRAINER',7566,'1959-11-26',30000.00,NULL,10,1),
+(7839,'KING','CC','DIRECTOR',NULL,'1952-11-17',50000.00,NULL,10,1),
+(7844,'TURNER','JJ','SALESREP',7698,'1968-09-28',15000.00,0,30,1),
+(7876,'ADAMS','AA','TRAINER',7788,'1966-12-30',11000.00,NULL,20,1),
+(7900,'JONES','R','ADMIN',7698,'1969-12-03',8000.00,NULL,30,1),
+(7902,'FORD','MG','TRAINER',7566,'1959-02-13',30000.00,NULL,20,1),
+(7934,'MILLER','TJA','ADMIN',7782,'1962-01-23',13000.00,NULL,10,1);
+
+GO
+	ALTER TABLE tb_empregados
 
