@@ -285,4 +285,48 @@ VALUES
 
 GO
 	ALTER TABLE tb_empregados
+	CHECK CONSTRAINT fk_tb_emp_id_gerente;
+GO
 
+SELECT * FROM tb_empregados
+
+
+INSERT INTO tb_departamentos(id_departamento,nm_departamento,localizacao,id_gerente,fg_ativo)
+VALUES
+(10,'ACCOUNTING','NEW YORK',7782,1),
+(20,'TRAINING','DALLAS',7566,1),
+(30,'SALES','CHICAGO',7698,1),
+(40,'HR','BOSTON',7839,1);
+
+SELECT * FROM tb_departamentos
+
+
+
+INSERT INTO tb_grades_salarios(id_grade,
+								limite_inferior,
+								limite_superior,
+								bonus,fg_ativo)
+VALUES
+(1,7000.00,12000.00,0,1),
+(2,12001.00,14000.00,50,1),
+(3,14001.00,20000.00,100,1),
+(4,20001.00,30000.00,200,1),
+(5,30001.00,99999.00,500,1);
+
+SELECT * FROM tb_grades_salarios
+
+
+INSERT INTO tb_cursos(id_curso,ds_curso,categoria,duracao,fg_ativo)
+VALUES
+('SQL','Introdução ao SQL','GEN',4,1),
+('OAU','ORACLE para usuarios de aplicativos','GEN',1,1),
+('JAV','Java para desenvolvedores Oracle','BLD',4,1),
+('PLS','Introdução ao PL/SQL','BLD',1,1),
+('XML','XML para desenvolvedores Oracle','BLD',2,1),
+('ERM','Modelagemde Dados com DER','DSG',3,1),
+('PMT','Técnicas de Modelagem de Processos','DSG',4,1),
+('RSO','Modelagem de Sistema Relacional','DSG',2,1),
+('PRO','Prototipagem','DSG',5,1),
+('GEN','Implementação de Sistemas','DSG',4,1);
+
+SELECT * FROM tb_cursos
