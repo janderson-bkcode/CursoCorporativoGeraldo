@@ -96,3 +96,17 @@ Use bkBankAula10
 	ALTER TABLE HumanResources.Address
 	  ADD CONSTRAINT pkHumanResourceAddressID
 		PRIMARY KEY(AddressID);
+
+	ALTER TABLE HumanResources.Employee
+		ADD CONSTRAINT dfEmployeeActive
+		DEFAULT(1) FOR Active;
+
+	ALTER TABLE HumanResources.Employee
+		ADD CONSTRAINT uqEmployeeSocialSecurityNumber
+			UNIQUE(SocialSecurityNumber);
+
+     ALTER TABLE HumanResources.Address
+		ADD CONSTRAINT fkAddressEmployeeID
+		FOREIGN KEY(EmployeeID)
+			REFERENCES HumanResources.Employee(EmployeeID)
+
