@@ -1,3 +1,0 @@
-C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula02\exercicios\01\exe01\obj\Debug\exe01.csproj.AssemblyReference.cache
-C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula02\exercicios\01\exe01\obj\Debug\exe01.csproj.SuggestedBindingRedirects.cache
-C:\Users\janderson.goncalves\Documents\Github\CursoCorporativoGeraldo\Aula05  - C#\Aula02\exercicios\01\exe01\obj\Debug\exe01.csproj.CoreCompileInputs.cache
