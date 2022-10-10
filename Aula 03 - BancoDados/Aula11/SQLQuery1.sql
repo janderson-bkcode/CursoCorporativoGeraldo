@@ -223,4 +223,21 @@ FROM Sales.SalesOrderDetail
 WHERE ProductID IN(776,778,747,809)
 
 
+SELECT *
+FROM HumanResources.Department
+ORDER BY DepartmentID DESC;
 
+SELECT DepartmentID,Name,GroupName,ModifiedDate
+FROM HumanResources.Department
+ORDER BY 3 ASC;
+
+
+SELECT BusinessEntityID,
+		SickLeaveHours,
+		VacationHours 
+FROM HumanResources.Employee
+WHERE SickLeaveHours > 68 AND VacationHours > 98;
+
+SELECT *
+FROM Sales.SalesOrderHeader
+WHERE SalesOrderID between 43702 and 43712
