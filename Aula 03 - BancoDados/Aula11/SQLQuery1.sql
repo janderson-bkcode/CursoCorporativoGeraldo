@@ -168,6 +168,27 @@ INSERT INTO CustomerPaymentType
 VALUES
 (1,1,'Will need an internet connection');
 
+---SELECT 
+use MyAdventureWorks
+
+SELECT DepartmentID,Name,Groupname,ModifiedDate 
+FROM HumanResources.Department;
+
+SELECT ProductCategoryID,Name
+FROM Production.ProductCategory
+where ProductCategoryID <2
+
+SELECT * FROM HumanResources.Department;
+
+SELECT *
+FROM Production.Product
+WHERE Color = 'Blue'
+AND ProductID > 900;
+
+SELECT  *
+FROM Production.Product
+WHERE ProductID > 900
+AND(Color ='Blue' OR COLOR = 'Green');
 
 
 
