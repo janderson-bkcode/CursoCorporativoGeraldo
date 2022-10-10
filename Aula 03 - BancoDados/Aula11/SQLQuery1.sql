@@ -196,7 +196,31 @@ FROM Production.Product
 WHERE ProductID > 900
 AND NOT (Color ='Blue' OR COLOR = 'Green');
 
+SELECT *
+FROM HumanResources.Department
+WHERE DepartmentID = 4;
 
+SELECT *
+FROM HumanResources.Department
+WHERE DepartmentID > 4;
+
+SELECT AccountNumber,SalesOrderID,OrderDate
+FROM Sales.SalesOrderHeader
+WHERE OrderDate BETWEEN '01/05/2007' AND '31/12/2007';
+
+SELECT SalesOrderDetailID,
+	   OrderQty,
+	   ProductID,
+	   ModifiedDate
+FROM Sales.SalesOrderDetail
+WHERE ModifiedDate BETWEEN '01/05/2007' AND '31/12/2007' AND ProductID = 809;
+
+SELECT SalesOrderDetailID,
+	   OrderQty,
+	   ProductID,
+	   ModifiedDate
+FROM Sales.SalesOrderDetail
+WHERE ProductID IN(776,778,747,809)
 
 
 
