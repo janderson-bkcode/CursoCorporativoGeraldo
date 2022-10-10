@@ -330,3 +330,4 @@ VALUES
 ('GEN','Implementação de Sistemas','DSG',4,1);
 
 SELECT * FROM tb_cursos
+
