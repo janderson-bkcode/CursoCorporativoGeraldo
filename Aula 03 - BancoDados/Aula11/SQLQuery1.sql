@@ -191,7 +191,10 @@ WHERE ProductID > 900
 AND(Color ='Blue' OR COLOR = 'Green');
 
 
-
+SELECT  *
+FROM Production.Product
+WHERE ProductID > 900
+AND NOT (Color ='Blue' OR COLOR = 'Green');
 
 
 
