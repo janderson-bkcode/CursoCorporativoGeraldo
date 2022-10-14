@@ -41,3 +41,25 @@ namespace Testes.FluentVallidation
             return !date.Equals(default(DateTime));
         }
     }
+
+     public static class ValidateData
+    {
+        public static bool getValidationModelErros(object obj, IValidator validator)
+        {
+            var contexto = new ValidationContext<object>(obj);
+
+            var validation =  validator.Validate(contexto);
+
+            for (int i = 0; i < validation.Errors.Count; i++)
+            {
+                Console.WriteLine(validation.Errors[i].ErrorMessage);
+            }
+
+            if (!validation.IsValid)
+            {
+                return false;
+            }
+            return true;
+        }
+
+    }
