@@ -22,3 +22,40 @@ where m.id_curso = 'JAV'
 and id_participante in (select id_participante from tb_matriculas
 					    where id_curso = 'XML')
 
+Select 
+	e.nm_empregado
+from tb_empregados e
+where not(nm_empregado = 'JONES' AND iniciais_empregado = 'R')
+
+
+select nm_empregado,iniciais_empregado
+from tb_empregados
+where nm_empregado <> 'JONES' OR iniciais_empregado<>'R';
+
+
+select e.ds_cargo, e.id_empregado,e.dt_nascimento
+from tb_empregados e
+inner JOIN tb_cursos_oferecidos co on(co.id_instrutor = e.id_empregado) 
+WHERE e.ds_cargo in ('TRAINER','SALESREP')
+AND dt_nascimento < '01-01-1960'
+
+
+SELECT id_empregado
+FROM tb_empregados e
+inner join tb_departamentos d on (d.id_departamento = e.id_departamento)
+where nm_departamento !='TRAINING'
+
+
+
+Select id_empregado
+from tb_empregados 
+Where id_empregado not in (select id_participante 
+							from tb_matriculas
+							where id_curso = 'JAV')
+
+select id_empregado
+from tb_empregados
+where id_empregado in(select id_participante
+						from tb_matriculas
+						where id_curso !='JAV')
+
