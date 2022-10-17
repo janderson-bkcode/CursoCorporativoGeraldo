@@ -241,3 +241,138 @@ WHERE SickLeaveHours > 68 AND VacationHours > 98;
 SELECT *
 FROM Sales.SalesOrderHeader
 WHERE SalesOrderID between 43702 and 43712
+
+
+-- 17/10/2022 PAGINA 60
+Select * 
+FROM HumanResources.Department
+Where Name Like 'Pr%';
+
+Select FirstName,MiddleName,LastName
+From Person.Person
+Where LastName Like '[CH]%sen';
+
+Select FirstName,
+	  MiddleName,
+	  LastName
+From Person.Person
+Where LastName Like '__o%';
+
+Select FirstName,
+	   MiddleName,
+	   LastName
+From Person.Person
+Where LastName Like '_____';  --5 Caracteres
+
+
+Select 
+	SalesOrderDetailID,
+	OrderQty,
+	ProductID,
+	ModifiedDate
+from Sales.SalesOrderDetail
+where ProductID in (776,778,747,809)
+
+
+SELECT Name,
+	   ListPrice
+FROM Production.Product
+Where Name in('Road Tire Tube','Touring Pedal','Minipump')
+
+--Não Correlacionada
+SELECT DISTINCT TOP 5 H.CustomerID
+FROM Sales.SalesOrderHeader H
+INNER JOIN Sales.SalesOrderDetail D ON (H.SalesOrderID = D.SalesOrderID)
+WHERE D.ProductID IN(SELECT D.ProductID
+					 FROM Production.Product P
+					 WHERE Name like '%bike%')
+ORDER BY H.CustomerID
+
+--Correlacionada
+SELECT DISTINCT TOP 5 H.CustomerID
+FROM Sales.SalesOrderHeader H
+INNER JOIN Sales.SalesOrderDetail D ON (H.SalesOrderID = D.SalesOrderID)
+WHERE D.ProductID IN(SELECT D.ProductID
+					 FROM Production.Product P
+					 WHERE Name like '%bike%'
+					 And P.ProductID = D.ProductID)
+ORDER BY H.CustomerID
+
+--
+SELECT Name,Color
+FROM Production.Product
+WHERE Color NOT IN ('White','Grey',NULL);
+
+
+Select 
+	Name,
+	Color
+From Production.Product
+WHERE Coalesce(Color,'') Not in ('White','Grey',Coalesce(Null,''))
+
+
+SELECT 
+	DepartmentID,
+	Name AS "Nome do Departamento",
+	GroupName AS "Nome do grupo de Depto"
+FROM HumanResources.Department AS d
+
+
+SELECT
+	p.FirstName,
+	p.LastName
+FROM Person.Person p
+
+
+Select p.FirstName,
+	   p.LastName,
+	   ea.EmailAddress
+FROM Person.Person p
+INNER JOIN Person.EmailAddress ea ON(p.BusinessEntityID= ea.BusinessEntityID)
+
+
+--
+SELECT p.ProductID as "Código do Produto",
+	   p.Name as "Nome do Produto",
+	   sd.OrderQty as "Quantidade do Pedido",
+	   sd.UnitPrice as "Preço Unitário"
+FROM Production.Product p
+INNER JOIN Sales.SalesOrderDetail sd ON (p.ProductID = sd.ProductID)
+
+
+SELECT 
+	p.ProductID,
+	p.Name,
+	sd.OrderQty,
+	sd.UnitPrice
+FROM Production.Product p
+LEFT JOIN Sales.SalesOrderDetail sd on(p.ProductID = sd.ProductID)
+
+
+SELECT TOP(5)
+SalesOrderID,OrderDate,SalesOrderNumber,TotalDue
+FROM Sales.SalesOrderHeader
+order by TotalDue Desc
+
+
+Select distinct 
+	p.Name "Nome do Produto"
+FROM Production.Product p
+INNER JOIN Sales.SalesOrderDetail sd 
+	on (p.ProductID = sd.ProductID)
+Where sd.CarrierTrackingNumber is null
+order by  "Nome do Produto" ;
+
+--
+SELECT Name ProductName
+FROM Production.Product
+WHERE 
+	Color = 'Black'
+UNION
+SELECT 
+	Name ProductName
+FROM Production.Product
+WHERE 
+	Color = 'Silver';
+
+

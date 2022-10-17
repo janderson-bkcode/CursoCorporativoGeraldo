@@ -113,6 +113,8 @@ Use bkBankAula10
 ---- -------------------05 /10 / 22 Aula 10.2--------------------------------------------------------
 
 Use master
+use Academico
+
 
 Create database Academico;
 
