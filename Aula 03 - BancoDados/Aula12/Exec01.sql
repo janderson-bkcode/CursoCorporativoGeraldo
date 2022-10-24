@@ -59,3 +59,9 @@ where id_empregado in(select id_participante
 						from tb_matriculas
 						where id_curso !='JAV')
 
+--
+select id_empregado
+from tb_empregados
+where id_empregado in(select id_gerente
+						from tb_empregados
+						where id_gerente IS NOT NULL)

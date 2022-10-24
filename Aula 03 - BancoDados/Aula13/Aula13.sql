@@ -80,3 +80,50 @@ FROM Production.Product
 ORDER BY ProductID
 OFFSET 0 ROWS
 FETCH NEXT 10 ROWS ONLY;
+
+
+SELECT
+	ProductID,
+	ProductNumber,
+	Name as ProductName,
+	ListPrice
+FROM Production.Product
+ORDER BY ProductID
+OFFSET 10 ROWS
+FETCH NEXT 10 ROWS ONLY;
+
+
+-- EXPRESSÕES PAG 28
+SELECT
+FirstName + ' ' + LastName as FullName
+FROM Person.Person;
+
+
+SELECT
+	(SubTotal + TaxAmt) * 1.05 "TotalDue"
+FROM Sales.SalesOrderHeader
+
+SELECT
+	Cast((SubTotal + TaxAmt) * 1.05 as numeric(8,2)) "TotalDue"
+FROM Sales.SalesOrderHeader
+
+--VARIAVEIS PAG 30
+
+declare @variavel2 int = 30;
+
+declare @variavel int
+set @variavel = 20;
+
+Select @variavel ProductID
+from Production.Product
+where ProductID is not null;
+
+
+DECLARE @ProductId int = 1;
+
+Select
+	ProductID,
+	ProductNumber,
+	Name AS ProductName
+FROM Production.Product
+WHERE ProductID = @ProductId
