@@ -236,6 +236,16 @@ WHERE DepartmentID = 19
 and Name not like '% Europe'
 
 
+UPDATE Production.Product
+	SET ListPrice = ListPrice * 1.05
+FROM Production.Product p
+INNER JOIN Production.ProductSubcategory ps 
+	ON(p.ProductSubcategoryID = ps.ProductSubcategoryID)
+where
+ps.Name = 'Socks';
+
+
+
 
 
 SELECT * FROM HumanResources.Department
