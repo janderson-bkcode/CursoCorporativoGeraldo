@@ -227,8 +227,16 @@ SELECT * from dbo.Departament
 
 --PAGE 54 UPDATE
 UPDATE HumanResources.Department
-SET Name = Name + ' Europe'
+	SET Name = Name + ' Europe'
 WHERE DepartmentID = 19
+
+UPDATE HumanResources.Department
+	SET Name = Name + 'Europe'
+WHERE DepartmentID = 19
+and Name not like '% Europe'
+
+
+
 
 SELECT * FROM HumanResources.Department
 where DepartmentID  = 19
