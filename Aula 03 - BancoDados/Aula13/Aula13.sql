@@ -129,3 +129,82 @@ FROM Production.Product
 WHERE ProductID = @ProductId
 
 
+--PAG 36
+INSERT INTO HumanResources.Department(Name,GroupName,ModifiedDate)
+VALUES
+('Payroll','Executive General and Administration','06/02/2012');
+
+
+Select DepartmentID,Name,GroupName,ModifiedDate
+from HumanResources.Department
+order by DepartmentID DESC
+
+
+--PAG 39 INSERINDO DESABILITANDO O IDENTITY
+
+SET IDENTITY_INSERT HumanResources.Department ON  --DESABILITANDO O IDENTITY
+
+INSERT INTO HumanResources.Department(DepartmentID,Name,GroupName,ModifiedDate)
+VALUES
+(18,'International Marketing','Sales and Marketing','05/06/2012');
+SET IDENTITY_INSERT HumanResources.Department OFF --HABILITANDO NOVAMENTE O IDENTITY
+
+SELECT DepartmentID,Name,GroupName,ModifiedDate
+FROM HumanResources.Department
+ORDER BY DepartmentID  DESC
+
+-- PAGINA 44 SEQUENCE
+
+CREATE SEQUENCE HumanResources.SequenciaTeste
+AS INT
+START WITH 1
+INCREMENT BY 1
+NO CYCLE 
+MINVALUE 1
+MAXVALUE 99999;
+
+-- EXEMPLO SEQUENCE 
+
+GO 
+IF (OBJECT_ID('dbo.States')) IS NOT NULL
+	DROP TABLE dbo.States
+
+GO
+CREATE TABLE dbo.States(
+StateId		int CONSTRAINT pkStatesStatesId PRIMARY KEY,
+StateName	varchar(50),
+StateAbbrev	char(2)
+);
+GO
+
+
+
+
+
+
+
+
+
+
+
+
+--Procedure
+GO
+CREATE PROCEDURE [dbo].[sp_generateAuthorizationId]
+@ClientId INTEGER,
+@OperationTypeId INTEGER,
+@PaysmartOperationId VARCHAR(100),
+@AuthorizationId INT OUTPUT
+AS
+BEGIN  
+
+DECLARE @max INT = 1000;
+DECLARE @min INT = 999999;
+
+SET @AuthorizationId = round(((@max - @min -1) * rand() + @min), 0)
+
+INSERT INTO HumanResources.Department
+VALUES(@AuthorizationId, @ClientId, 0, GETDATE(), @OperationTypeId, @PaysmartOperationId);
+
+END
+GO
