@@ -226,7 +226,12 @@ FROM HumanResources.Department
 SELECT * from dbo.Departament
 
 --PAGE 54 UPDATE
+UPDATE HumanResources.Department
+SET Name = Name + ' Europe'
+WHERE DepartmentID = 19
 
+SELECT * FROM HumanResources.Department
+where DepartmentID  = 19
 
 --Procedure
 GO
