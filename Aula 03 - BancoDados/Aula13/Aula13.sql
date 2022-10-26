@@ -177,15 +177,55 @@ StateAbbrev	char(2)
 );
 GO
 
+GO 
+CREATE SEQUENCE dbo.StateSeq
+AS INT
+START WITH 1
+INCREMENT BY 1
+GO
 
 
+INSERT INTO dbo.States(StateId,StateAbbrev,StateName)
+VALUES
+(NEXT VALUE FOR dbo.StateSeq,'LA','Louisiana')
+
+INSERT INTO dbo.States(StateId,StateAbbrev,StateName)
+VALUES
+(NEXT VALUE FOR dbo.StateSeq,'TX','Texas')
+INSERT INTO dbo.States(StateId,StateAbbrev,StateName)
+VALUES
+(NEXT VALUE FOR dbo.StateSeq,'FL','Florida')
+
+SELECT * FROM dbo.States
+
+INSERT INTO HumanResources.Department
+VALUES
+('International Sales','Sales and Marketing','26/05/2012'),
+('Media Control','Quality Assurance','26/05/2012');
+
+SELECT * from HumanResources.Department
+ORDER BY 1 DESC
 
 
+INSERT INTO HumanResources.Department(Name,GroupName,ModifiedDate)
+SELECT
+	Name + ' USA',GroupName,ModifiedDate
+FROM HumanResources.Department
+WHERE DepartmentID IN(22,21);
 
+select * from HumanResources.Department
+order by 1 desc
 
+--PAGE 52 SELECT INTO CRIADO TABELA
 
+SELECT
+	DepartmentID,Name,GroupName,ModifiedDate
+INTO dbo.Departament
+FROM HumanResources.Department
 
+SELECT * from dbo.Departament
 
+--PAGE 54 UPDATE
 
 
 --Procedure
