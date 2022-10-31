@@ -1,6 +1,6 @@
 USE MyAdventureWorks
 
---  AULA 14 30/10/2022 PAGE 5
+--  AULA 14 30/10/2022 PAGE 5 FUNÇÕES DE DATA
 
 SELECT GETDATE() AS GETDATE,
 SYSDATETIME() AS SYSDATETIME
@@ -34,4 +34,54 @@ SELECT
   ISDATE(GETDATE()) AS IsValidDate,
   ISDATE('1/13/2122') AS InvalidDate;
 
---PAGE
+--PAGE 14 CONVERSÃO 
+
+SELECT TOP(10)
+	SalesOrderNumber,
+	TotalDue,
+	CAST(Totaldue as decimal(10,2))AS TotalDueCast,
+	OrderDate,
+	CAST(OrderDate AS date) AS OrderDateCast
+FROM Sales.SalesOrderHeader;
+
+
+-- PAGE 18
+select
+CONVERT(VARCHAR(20), GETDATE()) AS [Default],
+CONVERT(VARCHAR(20),GETDATE(),100) AS DefaultWithStyle,
+CONVERT(VARCHAR(20),GETDATE(),103) AS BritishFrenchStyle,
+CONVERT(varchar(20),GETDATE(),105) AS ItalianStyle,
+CONVERT(VARCHAR(20),GETDATE(),105) AS ISOSTyle,
+CONVERT(varchar(20),CAST('111111.22' AS MONEY),1) as MoneyWithCommas
+
+
+-- PAGE 22
+
+SELECT 
+TRY_CAST('jose da silva' as int) trycast,
+TRY_CONVERT(datetime,'2/13/2999',112) AS TRYCONVERT,
+PARSE('Saturday,26 May 2012' AS datetime USING 'en-US') as parse,
+TRY_PARSE('Jose da silva Birthday' as datetime using 'en-US') as tryparse
+
+--PAGE 25 FUNÇÕES DE STRING
+
+SELECT
+	'LEBLANC'+ ',' + 'PATRICK' RawValues,
+	RTRIM('LEBLANC  ') + ',' + LTRIM('   PATRICK') TrimValue,
+	LEFT('PATRICKDTOMORR',7)[Left],
+	RIGHT('DTOMORRLEBLANC',7) [Right],
+	SUBSTRING('DTOMORRPATRICK',8,LEN('DTOMORRPATRICK'))[Substring],
+	'12/' + CAST(1 As VARCHAR) + '2012' WithoutConcat,
+	CONCAT('12/',1,'2012') WithConcat
+
+
+--PAGE 26
+DECLARE @choosevar int =3
+
+select
+	CHOOSE(@choosevar,'ONE','TWO','PATRICK','THREE') [Choose],
+	IIF(DATENAME(MONTH,GETDATE()) = 'July',
+'The 4th is this month','No Fireworks') as [IIF]
+
+
+
