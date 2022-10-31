@@ -4,9 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace ApiAcessoValidadoPorIP.Controllers
 {
     [ApiController]
+    [Route("")]
     public class HomeController : ControllerBase
     {
-        
+        [ServiceFilter(typeof(IpBlockActionFilter))]
         [HttpGet("Unblocked")]
         public string Unblocked()
         {
