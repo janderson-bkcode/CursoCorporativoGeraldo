@@ -1,3 +1,5 @@
+USE MyAdventureWorks
+
 --  AULA 14 30/10/2022 PAGE 5
 
 SELECT GETDATE() AS GETDATE,
