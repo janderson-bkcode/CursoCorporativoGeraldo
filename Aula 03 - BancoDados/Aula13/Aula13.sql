@@ -216,8 +216,7 @@ WHERE DepartmentID IN(22,21);
 select * from HumanResources.Department
 order by 1 desc
 
---PAGE 52 SELECT INTO CRIADO TABELA
-
+--PAGE 52 SELECT INTO CRIANDO TABELA
 SELECT
 	DepartmentID,Name,GroupName,ModifiedDate
 INTO dbo.Departament
@@ -247,7 +246,6 @@ ps.Name = 'Socks';
 
 
 
-
 SELECT * FROM HumanResources.Department
 where DepartmentID  = 19
 
@@ -271,3 +269,109 @@ VALUES(@AuthorizationId, @ClientId, 0, GETDATE(), @OperationTypeId, @PaysmartOpe
 
 END
 GO
+
+
+-----60
+use MyAdventureWorks
+ DELETE
+ FROM HumanResources.Department
+ WHERE DepartmentID = 22;
+
+--page 62
+DELETE FROM HumanResources.Department
+FROM HumanResources.Department d
+LEFT OUTER JOIN HumanResources.EmployeeDepartmentHistory ed
+	ON(d.DepartmentID = ed.DepartmentID)
+WHERE ed.DepartmentID is null;
+
+--PAGE 63 TRUNCATE
+TRUNCATE TABLE dbo.Departament
+
+--PAGE 64 DELETE +  ROOLBACK
+SELECT JobCandidateID
+FROM HumanResources.JobCandidate
+WHERE JobCandidateID = 13
+
+BEGIN TRANSACTION;
+DELETE
+FROM HumanResources.JobCandidate
+WHERE JobCandidateID =13;
+
+ROLLBACK;
+
+-- PAGE 65 MERGE
+MERGE dbo.Departament destination
+	USING HumanResources.Department source
+		ON(destination.Name = source.Name)
+	WHEN MATCHED THEN
+		UPDATE
+			SET destination.Name = source.Name,
+			destination.GroupName = source.GroupName,
+			destination.ModifiedDate = source.ModifiedDate
+	WHEN NOT MATCHED BY TARGET THEN
+		INSERT(Name,GroupName,ModifiedDate)
+		VALUES
+		(source.Name,source.GroupName,source.ModifiedDate);
+
+select * from dbo.Departament
+select * from HumanResources.Department
+
+--PAGE 70 OUTPUT
+
+INSERT INTO HumanResources.Department
+	OUTPUT inserted.DepartmentID, inserted.Name,inserted.GroupName,inserted.ModifiedDate
+VALUES('International Marketing Output','Sales and Marketing','26/05/2012');
+
+--PAGE 71
+UPDATE HumanResources.Department
+	SET Name = Name + ' Europe'
+	OUTPUT
+		deleted.Name as OldName,
+		inserted.Name AS UpdateName
+	WHERE DepartmentID != 25;
+
+---PAGE 72 CRIANDO TABELA DE AUDITORIA 
+CREATE TABLE dbo.Department_Audit(
+DepartmentID		INT NOT NULL,
+Name				NVARCHAR(50) NOT NULL,
+GroupName			NVARCHAR(50) NOT NULL,
+DeleteDate			DATETIME NOT NULL
+	CONSTRAINT dfDepartamentAUdit_DeleteDate_Today DEFAULT(GETDATE())
+);
+
+--PAGE 74 USANDO DELETE E ALIMENTANDO TABELA DE AUDITORIA
+DELETE
+	FROM dbo.Departament
+	OUTPUT deleted.DepartmentID,deleted.Name,deleted.GroupName
+	INTO dbo.Department_Audit(DepartmentID,Name,GroupName)
+WHERE DepartmentID = 16;
+
+Select * from dbo.Department_Audit
+SELECT * FROM dbo.Departament
+
+
+--  AULA 14 30/10/2022 PAGE 5
+
+SELECT GETDATE() AS GETDATE,
+SYSDATETIME() AS SYSDATETIME
+
+--PAGE 6
+SELECT 
+	DAY(GETDATE()) AS DAY,
+	MONTH(GETDATE()) AS MONTH,
+	YEAR(GETDATE()) AS YEAR,
+	DATENAME(WEEKDAY,GETDATE()) AS DATENAMEWeekDay,
+	DATEPART(M,GETDATE()) AS DATEPART,
+	DATEPART(WEEKDAY,GETDATE()) AS DatePartWeekDay,
+	DATEPART(MONTH,GETDATE()) AS DateNameMonth;
+
+--PAGE 11
+
+SELECT
+	DATEFROMPARTS(1972,5,26) AS DATEFROMPARTS,
+	DATETIME2FROMPARTS(1972,5,26,7,14,16,10,3)AS DATETIME2FROMPARTS,
+	DATETIMEFROMPARTS(1972,5,26,7,14,16,10)AS DATETIMEFROMPARTS,
+	DATETIMEOFFSETFROMPARTS(1972,5,26,7,14,16,10,12,0,3)AS DATETIMEOFFSETFROMPARTS,
+	SMALLDATETIMEFROMPARTS(1972,5,26,7,14) AS SMALLDATETIMEFROMPARTS,
+	TIMEFROMPARTS(7,14,16,10,3) AS TIMEFROMPARTS
+
