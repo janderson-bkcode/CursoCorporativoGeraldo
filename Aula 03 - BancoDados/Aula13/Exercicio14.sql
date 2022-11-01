@@ -15,13 +15,13 @@ SELECT DISTINCT id_funcao
 FROM tb_empregado
 
 --04
-SELECT e.nome + ', ' + f.ds_funcao as "Empregado e funÁ„o"
+SELECT e.nome + ', ' + f.ds_funcao as "Empregado e fun√ß√£o"
 FROM tb_empregado e 
 INNER JOIN tb_funcao f on (f.id_funcao = e.id_funcao)
 
 --05
 SELECT CAST(id_empregado AS varchar) + ',' + CAST(id_funcao AS varchar) + ','+  COALESCE(CAST(id_gerente AS varchar),'sem gerente')+ ',' + CAST(id_departamento AS varchar) + ','+
-nome + ',' + sobrenome + ',' + email + ',' +  telefone  + ',' + CAST(data_admissao AS varchar) + coalesce(CAST(percentual_comissao AS nvarchar),'Sem comiss„o')+
+nome + ',' + sobrenome + ',' + email + ',' +  telefone  + ',' + CAST(data_admissao AS varchar) + coalesce(CAST(percentual_comissao AS nvarchar),'Sem comiss√£o')+
 ',' + cast(salario as varchar)
 FROM tb_empregado
 
@@ -96,7 +96,7 @@ SELECT nome,salario, CAST((salario * 1.15) - salario as varchar) as "Aumento"
 FROM tb_empregado
 
 --19
-SELECT nome,COALESCE(Cast(percentual_comissao as varchar),'Nenhuma Comiss„o') as COMISS√O
+SELECT nome,COALESCE(Cast(percentual_comissao as varchar),'Nenhuma Comiss√£o') as "COMISS√ÉO"
 FROM tb_empregado
 
 --20
