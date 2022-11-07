@@ -352,8 +352,39 @@ SELECT * FROM dbo.Departament
 -- PAGE 75 TRATAMENTO DE ERROS
 
 BEGIN TRY
-	SELECT 1/0;
+	SELECT 1/0; --DIVISÃO POR ZERO
 	END TRY
 
 	BEGIN CATCH
+	THROW
 	END CATCH
+
+BEGIN TRY
+	SELECT 1/0; --DIVISÃO POR ZERO
+	END TRY
+
+	BEGIN CATCH
+	THROW 51000,'Você dividiu por zero !!!!',1;
+	END CATCH
+
+
+--TSQ-L
+BEGIN 
+	DECLARE @StartingHireDate DateTime = '31/12/2001'
+
+	SELECT e.BusinessEntityID,p.FirstName,p.LastName,e.HireDate
+	FROM HumanResources.Employee e
+	INNER JOIN Person.Person p
+	ON (p.BusinessEntityID = e.BusinessEntityID)
+	where HireDate <=@StartingHireDate
+END
+
+-- IF ELSE
+IF(DATENAME(M,GETDATE()) = 'December')
+BEGIN
+	SELECT 'Chegando Natal' Results
+END
+ELSE
+BEGIN
+	SELECT 'Não, ainda não é dezembro :C' Results
+END
