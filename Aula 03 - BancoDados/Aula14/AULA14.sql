@@ -83,5 +83,8 @@ select
 	IIF(DATENAME(MONTH,GETDATE()) = 'July',
 'The 4th is this month','No Fireworks') as [IIF]
 
-
+--PAGE 28 07/11/2022
+select
+	SUM(poh.TotalDue) as TotalDue
+from Purchasing.PurchaseOrderHeader poh
 
