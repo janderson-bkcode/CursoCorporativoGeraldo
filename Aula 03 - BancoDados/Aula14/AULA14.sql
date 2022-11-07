@@ -84,7 +84,163 @@ select
 'The 4th is this month','No Fireworks') as [IIF]
 
 --PAGE 28 07/11/2022
-select
+SELECT
 	SUM(poh.TotalDue) as TotalDue
-from Purchasing.PurchaseOrderHeader poh
+FROM Purchasing.PurchaseOrderHeader poh
 
+
+SELECT
+	SUM(poh.TotalDue) as [TotalDue],
+	AVG(poh.TotalDue) as [Average TotalDue],
+	COUNT(poh.EmployeeID)[NumberOfEmployees],
+	COUNT(Distinct(poh.EmployeeID)) [DistinctNumberOfEmployees]
+FROM Purchasing.PurchaseOrderHeader poh;
+
+
+--Page 37
+SELECT
+	sm.Name as ShippingMethod,
+	SUM(poh.TotalDue) as [TotalDue],
+	AVG(poh.TotalDue) as [Average TotalDue],
+	COUNT(poh.EmployeeID)[NumberOfEmployees],
+	COUNT(Distinct(poh.EmployeeID)) [DistinctNumberOfEmployees]
+FROM Purchasing.PurchaseOrderHeader poh
+INNER JOIN Purchasing.ShipMethod sm
+	ON(poh.ShipMethodID = sm.ShipMethodID)
+GROUP BY sm.Name;
+
+--
+SELECT 
+sm.Name as ShippingMethod,
+	YEAR(poh.orderDate) as OrderYear,
+	SUM(poh.TotalDue) as [TotalDue],
+	AVG(poh.TotalDue) as [Average TotalDue],
+	COUNT(poh.EmployeeID)[NumberOfEmployees],
+	COUNT(Distinct(poh.EmployeeID)) [DistinctNumberOfEmployees]
+FROM Purchasing.PurchaseOrderHeader poh
+INNER JOIN Purchasing.ShipMethod sm
+	ON(sm.ShipMethodID = poh.ShipMethodID)
+GROUP BY sm.Name,YEAR(poh.OrderDate)
+
+--Page 43
+
+GO 
+WITH ProductQty as(
+
+SELECT TOP (10)
+	p.ProductID,
+	SUM(OrderQty) as orderQty
+FROM Sales.SalesOrderDetail as sod
+INNER JOIN Production.Product AS p
+on (sod.ProductID = p.ProductID)
+GROUP BY p.ProductID
+)
+
+SELECT 
+	p.Name as ProductionName,
+	pq.OrderQty,
+	ROW_NUMBER() OVER (ORDER BY pq.OrderQty DESC) RowNUmber,
+	RANK() OVER(ORDER BY pq.OrderQty DESC)[Rank],
+	DENSE_RANK() OVER(ORDER BY pq.OrderQty DESC)[DenseRank]
+FROM ProductQty as pq 
+INNER JOIN Production.Product AS p
+	ON(pq.ProductID = p.ProductID);
+
+
+--- USANDO HAVING COM FILTRO DO AGRUPAMENTO
+SELECT
+sm.Name as ShippingMethod,
+	YEAR(poh.orderDate) as OrderYear,
+	SUM(poh.TotalDue) as [TotalDue],
+	AVG(poh.TotalDue) as [Average TotalDue],
+	COUNT(poh.EmployeeID)[NumberOfEmployees],
+	COUNT(Distinct(poh.EmployeeID)) [DistinctNumberOfEmployees]
+FROM Purchasing.PurchaseOrderHeader poh
+INNER JOIN Purchasing.ShipMethod sm
+	ON (poh.ShipMethodID = sm.ShipMethodID)
+GROUP BY sm.Name , YEAR(poh.OrderDate)
+HAVING SUM(poh.TotalDue) > 5000000;
+
+
+--OBJETOS TEMPORÁRIOS PAGE 52
+
+WITH EmployeePOs(EmployeeId,[Total Due])
+as
+(
+	SELECT 
+		poh.EmployeeID,CONVERT(varchar(20),SUM(poh.totalDue),1)
+	FROM Purchasing.PurchaseOrderHeader poh
+	GROUP BY poh.EmployeeID
+)
+SELECT * FROM EmployeePOS;
+
+
+WITH EmployeePOS(EmployeeId,[Total Due])
+as
+(
+	SELECT 
+		poh.EmployeeID,CONVERT(varchar(20),SUM(poh.totalDue),1)
+	FROM Purchasing.PurchaseOrderHeader poh
+	GROUP BY poh.EmployeeID
+)
+SELECT ep.EmployeeId,
+		p.FirstName,
+		p.LastName,
+		ep.[Total Due]
+	FROM EmployeePOS ep
+	INNER JOIN Person.Person p
+	ON(ep.EmployeeId = p.BusinessEntityID);
+
+-- VARIÁVEIS DE TABELA TEMPORÁRIA
+
+DECLARE @EmployeePos AS TABLE (
+
+Employee INT,TotalDue MONEY
+)
+
+INSERT INTO @EmployeePos
+SELECT
+	poh.EmployeeID,
+	CONVERT(varchar(20),SUM(poh.TotalDue),1)
+	FROM Purchasing.PurchaseOrderHeader poh
+GROUP BY poh.EmployeeID;
+
+select * from @EmployeePos
+
+-- 
+DECLARE @EEmployeePOS AS TABLE (
+
+EmployeeID INT,TotalDue MONEY
+)
+
+INSERT INTO @EEmployeePOS
+SELECT
+	poh.EmployeeID,
+	CONVERT(varchar(20),SUM(poh.TotalDue),1)
+	FROM Purchasing.PurchaseOrderHeader poh
+GROUP BY poh.EmployeeID;
+
+SELECT ep.EmployeeID,
+		p.FirstName,
+		p.LastName,
+		ep.[TotalDue]
+from @EEmployeePOS ep
+inner join Person.Person p
+ON (ep.EmployeeID = p.BusinessEntityID);
+	
+
+
+--CRIAÇÃO DE TABELA TEMPORÁRIA
+
+CREATE TABLE #EmployyePOS(
+EmployeeID int,
+TotalDue money
+);
+
+INSERT INTO #EmployyePOS
+	SELECT poh.EmployeeID,
+	CONVERT(varchar(20),SUM(poh.TotalDue))
+	from Purchasing.PurchaseOrderHeader poh
+	GROUP BY poh.EmployeeID;
+
+SELECT * FROM #EmployyePOS

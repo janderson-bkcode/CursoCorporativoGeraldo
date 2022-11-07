@@ -348,3 +348,12 @@ WHERE DepartmentID = 16;
 
 Select * from dbo.Department_Audit
 SELECT * FROM dbo.Departament
+
+-- PAGE 75 TRATAMENTO DE ERROS
+
+BEGIN TRY
+	SELECT 1/0;
+	END TRY
+
+	BEGIN CATCH
+	END CATCH
