@@ -51,8 +51,11 @@ FROM tb_empregados e
 INNER JOIN tb_grades_salarios gs on(e.salario BETWEEN gs.limite_inferior AND gs.limite_superior)
 
 --09
-SELECT  cf.id_curso,cf.dt_inicio,SUM(id_participante) as "Quantidade de Participantes"
+SELECT m.id_curso,m.dt_inicio,COUNT(m.id_participante) as "Quantidade de Participantes"
 FROM tb_cursos_oferecidos cf
-INNER JOIN tb_matriculas m on (cf.id_curso = m.id_curso)
-GROUP BY cf.id_curso, cf.dt_inicio
+INNER JOIN tb_matriculas m on (cf.id_curso = m.id_curso and cf.dt_inicio = m.dt_inicio)
+GROUP BY m.id_curso, m.dt_inicio
 order by 3 desc
+
+--10
+
