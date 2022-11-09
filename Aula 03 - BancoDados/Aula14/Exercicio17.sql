@@ -46,3 +46,13 @@ INNER JOIN tb_empregados p ON (m.id_participante = p.id_empregado)
 WHERE m.id_curso = 'SQL';
 
 --08
+SELECT nm_empregado,iniciais_empregado,CAST(salario*12 as varchar) as SalarioAnual
+FROM tb_empregados e
+INNER JOIN tb_grades_salarios gs on(e.salario BETWEEN gs.limite_inferior AND gs.limite_superior)
+
+--09
+SELECT  cf.id_curso,cf.dt_inicio,SUM(id_participante) as "Quantidade de Participantes"
+FROM tb_cursos_oferecidos cf
+INNER JOIN tb_matriculas m on (cf.id_curso = m.id_curso)
+GROUP BY cf.id_curso, cf.dt_inicio
+order by 3 desc
