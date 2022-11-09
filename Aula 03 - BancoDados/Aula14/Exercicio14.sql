@@ -2,7 +2,7 @@ USE EXERCICIO_12
 
 --01
 SELECT e.nome + 'Trabalha para ' + d.nm_departamento + ' Localizado na cidade: ' + l.cidade +
-', Estado: ' + COALESCE(l.estado,'Sem Estado Cadastrado') + ', País: ' + p.nm_pais AS "Informação dos Empregados"
+', Estado: ' + COALESCE(l.estado,'Sem Estado Cadastrado') + ', PaÃ­s: ' + p.nm_pais AS "InformaÃ§Ã£o dos Empregados"
 FROM tb_empregado e 
 INNER JOIN tb_departamento d ON (e.id_departamento = d.id_departamento)
 INNER JOIN tb_localizacao l ON (l.id_localizacao = d.id_localizacao)
