@@ -58,4 +58,23 @@ GROUP BY m.id_curso, m.dt_inicio
 order by 3 desc
 
 --10
+SELECT m.id_curso,m.dt_inicio,COUNT(m.id_participante) as "Matricula"
+FROM tb_cursos_oferecidos cf
+INNER JOIN tb_matriculas m on (cf.id_curso = m.id_curso and cf.dt_inicio = m.dt_inicio)
+WHERE m.dt_inicio between '01/01/1999' and	'31/12/1999'
+GROUP BY m.id_curso, m.dt_inicio
+HAVING(COUNT(m.id_participante)) >=3
+
+--11
+SELECT id_instrutor
+FROM tb_cursos_oferecidos
+WHERE id_instrutor IS NOT NULL
+EXCEPT
+SELECT id_participante
+FROM tb_matriculas;
+
+--12
+
+
+
 
