@@ -94,22 +94,20 @@ GROUP BY  i.iniciais_empregado, i.nm_empregado
 SELECT e.iniciais_empregado,e.nm_empregado,
 		COUNT(DISTINCT(m.dt_inicio))as "CURSOS",
 		COUNT(*) AS "PARTICIPANTES",
-		ROUND(AVG(avaliacao),1)as "Avaliação"
+		ROUND(AVG(avaliacao),1)as "Avaliaï¿½ï¿½o"
 FROM tb_matriculas m
 INNER JOIN tb_cursos_oferecidos co on (co.id_curso = m.id_curso AND co.dt_inicio = m.dt_inicio)
 INNER JOIN tb_empregados e on (e.id_empregado = co.id_instrutor)
 GROUP BY e.iniciais_empregado,e.nm_empregado
 
 --14
-SELECT DISTINCT i.iniciais_empregado, 
-		i.nm_empregado
-FROM tb_empregados i
-INNER JOIN tb_cursos_oferecidos co on (co.id_instrutor = i.id_empregado)
-INNER JOIN tb_cursos c on (c.id_curso = co.id_curso)
-INNER JOIN tb_matriculas m on (co.id_curso = m.id_curso AND co.dt_inicio = m.dt_inicio)
-WHERE id_gerente in (select id_participante from tb_matriculas)
+SELECT DISTINCT e.nm_empregado, e.iniciais_empregado, co.id_curso
+FROM tb_empregados e
+INNER JOIN tb_cursos_oferecidos co ON (e.id_empregado = co.id_instrutor)
+INNER JOIN tb_matriculas m ON (m.id_curso = co.id_curso AND m.dt_inicio = co.dt_inicio)
+INNER JOIN tb_cursos c ON (co.id_curso = c.id_curso)
+WHERE e.id_gerente = m.id_participante 
 AND c.categoria = 'GEN'
-
 
 
 --15
