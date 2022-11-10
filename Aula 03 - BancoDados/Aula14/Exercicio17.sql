@@ -111,6 +111,6 @@ AND c.categoria = 'GEN'
 
 
 --15
-SELECT 
+SELECT *
 FROM tb_cursos c
 
