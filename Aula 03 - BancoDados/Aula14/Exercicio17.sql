@@ -74,7 +74,45 @@ SELECT id_participante
 FROM tb_matriculas;
 
 --12
+SELECT id_participante, id_curso
+FROM tb_matriculas
+GROUP BY id_participante, id_curso
+HAVING(Count(id_curso)) >1
+
+--13
+SELECT  i.iniciais_empregado, 
+		i.nm_empregado,
+		COUNT(m.dt_inicio) as cursos,
+		COUNT(*) as "qtdAlunos",
+		COALESCE(CAST(ROUND(AVG(avaliacao),1)AS VARCHAR),'SEM MEDIA') as "mediaAvaliacao"
+FROM tb_empregados i
+INNER JOIN tb_cursos_oferecidos co on (co.id_instrutor = i.id_empregado)
+INNER JOIN tb_matriculas m on (co.id_curso = m.id_curso AND co.dt_inicio = m.dt_inicio)
+GROUP BY  i.iniciais_empregado, i.nm_empregado
+
+--
+SELECT e.iniciais_empregado,e.nm_empregado,
+		COUNT(DISTINCT(m.dt_inicio))as "CURSOS",
+		COUNT(*) AS "PARTICIPANTES",
+		ROUND(AVG(avaliacao),1)as "Avaliação"
+FROM tb_matriculas m
+INNER JOIN tb_cursos_oferecidos co on (co.id_curso = m.id_curso AND co.dt_inicio = m.dt_inicio)
+INNER JOIN tb_empregados e on (e.id_empregado = co.id_instrutor)
+GROUP BY e.iniciais_empregado,e.nm_empregado
+
+--14
+SELECT DISTINCT i.iniciais_empregado, 
+		i.nm_empregado
+FROM tb_empregados i
+INNER JOIN tb_cursos_oferecidos co on (co.id_instrutor = i.id_empregado)
+INNER JOIN tb_cursos c on (c.id_curso = co.id_curso)
+INNER JOIN tb_matriculas m on (co.id_curso = m.id_curso AND co.dt_inicio = m.dt_inicio)
+WHERE id_gerente in (select id_participante from tb_matriculas)
+AND c.categoria = 'GEN'
 
 
 
+--15
+SELECT 
+FROM tb_cursos c
 
