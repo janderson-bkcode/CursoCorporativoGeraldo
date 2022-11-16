@@ -1,6 +1,6 @@
 USE MyAdventureWorks
 
---  AULA 14 30/10/2022 PAGE 5 FUN«’ES DE DATA
+--  AULA 14 30/10/2022 PAGE 5 FUN√á√ïES DE DATA
 
 SELECT GETDATE() AS GETDATE,
 SYSDATETIME() AS SYSDATETIME
@@ -34,7 +34,7 @@ SELECT
   ISDATE(GETDATE()) AS IsValidDate,
   ISDATE('1/13/2122') AS InvalidDate;
 
---PAGE 14 CONVERS√O 
+--PAGE 14 CONVERS√ÉO 
 
 SELECT TOP(10)
 	SalesOrderNumber,
@@ -63,7 +63,7 @@ TRY_CONVERT(datetime,'2/13/2999',112) AS TRYCONVERT,
 PARSE('Saturday,26 May 2012' AS datetime USING 'en-US') as parse,
 TRY_PARSE('Jose da silva Birthday' as datetime using 'en-US') as tryparse
 
---PAGE 25 FUN«’ES DE STRING
+--PAGE 25 FUN√á√ïES DE STRING
 
 SELECT
 	'LEBLANC'+ ',' + 'PATRICK' RawValues,
@@ -162,7 +162,7 @@ GROUP BY sm.Name , YEAR(poh.OrderDate)
 HAVING SUM(poh.TotalDue) > 5000000;
 
 
---OBJETOS TEMPOR¡RIOS PAGE 52
+--OBJETOS TEMPOR√ÅRIOS PAGE 52
 
 WITH EmployeePOs(EmployeeId,[Total Due])
 as
@@ -191,7 +191,7 @@ SELECT ep.EmployeeId,
 	INNER JOIN Person.Person p
 	ON(ep.EmployeeId = p.BusinessEntityID);
 
--- VARI¡VEIS DE TABELA TEMPOR¡RIA
+-- VARI√ÅVEIS DE TABELA TEMPOR√ÅRIA
 
 DECLARE @EmployeePos AS TABLE (
 
@@ -230,7 +230,7 @@ ON (ep.EmployeeID = p.BusinessEntityID);
 	
 
 
---CRIA«√O DE TABELA TEMPOR¡RIA
+--CRIA√á√ÉO DE TABELA TEMPOR√ÅRIA
 
 CREATE TABLE #EmployyePOS(
 EmployeeID int,
@@ -250,7 +250,7 @@ SELECT * FROM #EmployyePOS
 -- PAGE 75 TRATAMENTO DE ERROS
 
 BEGIN TRY
-	SELECT 1/0; --DIVIS√O POR ZERO
+	SELECT 1/0; --DIVIS√ÉO POR ZERO
 	END TRY
 
 	BEGIN CATCH
@@ -258,11 +258,11 @@ BEGIN TRY
 	END CATCH
 
 BEGIN TRY
-	SELECT 1/0; --DIVIS√O POR ZERO
+	SELECT 1/0; --DIVIS√ÉO POR ZERO
 	END TRY
 
 	BEGIN CATCH
-	THROW 51000,'VocÍ dividiu por zero !!!!',1;
+	THROW 51000,'Voc√™ dividiu por zero !!!!',1;
 	END CATCH
 
 
@@ -284,7 +284,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	SELECT 'N„o, ainda n„o È dezembro :C' Results
+	SELECT 'N√£o, ainda n√£o √© dezembro :C' Results
 END
 
 
