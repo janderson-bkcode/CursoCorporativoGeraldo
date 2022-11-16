@@ -93,7 +93,7 @@ GROUP BY e.iniciais_empregado,e.nm_empregado
 SELECT e.iniciais_empregado,e.nm_empregado,
 		COUNT(DISTINCT(m.dt_inicio))as "CURSOS",
 		COUNT(*) AS "PARTICIPANTES",
-		ROUND(AVG(avaliacao),1)as "Avalia��o"
+		ROUND(AVG(avaliacao),1)as "Avaliação"
 FROM tb_matriculas m
 INNER JOIN tb_cursos_oferecidos co on (co.id_curso = m.id_curso AND co.dt_inicio = m.dt_inicio)
 INNER JOIN tb_empregados e on (e.id_empregado = co.id_instrutor)
