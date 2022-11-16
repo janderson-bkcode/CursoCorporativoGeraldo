@@ -157,3 +157,75 @@ GO
     EXECUTE @Age = dbo.GetEmployeeAge @BirthDate = '31/07/1977';
     SELECT @Age;
 GO
+
+--PAGE 51
+SET ANSI_NULLS ON --MANIPULAÇÃO DE VALORES NULOS
+GO 
+
+SET QUOTED_IDENTIFIER ON -- PALAVRAS RESERVADAS
+GO
+
+    CREATE OR ALTER FUNCTION dbo.GetOrderDetails(@SalesID int)
+    RETURNS TABLE
+    AS
+        RETURN(
+        SELECT sod.SalesOrderID,sod.SalesOrderDetailID,sod.CarrierTrackingNumber,p.Name ProductName,so.[Description]
+        FROM Sales.SalesOrderDetail sod
+        INNER JOIN Production.Product p ON (sod.ProductID = p.ProductID)
+        INNER JOIN sales.SpecialOffer so ON (sod.SpecialOfferID = so.SpecialOfferID)
+        WHERE sod.SalesOrderID = @SalesID     
+)
+GO
+
+--INVOCANDO FUNCTION
+SELECT * FROM dbo.GetOrderDetails(43659)
+
+
+--page 58
+GO
+    CREATE OR ALTER FUNCTION [dbo].[GetTotalPedido](@OrderID Int)
+        RETURNS DECIMAL(7,2)
+    AS
+    BEGIN 
+        DECLARE @Total DECIMAL(7,2)
+        SELECT @Total = SUM(SalesOrderDetail.UnitPrice * SalesOrderDetail.OrderQty)
+        FROM Sales.SalesOrderDetail
+        WHERE SalesOrderID= @OrderID
+        RETURN @Total
+    END;
+GO
+
+SELECT dbo.GetTotalPedido(43660) TotalPedido;
+
+-- page 60
+
+GO
+    CREATE OR ALTER FUNCTION [dbo].[GetDetalhesPedidoCliente]
+        (@CustomerID NCHAR(5))
+    RETURNS @PedidosCliente TABLE(
+                    CustomerId  NCHAR(5),
+                    FirstName   VARCHAR(25),
+                    MiddleName  VARCHAR(25),
+                    LastName    VARCHAR(25),
+                    OrderDate   DATETIME
+)
+AS 
+BEGIN
+    INSERT INTO @PedidosCliente
+    SELECT c.CustomerID,p.FirstName,p.MiddleName,p.LastName,c.ModifiedDate
+    FROM Sales.Customer c
+    INNER JOIN Person.Person p ON (c.CustomerID = p.BusinessEntityID)
+    WHERE c.CustomerID = @CustomerID;
+
+    IF(@@ROWCOUNT = 0)
+        BEGIN
+            INSERT INTO @PedidosCliente
+            VALUES(NULL,'Cliente não localizado','Cliente não localizado','Cliente não localizado',GETDATE())
+    END
+    RETURN
+END;
+GO
+
+SELECT * from dbo.GetDetalhesPedidoCliente(285);
+SELECT * from dbo.GetDetalhesPedidoCliente(0000);
+
