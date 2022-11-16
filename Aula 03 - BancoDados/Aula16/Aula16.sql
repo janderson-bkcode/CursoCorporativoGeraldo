@@ -229,3 +229,5 @@ GO
 SELECT * from dbo.GetDetalhesPedidoCliente(285);
 SELECT * from dbo.GetDetalhesPedidoCliente(0000);
 
+
+
