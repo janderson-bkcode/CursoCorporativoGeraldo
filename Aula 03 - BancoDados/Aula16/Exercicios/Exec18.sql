@@ -1,5 +1,5 @@
 -- EXERCICIO 18
-USE Exercicio_16
+USE Academico
 --01
 
 --page 58
@@ -22,3 +22,18 @@ GO
 
 --02
 
+GO
+    CREATE OR ALTER FUNCTION [dbo].[GetDepartamento]
+        (@DepartamentoID Int)
+    RETURNS INT
+    AS 
+    BEGIN
+    Select id_departamento
+        FROM dbo.tb_departamento
+        WHERE id_departamento = @DepartamentoID
+        IF(EXISTS())
+         BEGIN
+            PRINT 'NÃO EXISTE DEPARTAMENTO'
+         END
+    END;
+GO
