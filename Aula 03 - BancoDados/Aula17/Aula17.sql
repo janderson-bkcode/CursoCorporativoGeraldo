@@ -73,4 +73,10 @@ ON HumanResources.Department
                 WHERE DepartmentID = @DepartamentID
             END
     END
-GO
+GO 
+
+INSERT INTO HumanResources.Department
+VALUES('Executive Marketing','Executive General and Administration','11/02/2011');
+
+SELECT * from HumanResources.Department
+
