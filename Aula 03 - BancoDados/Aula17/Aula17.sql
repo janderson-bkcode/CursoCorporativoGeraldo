@@ -80,3 +80,38 @@ VALUES('Executive Marketing','Executive General and Administration','11/02/2011'
 
 SELECT * from HumanResources.Department
 
+--
+GO
+CREATE OR ALTER TRIGGER HumanResources.iCheckModifiedDate
+ON HumanResources.Department
+    FOR INSERT
+    AS
+    BEGIN
+        DECLARE @modifiedDate DATETIME,@DepartamentID INT
+        SELECT @modifiedDate = modifiedDate,@DepartamentID = DepartmentID
+        FROM inserted;
+        IF(DATEDIFF(Day,@modifiedDate,GETDATE())>0)
+        BEGIN
+        UPDATE HumanResources.Department
+        SET ModifiedDate = DATEADD(DAY,-1,GETDATE())
+        WHERE DepartmentID = @DepartamentID
+        END
+    END
+GO
+
+
+
+INSERT INTO HumanResources.Department
+VALUES('Executive Marketing','Executive General and Administration','11/02/2011');
+
+SELECT * from HumanResources.Department ORDER BY 1 DESC
+
+
+DROP TRIGGER HumanResources.iCheckModifiedDate;
+
+DISABLE TRIGGER HumanResources.iCheckModifiedDate
+ ON HumanResources.Department;
+
+ENABLE TRIGGER HumanResources.iCheckModifiedDate
+ ON HumanResources.Department;
+
