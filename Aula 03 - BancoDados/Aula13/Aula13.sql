@@ -93,7 +93,7 @@ OFFSET 10 ROWS
 FETCH NEXT 10 ROWS ONLY;
 
 
--- EXPRESSÕES PAG 28
+-- EXPRESSï¿½ES PAG 28
 SELECT
 FirstName + ' ' + LastName as FullName
 FROM Person.Person;
@@ -114,7 +114,7 @@ declare @variavel2 int = 30;
 declare @variavel int
 set @variavel = 20;
 
-Select @variavel ProductID
+Select @variavel, ProductID
 from Production.Product
 where ProductID is not null;
 
