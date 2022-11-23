@@ -38,7 +38,7 @@ BEGIN
 	IF EXISTS(SELECT id_departamento FROM tb_departamento WHERE id_departamento = @dptoID)
 	BEGIN
 		SET @dptoInfo = (SELECT 'id: ' + CAST(d.id_departamento AS VARCHAR) +
-							' nome: ' + d.nm_departamento + ' endereço: ' + l.endereco + ', '+ l.cidade + ', ' 
+							' nome: ' + d.nm_departamento + ' endereï¿½o: ' + l.endereco + ', '+ l.cidade + ', ' 
 							+ COALESCE(l.estado, '') + ', ' +p.nm_pais
 						FROM tb_departamento  d
 						INNER JOIN tb_localizacao l ON(d.id_localizacao = l.id_localizacao)
@@ -99,3 +99,7 @@ END
 GO
 
 SELECT * FROM GetFuncaoID()
+
+Go 
+Create or alter FUNCTION get
+returns Table

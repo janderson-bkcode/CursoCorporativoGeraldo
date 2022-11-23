@@ -348,4 +348,3 @@ WHERE DepartmentID = 16;
 
 Select * from dbo.Department_Audit
 SELECT * FROM dbo.Departament
-
