@@ -12,6 +12,7 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult ReceberArquivo(IFormFile arquivo)
         {
@@ -21,7 +22,7 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Controllers
 
                 using (var workbook = new XLWorkbook(arquivo.OpenReadStream()))
                 {
-                    var worksheet = workbook.Worksheet(1); // Usa a primeira planilha de trabalho 
+                    var worksheet = workbook.Worksheet(1); // Usa a primeira planilha de trabalho
                     var range = worksheet.RangeUsed(); // verifica os ranges que estão sendo usados(d5:d6) por exemplo
 
                     for (int row = 7; row <= range.RowCount(); row++)
@@ -31,7 +32,7 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Controllers
                             Data = range.Cell(row, 1).Value.ToString(),
                             Origem = range.Cell(row, 2).Value.ToString(),
                             Cnpj = range.Cell(row, 3).Value.ToString(),
-                            Nome  = range.Cell(row, 4).Value.ToString(),
+                            Nome = range.Cell(row, 4).Value.ToString(),
                             TipoMovimento = range.Cell(row, 5).Value.ToString(),
                             Valor = range.Cell(row, 6).Value.ToString(),
                             EndToEnd = range.Cell(row, 7).Value.ToString(),
@@ -39,14 +40,12 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Controllers
                             DescCondicao = range.Cell(row, 9).Value.ToString(),
                             NumeroRemessa = range.Cell(row, 10).Value.ToString(),
                             AgenciaOrigem = range.Cell(row, 11).Value.ToString(),
-                            AgenciaDestino = range.Cell(row,12).Value.ToString()
+                            AgenciaDestino = range.Cell(row, 12).Value.ToString()
                         };
 
                         dados.Add(dado);
                     }
                 }
-
-
 
                 using (var contexto = new MeuDbContext())
                 {
@@ -59,6 +58,5 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Controllers
 
             return View();
         }
-
     }
 }
