@@ -77,8 +77,7 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Controllers
             string NumeroRemessa = range.Cell(row, 10).Value.ToString();
             string AgenciaOrigem = range.Cell(row, 11).Value.ToString();
             string AgenciaDestino = range.Cell(row, 12).Value.ToString();
-
-            var dado = new DadosExcel(Data, Origem, Cnpj, Nome, TipoMovimento, Valor, EndToEnd, Condicao, DescCondicao, NumeroRemessa, AgenciaOrigem, AgenciaDestino);
+            var dado = new DadosExcel(Data.Date, Origem, Cnpj, Nome, TipoMovimento, Valor, EndToEnd, Condicao, DescCondicao, NumeroRemessa, AgenciaOrigem, AgenciaDestino);
 
             return dado;
         }

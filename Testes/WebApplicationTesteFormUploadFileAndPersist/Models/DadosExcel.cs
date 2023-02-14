@@ -20,6 +20,10 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Models
             AgenciaOrigem = agenciaOrigem;
             AgenciaDestino = agenciaDestino;
         }
+        protected DadosExcel()
+        {
+
+        }
 
         [Key]
         public int Id { get; set; }
