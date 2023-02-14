@@ -25,7 +25,7 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Controllers
                     var worksheet = workbook.Worksheet(1); // Usa a primeira planilha de trabalho
                     var range = worksheet.RangeUsed(); // verifica os ranges que estão sendo usados(d5:d6) por exemplo
 
-                    for (int row = 7; row <= range.RowCount(); row++)
+                    for (int row = 7; row <= (range.RowCount() -2) ; row++)
                     {
                         var dado = new DadosExcel
                         {
@@ -49,7 +49,7 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Controllers
 
                 using (var contexto = new MeuDbContext())
                 {
-                    contexto.Alunos.AddRange(dados);
+                    contexto.PixTransactionConciliation.AddRange(dados);
                     contexto.SaveChanges();
                 }
 

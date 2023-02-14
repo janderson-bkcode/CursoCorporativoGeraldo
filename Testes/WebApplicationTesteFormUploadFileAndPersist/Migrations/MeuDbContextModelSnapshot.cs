@@ -67,7 +67,7 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Alunos");
+                    b.ToTable("PixTransactionConciliation");
                 });
 #pragma warning restore 612, 618
         }

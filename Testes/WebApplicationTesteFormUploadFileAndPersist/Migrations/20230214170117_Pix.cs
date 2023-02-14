@@ -5,13 +5,13 @@
 namespace WebApplicationTesteFormUploadFileAndPersist.Migrations
 {
     /// <inheritdoc />
-    public partial class teste : Migration
+    public partial class Pix : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Alunos",
+                name: "PixTransactionConciliation",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -31,7 +31,7 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Alunos", x => x.Id);
+                    table.PrimaryKey("PK_PixTransactionConciliation", x => x.Id);
                 });
         }
 
@@ -39,7 +39,7 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Alunos");
+                name: "PixTransactionConciliation");
         }
     }
 }

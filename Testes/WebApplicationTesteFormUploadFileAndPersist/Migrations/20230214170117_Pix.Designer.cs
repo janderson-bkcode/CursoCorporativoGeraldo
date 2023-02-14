@@ -11,8 +11,8 @@ using WebApplicationTesteFormUploadFileAndPersist.Data;
 namespace WebApplicationTesteFormUploadFileAndPersist.Migrations
 {
     [DbContext(typeof(MeuDbContext))]
-    [Migration("20230214133504_teste")]
-    partial class teste
+    [Migration("20230214170117_Pix")]
+    partial class Pix
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,7 +70,7 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Alunos");
+                    b.ToTable("PixTransactionConciliation");
                 });
 #pragma warning restore 612, 618
         }
