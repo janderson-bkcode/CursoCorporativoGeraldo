@@ -23,5 +23,19 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Models
         {
             return $"Data : {Data} Origem: {Origem} Cnpj=> {Cnpj} Nome => {Nome}{TipoMovimento}";
         }
+
+        public int ReturnOperationType(string tipoMovimento)
+        {
+            switch (tipoMovimento)
+            {
+                case "CREDITO":
+                    return 1072;
+                case "DEBITO":
+                    return 1054;
+                default:
+                    break;
+            }
+            return 0;
+        }
     }                
 }
