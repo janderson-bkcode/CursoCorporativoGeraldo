@@ -27,32 +27,19 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Controllers
 
                     for (int row = 7; row <= (range.RowCount() - 2); row++)// Eliminando a leitura das duas utimas linhas que são o total
                     {
-                        var dado = new DadosExcel
-                        {
-                            Data = Convert.ToDateTime(range.Cell(row, 1).Value.ToString()),
-                            Origem = range.Cell(row, 2).Value.ToString(),
-                            Cnpj = range.Cell(row, 3).Value.ToString(),
-                            Nome = range.Cell(row, 4).Value.ToString(),
-                            TipoMovimento = range.Cell(row, 5).Value.ToString(),
-                            Valor = Convert.ToDecimal(range.Cell(row, 6).Value.ToString()),
-                            EndToEnd = range.Cell(row, 7).Value.ToString(),
-                            Condicao = range.Cell(row, 8).Value.ToString(),
-                            DescCondicao = range.Cell(row, 9).Value.ToString(),
-                            NumeroRemessa = range.Cell(row, 10).Value.ToString(),
-                            AgenciaOrigem = range.Cell(row, 11).Value.ToString(),
-                            AgenciaDestino = range.Cell(row, 12).Value.ToString()
-                        };
-
+                        var dado = LerExcelPopularClasse(range, row);
                         dados.Add(dado);
                     }
                 }
 
                 var query = from excel in dados
-                            where excel.TipoMovimento.Equals("CREDITO") // PIX RECEBIDO
+                            where excel.TipoMovimento.Equals(1072) // PIX RECEBIDO
                             select excel;
 
+                //Comparar com lista de BD que possui mesmo EndtoEnd e OperationType na mesma data
+
                 var query2 = from excel2 in dados
-                             where excel2.TipoMovimento.Equals("DEBITO") //PIX ENVIADO
+                             where excel2.TipoMovimento.Equals(1054)
                              select excel2;
 
                 foreach (var item in query)
@@ -74,6 +61,26 @@ namespace WebApplicationTesteFormUploadFileAndPersist.Controllers
             }
 
             return View();
+        }
+
+        private DadosExcel LerExcelPopularClasse(IXLRange range, int row)
+        {
+            DateTime Data = Convert.ToDateTime(range.Cell(row, 1).Value.ToString());
+            string Origem = range.Cell(row, 2).Value.ToString();
+            string Cnpj = range.Cell(row, 3).Value.ToString();
+            string Nome = range.Cell(row, 4).Value.ToString();
+            string TipoMovimento = range.Cell(row, 5).Value.ToString();
+            decimal Valor = Convert.ToDecimal(range.Cell(row, 6).Value.ToString());
+            string EndToEnd = range.Cell(row, 7).Value.ToString();
+            string Condicao = range.Cell(row, 8).Value.ToString();
+            string DescCondicao = range.Cell(row, 9).Value.ToString();
+            string NumeroRemessa = range.Cell(row, 10).Value.ToString();
+            string AgenciaOrigem = range.Cell(row, 11).Value.ToString();
+            string AgenciaDestino = range.Cell(row, 12).Value.ToString();
+
+            var dado = new DadosExcel(Data, Origem, Cnpj, Nome, TipoMovimento, Valor, EndToEnd, Condicao, DescCondicao, NumeroRemessa, AgenciaOrigem, AgenciaDestino);
+
+            return dado;
         }
     }
 }
