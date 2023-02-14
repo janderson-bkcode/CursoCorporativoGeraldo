@@ -27,4 +27,27 @@ namespace Auxiliar
     //                 </select>
     //             </div>*@
     // 
+      private DateTime ConvertToDate(string strDateTime)
+        {
+            strDateTime = $"{strDateTime.Substring(0, 4)}-{strDateTime.Substring(4, 2)}-{strDateTime.Substring(6, 2)}";
+            return Convert.ToDateTime(strDateTime);
+        }
+        private TimeSpan ConvertToTime(string strTime)
+        {
+            strTime = $"{strTime.Substring(0, 2)}:{strTime.Substring(0,2)}:{strTime.Substring(0,2)}";
+            return Convert.ToDateTime(strTime).TimeOfDay;
+        }
+        private DateTime ConvertToDateTime(string strDateTime)
+        {
+            DateTime dtFinaldate; string sDateTime;
+            try { dtFinaldate = Convert.ToDateTime(strDateTime); }
+            catch (Exception e)
+            {
+                string[] sDate = strDateTime.Split('/');
+                sDateTime = sDate[1] + '/' + sDate[0] + '/' + sDate[2];
+                dtFinaldate = Convert.ToDateTime(sDateTime);
+            }
+            return dtFinaldate;
+        }
+
 }
