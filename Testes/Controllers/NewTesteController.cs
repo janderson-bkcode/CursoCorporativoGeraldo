@@ -58,19 +58,21 @@ namespace Portal.Controllers
 
         public IActionResult _DetailsTransactions(ListResponse<PixTransactionConciliation> pixTransactionConciliations, string parameters = null, string json = null)
         {
-            ViewBag.Sucess = 1;
-           
-            ListResponse<Extract> listExtracts = _repositoryExtract.GetAllPaged(10000).Result;
-
             if (parameters != null) pixTransactionConciliations.Items = JsonConvert.DeserializeObject<List<PixTransactionConciliation>>(parameters);
 
-            var filterExtracts = listExtracts.Items.Where(ex => pixTransactionConciliations.Items.Any(pix => pix.TransactionDate == ex.DateOperation)).ToList();
-            var queryExtract = from extract in filterExtracts
-                               where extract.StateId == 1 && extract.AuthenticationCode != null
-                               select extract;
+            ViewBag.Sucess = 1;
 
-            ViewBag.Extract = queryExtract.ToList();
+            DateTime minTransactionDate = pixTransactionConciliations.Items.OrderBy(p => p.TransactionDate).FirstOrDefault()?.TransactionDate ?? default(DateTime);
+            DateTime maxTransactionDate = pixTransactionConciliations.Items.OrderByDescending(p => p.TransactionDate).FirstOrDefault()?.TransactionDate ?? default(DateTime);
+
+            string sinceDate = minTransactionDate.ToString("yyyy-MM-dd");
+            string untilDate = maxTransactionDate.ToString("yyyy-MM-dd");
+
+            ListResponse<Extract> listExtracts = _repositoryExtract.GetAll(sinceDate, untilDate).Result;
+
+            ViewBag.Extract = listExtracts;
             ViewBag.PixTransaction = pixTransactionConciliations;
+
             return View("Index", pixTransactionConciliations);
         }
 
@@ -167,7 +169,6 @@ namespace Portal.Controllers
             ListResponse<PixTransactionConciliation> pixTransactionConciliations = new ListResponse<PixTransactionConciliation>();
             pixTransactionConciliations.Items = new List<PixTransactionConciliation>();
 
-
             try
             {
                 var excelDataList = new ConcurrentBag<PixTransactionConciliation>();
@@ -226,17 +227,13 @@ namespace Portal.Controllers
 
         public IActionResult InserirDadosConciliacaoAprovacao(ListResponse<PixTransactionConciliation> pixTransactionConciliations, string dataInicial, string dataFinal)
         {
-            List<ExtractResponse> listExtracts = new List<ExtractResponse>();
-
             ListResponse<PixTransactionConciliation> listResponsePixTransactionGrid = new ListResponse<PixTransactionConciliation>();
-
             listResponsePixTransactionGrid.Items = new List<PixTransactionConciliation>();
 
-            listExtracts = _extractRepository.GetExtractsPixTransactions().Result;
+            ListResponse<Extract> listExtracts = _repositoryExtract.GetAll(dataInicial, dataFinal).Result;
 
             var listPixNotInExtract = pixTransactionConciliations.Items
-                .Where(pix => !listExtracts.Any(ex => pix.EndToEnd == ex.AuthenticationCode))
-                .Where(pix => listExtracts.Any(ex => ex.DateOperation == pix.TransactionDate)).ToList();
+                .Where(pix => !listExtracts.Items.Any(ex => pix.EndToEnd == ex.AuthenticationCode));
 
             var compareTransactionsNotExists =
                       from transaction in listPixNotInExtract
@@ -254,6 +251,7 @@ namespace Portal.Controllers
                 ViewBag.Aprovacao = true;
                 ViewBag.PixTransactions = pixTransactionConciliations.Items;
                 ViewBag.GridData = listResponsePixTransactionGrid;
+
                 return _GridConciliation(pixTransactionConciliations);
             }
             catch (Exception e)
@@ -269,10 +267,9 @@ namespace Portal.Controllers
 
         public IActionResult InserirTransacoesConciliacaoNegacao(ListResponse<PixTransactionConciliation> pixTransactionConciliations, string dataInicial, string dataFinal)
         {
-            ListResponse<Extract> listResponseExtract = _repositoryExtract.GetAll().Result;
+            ListResponse<Extract> listResponseExtract = _repositoryExtract.GetAll(dataInicial, dataFinal).Result;
 
             ListResponse<PixTransactionConciliation> listResponsePixTransactionGrid = new ListResponse<PixTransactionConciliation>();
-
             listResponsePixTransactionGrid.Items = new List<PixTransactionConciliation>();
 
             var listExtractNotIntFile = listResponseExtract.Items.Where(ex => !pixTransactionConciliations.Items.Any(pix => pix.EndToEnd == ex.AuthenticationCode)).ToList();
@@ -284,7 +281,6 @@ namespace Portal.Controllers
                       where !string.IsNullOrWhiteSpace(extract.AuthenticationCode)
                       where extract.DateOperation >= Convert.ToDateTime(dataInicial) && extract.DateOperation <= Convert.ToDateTime(dataFinal)
                       select extract;
-
             try
             {
                 foreach (var transaction in compareTransactions.Take(10).ToList())
@@ -393,10 +389,15 @@ namespace Portal.Controllers
         public IActionResult NegarTransacao(string EndToEnd, string parameters)
         {
             ListResponse<PixTransactionConciliation> pixTransactionConciliations = new ListResponse<PixTransactionConciliation>();
-
             pixTransactionConciliations.Items = JsonConvert.DeserializeObject<List<PixTransactionConciliation>>(parameters);
 
-            ListResponse<Extract> listResponseExtract = _repositoryExtract.GetAll().Result;
+            DateTime minTransactionDate = pixTransactionConciliations.Items.OrderBy(p => p.TransactionDate).FirstOrDefault()?.TransactionDate ?? default(DateTime);
+            DateTime maxTransactionDate = pixTransactionConciliations.Items.OrderByDescending(p => p.TransactionDate).FirstOrDefault()?.TransactionDate ?? default(DateTime);
+
+            string sinceDate = minTransactionDate.ToString("yyyy-MM-dd");
+            string untilDate = maxTransactionDate.ToString("yyyy-MM-dd");
+
+            ListResponse<Extract> listResponseExtract = _repositoryExtract.GetAll(sinceDate, untilDate).Result;
 
             try
             {
