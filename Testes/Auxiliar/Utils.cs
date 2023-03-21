@@ -19,7 +19,8 @@ namespace Auxiliar
                   DateTime CreateAt = Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd   HH:mm:ss"),
                   DateTime  UpdateAt = Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd   HH:mm:ss"),
 
-
+    //ListResponse<EstablishmentProject> project = _establishmentProjectRepository.GetProjects().Result;
+    //voucherCardKitDesignViewModel.TagOptions = new SelectList(project.Items, "ProjectId", "Name");
     //EXEMPLO DE DIV PARA RECEBER UMA LISTA DE PARAMETROS, PRECISAR DO TIPO SELECTLIST
     //     @*      <div class="form-group has-feedback col-md-3">
     //                 <label asp-for="ProjectId">Projeto</label>
