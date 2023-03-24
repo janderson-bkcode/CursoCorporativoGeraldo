@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -16,7 +15,7 @@ namespace Portal.Repository.Repositories
 {
     public class Repository<TEntity> : BaseRepository, IRepository<TEntity> where TEntity : class
     {
-        public async Task<ListResponse<TEntity>> GetAll()
+        public async Task<ListResponse<TEntity>> GetAll(string sinceDate = null, string untilDate = null, string[] properties = null)
         {
             using (var connection = new SqlConnection(_connection.ConnectionString))
             {
@@ -24,8 +23,23 @@ namespace Portal.Repository.Repositories
                 var tableName = GetTableName();
 
                 ListResponse<TEntity> response = new ListResponse<TEntity>();
-                var query = "SELECT * FROM " + tableName;
 
+                string query;
+
+                if (sinceDate != null && untilDate != null && properties.Length > 0)
+                {
+                    query = $"SELECT * FROM {tableName} WHERE {properties[0]} >= '{sinceDate}' AND {properties[0]} <= '{untilDate}' AND {properties[1]} = 1 AND {properties[2]} IS NOT NULL " +
+                        $"ORDER BY {tableName}Id";
+                }
+                else if (sinceDate != null && untilDate == null && properties.Length > 0)
+                {
+                    query = $"SELECT * FROM {tableName} WHERE {properties[0]} >= '{sinceDate}' AND {properties[1]} = 1 AND {properties[2]} IS NOT NULL " +
+                        $"ORDER BY {tableName}Id";
+                }
+                else
+                {
+                    query = "SELECT * FROM " + tableName;
+                }
                 try
                 {
                     if (connection.State == ConnectionState.Open)
@@ -64,6 +78,104 @@ namespace Portal.Repository.Repositories
             }
         }
 
+        public async Task<ListResponse<TEntity>> GetPagined(int page, int pageSize, string sinceDate = null, string untilDate = null, string[] properties = null)
+        {
+            var tableName = GetTableName();
+            var startIndex = (page - 1) * pageSize;
+
+            string query;
+
+            if (sinceDate != null && untilDate != null && properties.Length > 0)
+            {
+                query = $"SELECT * FROM {tableName} WHERE {properties[0]} >= '{sinceDate}' AND {properties[0]} <= '{untilDate}' AND {properties[1]} = 1 AND {properties[2]} IS NOT NULL " +
+                    $"ORDER BY {tableName}Id";
+            }
+            else if (sinceDate != null && untilDate == null && properties.Length > 0)
+            {
+                query = $"SELECT * FROM {tableName} WHERE {properties[0]} >= '{sinceDate}' AND {properties[1]} = 1 AND {properties[2]} IS NOT NULL " +
+                    $"ORDER BY {tableName}Id";
+            }
+            else
+            {
+                query = "SELECT * FROM " + tableName;
+            }
+            ListResponse<TEntity> response = new ListResponse<TEntity>();
+
+            try
+            {
+                using (var connection = new SqlConnection(_connection.ConnectionString))
+                {
+                    await connection.OpenAsync();
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = query;
+                        command.CommandType = CommandType.Text;
+                        command.CommandTimeout = 15;
+                        var entities = new List<TEntity>();
+                        using (var reader = await command.ExecuteReaderAsync())
+                        {
+                            var propertiesEntity = typeof(TEntity).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+                            var propertyNames = Enumerable.Range(0, reader.FieldCount)
+                                                          .Select(reader.GetName)
+                                                          .ToList();
+
+                            while (await reader.ReadAsync())
+                            {
+                                var entity = Activator.CreateInstance<TEntity>();
+
+                                Parallel.ForEach(propertiesEntity, property =>
+                                {
+                                    if (propertyNames.Contains(property.Name) && !reader.IsDBNull(reader.GetOrdinal(property.Name)))
+                                    {
+                                        var value = reader[property.Name];
+
+                                        if (property.PropertyType == typeof(double) && value.GetType() == typeof(decimal))
+                                        {
+                                            value = Convert.ToDouble(value);
+                                        }
+
+                                        property.SetValue(entity, value);
+                                    }
+                                });
+                                entities.Add(entity);
+                                response.Items = entities;
+                            }
+                        }
+                    }
+                }
+                return response;
+            }
+            catch (Exception e)
+            {
+                response.ErrorId = 500;
+                response.Message = "Falha ao consultar os status";
+                return null;
+            }
+        }
+
+        public async Task<ListResponse<TEntity>> GetAllPaged(int pageSize, string sinceDate = null, string untilDate = null)
+        {
+            ListResponse<TEntity> result = new ListResponse<TEntity>();
+            var page = 1;
+
+            while (true)
+            {
+                var items = GetPagined(page, pageSize, sinceDate, untilDate).Result;
+
+                if (items.Items.Count == 0)
+                {
+                    break;
+                }
+                result.Items.AddRange(items.Items);
+
+                page++;
+            }
+
+            return result;
+        }
+
         public async Task<TEntity> GetById(int id)
         {
             BaseResponse response = new BaseResponse();
@@ -73,29 +185,75 @@ namespace Portal.Repository.Repositories
 
                 try
                 {
-                    if (connection.State != ConnectionState.Open)
+                    if (connection.State == ConnectionState.Open)
                     {
                         var tableName = GetTableName();
-                        var query = "SELECT * FROM " + tableName + " WHERE Id = @Id";
                         var parameters = new DynamicParameters();
+
                         parameters.Add("@Id", id);
-                        var result = await connection.QueryFirstOrDefaultAsync<TEntity>(query, parameters, commandTimeout: 15);
+                        var query = $"SELECT * FROM {tableName} WHERE {tableName}Id = @Id";
+                        var result = connection.QueryFirstOrDefaultAsync<TEntity>(query, parameters, commandTimeout: 15).Result;
 
                         return result;
                     }
+                    else
+                    {
+                        response.ErrorId = 1;
+                        response.Message = "Não foi possível conectar-se com o banco de dados.";
+                        return null;
+                    }
                 }
-                catch (Exception e )
+                catch (Exception e)
                 {
                     response.ErrorId = 1;
                     response.Message = "Falha ao consultar os status";
                     return null;
                 }
-
                 finally
                 {
                     connection.Close();
                 }
                 return null;
+            }
+        }
+
+        public async Task<TEntity> GetByProperty(string property, string value)
+        {
+            BaseResponse response = new BaseResponse();
+            using (var connection = new SqlConnection(_connection.ConnectionString))
+            {
+                connection.Open();
+
+                try
+                {
+                    if (connection.State == ConnectionState.Open)
+                    {
+                        var tableName = GetTableName();
+                        var parameters = new DynamicParameters();
+
+                        parameters.Add($"@{property}", value);
+                        var query = $"SELECT * FROM {tableName} WHERE {property} = @{property}";
+                        var result = connection.QueryFirstOrDefaultAsync<TEntity>(query, parameters, commandTimeout: 15).Result;
+
+                        return result;
+                    }
+                    else
+                    {
+                        response.ErrorId = 1;
+                        response.Message = "Não foi possível conectar-se com o banco de dados.";
+                        return null;
+                    }
+                }
+                catch (Exception e)
+                {
+                    response.ErrorId = 1;
+                    response.Message = "Falha ao consultar";
+                    return null;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
 
@@ -118,21 +276,29 @@ namespace Portal.Repository.Repositories
                     {
                         var tableName = GetTableName();
                         var columnNames = GetColumnNames().ToList();
-                        var properties = GetNonIdentityProperties(entity);
-                        var columnList = string.Join(",", columnNames);
-                        var parameterList = string.Join(", ", properties.Select(p => "@" + p.Name));
+                        var properties = GetNonIdentityProperties(entity).ToList();
                         var parameters = GetDynamicParameters(entity, properties);
 
-                        // Serializando propriedades de classes agregadas e colocando no JSON
                         var nestedObjects = entity.GetType().GetProperties()
                             .Where(p => p.PropertyType.IsClass && p.PropertyType != typeof(string))
                             .ToList();
                         foreach (var property in nestedObjects)
                         {
-                            var json = JsonConvert.SerializeObject(property.GetValue(entity));
-                            parameters.Add($"@{property.Name}", json);
-                            columnNames.Add(property.Name);
+                            var nestedObject = property.GetValue(entity);
+                            var nameClassNested = nestedObject.GetType().Name;
+                            var nestedObjectProperties = nestedObject.GetType().GetProperties().Where(n => n.Name.Contains($"{nameClassNested}Id"));
+                            foreach (var nestedProperty in nestedObjectProperties)
+                            {
+                                // Serializando propriedades Id da classe Aninhada
+                                var json = JsonConvert.SerializeObject(nestedProperty.GetValue(nestedObject));
+                                parameters.Add($"@{nestedProperty.Name}", json);
+                                columnNames.Add(nestedProperty.Name);
+                                properties.Add(nestedProperty);
+                            }
                         }
+
+                        var columnList = string.Join(",", columnNames);
+                        var parameterList = string.Join(", ", properties.Select(p => "@" + p.Name));
 
                         var insertQuery = $"INSERT INTO {tableName} ({columnList}) VALUES ({parameterList});SELECT * FROM {tableName} WHERE {tableName}Id = SCOPE_IDENTITY()";
 
@@ -176,25 +342,35 @@ namespace Portal.Repository.Repositories
                     {
                         var tableName = GetTableName();
                         var columnNames = GetColumnNames().ToList();
-                        var properties = GetNonIdentityProperties(entity);
+                        var properties = GetNonIdentityProperties(entity).ToList();
                         var parameters = GetDynamicParameters(entity, properties);
 
                         parameters.Add("@Id", GetIdPropertyValue(entity));
 
-                        // Serializando propriedades de classes agregadas e colocando no JSON
                         var nestedObjects = entity.GetType().GetProperties()
                             .Where(p => p.PropertyType.IsClass && p.PropertyType != typeof(string))
                             .ToList();
                         foreach (var property in nestedObjects)
                         {
-                            var json = JsonConvert.SerializeObject(property.GetValue(entity));
-                            parameters.Add($"@{property.Name}", json);
-                            columnNames.Add(property.Name);
+                            var nestedObject = property.GetValue(entity);
+                            var nameClassNested = nestedObject.GetType().Name;
+                            var nestedObjectProperties = nestedObject.GetType().GetProperties().Where(n => n.Name.Contains($"{nameClassNested}Id"));
+                            foreach (var nestedProperty in nestedObjectProperties)
+                            {
+                                // Serializando propriedades Id da classe Aninhada
+                                var json = JsonConvert.SerializeObject(nestedProperty.GetValue(nestedObject));
+                                parameters.Add($"@{nestedProperty.Name}", json);
+                                columnNames.Add(nestedProperty.Name);
+                                properties.Add(nestedProperty);
+                            }
                         }
+
+                        var columnList = string.Join(",", columnNames);
+                        var parameterList = string.Join(", ", properties.Select(p => "@" + p.Name));
 
                         var updateQuery = $"UPDATE {tableName} SET {string.Join(", ", properties.Select(p => p.Name + " = @" + p.Name))} WHERE {tableName}Id = @Id; " + $"SELECT * FROM {tableName} WHERE {tableName}Id = @Id";
 
-                        TEntity updatedEntity =  connection.QueryFirstOrDefaultAsync<TEntity>(updateQuery, parameters, commandTimeout: 15,transaction: transaction).Result;
+                        TEntity updatedEntity = connection.QueryFirstOrDefaultAsync<TEntity>(updateQuery, parameters, commandTimeout: 15, transaction: transaction).Result;
 
                         transaction.Commit();
 
@@ -237,9 +413,9 @@ namespace Portal.Repository.Repositories
                         var parameters = GetDynamicParameters(entity, properties);
 
                         parameters.Add("@Id", GetIdPropertyValue(entity));
-                        var deleteQuery = $"DELETE FROM { tableName} WHERE Id = @Id;" + $"SELECT * FROM {tableName} WHERE {tableName}Id = @Id";
+                        var deleteQuery = $"DELETE FROM {tableName} WHERE {tableName}Id = @Id;" + $"SELECT * FROM {tableName} WHERE {tableName}Id = @Id";
 
-                        TEntity deletedEntity =  connection.QueryFirstOrDefaultAsync<TEntity>(deleteQuery, parameters, commandTimeout: 15, transaction: transaction).Result;
+                        TEntity deletedEntity = connection.QueryFirstOrDefaultAsync<TEntity>(deleteQuery, parameters, commandTimeout: 15, transaction: transaction).Result;
 
                         transaction.Commit();
 
@@ -293,7 +469,7 @@ namespace Portal.Repository.Repositories
         private IEnumerable<string> GetColumnNames()
         {
             var entityType = typeof(TEntity);
-            var properties = entityType.GetProperties().Where(p => !p.Name.Contains($"{typeof(TEntity).Name}Id"));
+            var properties = entityType.GetProperties().Where(p => !p.Name.Contains($"{typeof(TEntity).Name}Id") && !p.PropertyType.IsClass && !p.PropertyType.IsNested || p.PropertyType == typeof(string));
             var columnNames = new List<string>();
             foreach (var property in properties)
             {
@@ -302,33 +478,6 @@ namespace Portal.Repository.Repositories
                 columnNames.Add(columnName);
             }
             return columnNames;
-        }
-
-        private DynamicParameters GetDynamicParameters(TEntity entity)
-        {
-            var parameters = new DynamicParameters();
-            var entityType = entity.GetType();
-            var properties = GetNonIdentityProperties(entity);
-
-            foreach (var property in properties)
-            {
-                var columnAttr = property.GetCustomAttributes(typeof(ColumnAttribute), true).FirstOrDefault() as ColumnAttribute;
-                var columnName = columnAttr?.Name ?? property.Name;
-                var value = property.GetValue(entity);
-
-                //  Se a coluna tem valor zero e a coluna permite nulo, seta null
-                if (value is int && ((int)value) == 0)
-                {
-                    var allowDBNullAttr = property.GetCustomAttributes(typeof(AllowNullAttribute), true).FirstOrDefault() as AllowNullAttribute;
-                    if (allowDBNullAttr != null)
-                    {
-                        value = null;
-                    }
-                }
-
-                parameters.Add(columnName, value);
-            }
-            return parameters;
         }
 
         private int GetIdPropertyValue(TEntity entity)
@@ -345,7 +494,7 @@ namespace Portal.Repository.Repositories
 
         private IEnumerable<PropertyInfo> GetNonIdentityProperties(TEntity entity)
         {
-            var properties = typeof(TEntity).GetProperties().Where(p => !p.Name.Contains($"{typeof(TEntity).Name}Id"));
+            var properties = typeof(TEntity).GetProperties().Where(p => !p.Name.Contains($"{typeof(TEntity).Name}Id") && !p.PropertyType.IsClass && !p.PropertyType.IsNested || p.PropertyType == typeof(string));
             return properties;
         }
     }
