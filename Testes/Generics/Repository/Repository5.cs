@@ -322,7 +322,83 @@ namespace Portal.Repository.Repositories
                 }
             }
         }
+         public async Task<TEntity> InsertWithProcedure(TEntity entity, string propertyProcedureName)
+        {
+            BaseResponse response = new BaseResponse();
+            using (var connection = new SqlConnection(_connection.ConnectionString))
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    response.ErrorId = 1;
+                    response.Message = "Não foi possível conectar-se com o banco de dados.";
+                    return null;
+                }
 
+                try
+                {
+                    var tableName = GetTableName();
+                    var columnNames = GetColumnNames().ToList();
+                    var properties = GetNonIdentityProperties(entity).ToList();
+                    var parameters = GetDynamicParameters(entity, properties);
+
+                    var nestedObjects = entity.GetType().GetProperties()
+                        .Where(p => p.PropertyType.IsClass && p.PropertyType != typeof(string))
+                        .ToList();
+                    foreach (var property in nestedObjects)
+                    {
+                        var nestedObject = property.GetValue(entity);
+                        var nameClassNested = nestedObject.GetType().Name;
+                        var nestedObjectProperties = nestedObject.GetType().GetProperties().Where(n => n.Name.Contains($"{nameClassNested}Id"));
+                        foreach (var nestedProperty in nestedObjectProperties)
+                        {
+                            // Serializando propriedades Id da classe Aninhada
+                            var json = JsonConvert.SerializeObject(nestedProperty.GetValue(nestedObject));
+                            parameters.Add($"@{nestedProperty.Name}", json);
+                            columnNames.Add(nestedProperty.Name);
+                            properties.Add(nestedProperty);
+                        }
+                    }
+
+                    if (propertyProcedureName != null)
+                    {
+                        // parâmetro de saída para a procedure que irá receber o valor retornado:
+
+                        var outParam = new DynamicParameters();
+                        outParam.Add("@OutputParamName", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                        // Chama a procedure para obter o valor a ser inserido na coluna
+                        connection.ExecuteScalarAsync<int>("NomeDaSuaProcedure", commandType: CommandType.StoredProcedure).Wait();
+                        var propertyName = propertyProcedureName; // substitua pelo nome da propriedade que deseja atualizar
+
+                        // Atribuindo o valor da procedure a variavel
+                        var propertyProcedure = typeof(TEntity).GetProperty(propertyName);
+                        propertyProcedure.SetValue(entity, outParam.Get<int>("@OutputParamName"));
+
+                        columnNames.Add(propertyName); // adiciona o nome da propriedade
+                        parameters.Add($"@{propertyName}", propertyProcedure.GetValue(entity)); // adiciona o valor da propriedade como parâmetro
+                    }
+
+                    var columnList = string.Join(",", columnNames);
+                    var parameterList = string.Join(", ", properties.Select(p => "@" + p.Name));
+
+                    var insertQuery = $"INSERT INTO {tableName} ({columnList}) VALUES ({parameterList});SELECT * FROM {tableName} WHERE {tableName}Id = SCOPE_IDENTITY()";
+
+                    TEntity insertedEntity = await connection.QueryFirstOrDefaultAsync<TEntity>(insertQuery, parameters, commandTimeout: 15);
+
+                    return insertedEntity;
+                }
+                catch (Exception ex)
+                {
+                    response.ErrorId = 1;
+                    response.Message = "Falha ao inserir dados";
+                    return null;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
         public async Task<TEntity> Update(TEntity entity)
         {
             BaseResponse response = new BaseResponse();
