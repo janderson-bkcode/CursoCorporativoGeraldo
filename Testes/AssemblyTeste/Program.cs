@@ -23,8 +23,8 @@ namespace AssemblyTeste
             System.Console.WriteLine(assembly.EntryPoint);
 
             System.Console.WriteLine();
-            DateTime dataCriacao = File.GetCreationTime(assembly.Location);
-            System.Console.WriteLine("\nData Criação",dataCriacao);
+            var dataCriacao = File.GetCreationTime(assembly.Location);
+            System.Console.WriteLine($"Data Criação {dataCriacao}");
 
         }
     }
