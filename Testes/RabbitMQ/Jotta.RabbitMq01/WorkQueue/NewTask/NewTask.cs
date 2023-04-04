@@ -1,6 +1,13 @@
 ﻿using System.Text;
 using RabbitMQ.Client;
 
+
+
+string GetMessage(string[] args)
+{
+    return ((args.Length > 0) ? string.Join(" ", args) : "Hello World!");
+}
+
 // Conexão
 var factory = new ConnectionFactory { HostName = "localhost" };
 using var connection = factory.CreateConnection();
@@ -14,15 +21,15 @@ channel.QueueDeclare(queue: "hello",
                      arguments: null);
 
 // Mensagem a ser enviada
-var message = "Hello World!";
-var body = Encoding.UTF8.GetBytes(message);
+var mensagem = GetMessage(args);
+var body = Encoding.UTF8.GetBytes(mensagem);
 
 //Informando onde será publicado, no caso na fila recem criada acima
 channel.BasicPublish(exchange: string.Empty,
                      routingKey: "hello",
                      basicProperties: null,
                      body: body);
-Console.WriteLine($" [x] Sent {message}");
+Console.WriteLine($" [x] Sent {mensagem}");
 
 Console.WriteLine(" Press [enter] to exit.");
 Console.ReadLine();
